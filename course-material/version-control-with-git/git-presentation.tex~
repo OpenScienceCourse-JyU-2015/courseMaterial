@@ -1,0 +1,194 @@
+% Created 2015-04-18 Sat 11:56
+\documentclass[big]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{lmodern}
+\usetheme{Boadilla}
+\usecolortheme{whale}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[circle]
+\setbeamertemplate{alert}{\textbf}
+\usetheme{default}
+\author{}
+\date{2015-04-21}
+\title{Version control with Git}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.3.50.1 (Org mode 8.2.3a)}}
+\begin{document}
+
+\maketitle
+
+\section{Version control}
+\label{sec-1}
+
+\begin{frame}[label=sec-1-1]{A common problem}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\includegraphics[width=.9\linewidth]{img/phd052810s.png}
+\end{column}
+\end{columns}
+\end{frame}
+\begin{frame}[label=sec-1-2]{Reproducibility of research?}
+\begin{itemize}
+\item Research should be reproducible by others.
+\item This refers to the experiments generating the data, but also to the analysis
+of the data.
+\item The first researcher who will need to reproduce your results is likely to be
+  \alert{\alert{you}}.
+\end{itemize}
+\end{frame}
+\begin{frame}[label=sec-1-3]{A lab notebook for analyses ?}
+\begin{itemize}
+\item Lab books make lab work traceable. Analyses should also be traceable.
+\item Analysis steps must be recorded, and reverting to any previous step must be
+possible.
+\item This ensures that we always exactly know how a result was generated.
+\end{itemize}
+
+\#\#\# Version control
+
+\begin{itemize}
+\item Version control is a tool to keep track of file changes.
+\item However, version control softwares offer more than simply recording
+successive versions of a file.
+\item Version controlled projects can be forked, merged and shared with
+collaborators.
+\item Interesting both for collaborative work and for single developper (the single
+developper case will be developped in more details later)
+\end{itemize}
+
+\#\#\# Example of a version control flow for a Python script
+
+![Version control workflow](img/version-control-workflow.gif)
+
+\begin{itemize}
+\item \alert{\alert{V1}}, \alert{\alert{V2}}, and \alert{\alert{V3}} are successive versions of the script
+\item \alert{\alert{V4}} is committed, but then a mistake is found. We revert to \alert{\alert{V3}}
+\item A new, correct \alert{\alert{V4}} is committed
+\item \alert{\alert{V5}} and \alert{\alert{V6}} are successive versions of the script
+\item At this point, we want to implement a new feature that might be interesting,
+but which is experimental. In order to keep \alert{\alert{V6}} clean, we create a new
+branch in which we can experiment with the script without damaging the stable
+\alert{\alert{V6}}
+\item \alert{\alert{V6b}} and \alert{\alert{V7b}} are successive versions of the experimental script
+\item At some point, the experimental changes are mature and we want to merge them
+back into the master branch. \alert{\alert{V7b}} and \alert{\alert{V6}} are merged together into \alert{\alert{V8}}
+\item We realise we want to revert to a previous version of one function in the
+script. For this function, we revert to the code present in \alert{\alert{V2}}, keep all
+the rest as it is in \alert{\alert{V8}} and commit it as \alert{\alert{V9}}
+\item \alert{\alert{V10}} is the next commit
+\end{itemize}
+
+\#\#\# What are the available tools?
+
+\begin{itemize}
+\item Existing version control tools:
+\begin{itemize}
+\item [**Subversion**](\url{https://subversion.apache.org/}),
+\item [**Bazaar**](\url{http://bazaar.canonical.com/en/}),
+\item [**Mercurial**](\url{http://mercurial.selenic.com/}),
+\item [**Git**](\url{http://git-scm.com/})
+\end{itemize}
+\item Online servers for repositories:
+\begin{itemize}
+\item [**BitBucket**](\url{https://bitbucket.org/}) (free private repositories)
+\item [**GitHub**](\url{https://github.com/}) (free for public repositories but not for
+private repositories)
+\end{itemize}
+\end{itemize}
+
+\#\# Installing and setting up Git
+
+\#\#\# Git installation
+
+\begin{itemize}
+\item Install Git
+\end{itemize}
+
+\#\#\# Git basic setup
+
+\begin{itemize}
+\item Set up the PATH for accessing it from the command line
+\item Set up the user name and email
+\end{itemize}
+
+\#\# Basic Git usage
+
+\#\#\# Adding files and committing changes
+
+\begin{itemize}
+\item First commit
+\item Second commit
+\item Git log and graphical interfaces
+\end{itemize}
+
+\#\#\# Diff and reverting to previous versions
+
+\begin{itemize}
+\item Diff between files
+\item How to revert to a previous version
+\end{itemize}
+
+\#\#\# Branching and merging
+
+\begin{itemize}
+\item Branching and merging
+\item Resolving merge conflicts
+\end{itemize}
+
+\#\# Setting up and using remote repositories
+
+\#\#\# Creating a new remote repository
+
+\begin{itemize}
+\item Set up a GitHub account
+\item Create a new repository
+\end{itemize}
+
+\#\#\# Pushing to the remote repository
+
+\begin{itemize}
+\item Push to the new repository
+\end{itemize}
+
+\#\# Cloning an existing project
+
+\begin{itemize}
+\item Clone a project prepared by the teachers
+\item Modify the code and send a pull request
+\item Clone a real life example (e.g. python GO parser)
+\end{itemize}
+
+\#\# Going further: workflow example for single developper
+
+\#\# Resources
+
+links go here
+\end{frame}
+\section{Git}
+\label{sec-2}
+
+\section{Practicals}
+\label{sec-3}
+
+Very short description
+% Emacs 24.3.50.1 (Org mode 8.2.3a)
+\end{document}

@@ -1,0 +1,628 @@
+% Created 2015-04-22 Wed 01:43
+\documentclass[big]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{lmodern}
+\usetheme{Boadilla}
+\usecolortheme{whale}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate items}[circle]
+\setbeamertemplate{alert}{\textbf}
+\usetheme{default}
+\author{}
+\date{2015-04-22}
+\title{Introduction to the shell and task automation}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.3.50.1 (Org mode 8.2.3a)}}
+\begin{document}
+
+\maketitle
+
+\section{Introduction to the shell}
+\label{sec-1}
+
+\begin{frame}[fragile,label=sec-1-1]{What is the shell?}
+ \begin{block}{In brief\ldots{}}
+\begin{itemize}
+\item Command line interface, looks old-fashioned but very convenient
+\item Main interface when you want to login to \alert{CSC servers} or \alert{remote servers}
+\item Also present in \alert{Linux} distributions for personal computers and \alert{Mac}
+\item With \alert{Windows}, the \texttt{cmd} prompt is a bit similar (text-based) but not as
+powerful
+\end{itemize}
+\end{block}
+\begin{block}<2->{Usage}
+\begin{itemize}
+\item Often the only interface For remote connections
+\item \alert{Automate repetitive tasks}
+\item Powerful built-in commands
+\item Shell scripts to \alert{reproduce} data manipulation
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-2]{Where can we find the shell?}
+ \begin{block}{To find a shell\ldots{}}
+\begin{itemize}
+\item On \alert{Linux} and \alert{MacOS} systems: open a \alert{terminal}. This will provide you with a
+Unix-like shell on both systems
+\item On \alert{Windows}: run \texttt{cmd.exe} or \texttt{cmd}. This shell is quite different from the
+Unix-like shell found in Linux and MacOS. To obtain a Unix shell on Windows,
+one can install the \href{https://www.cygwin.com/}{Cygwin} tools.
+\item It is strongly recommended to learn how to use a \alert{Unix shell} since it is
+very likely it is this type of shell you will be exposed to when you connect
+to a \alert{remote server}.
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label=sec-1-3]{Where can we find the shell?}
+\begin{block}{One shell or several shells?}
+\begin{itemize}
+\item A shell: a program providing an \alert{interface} between the user and the
+computer. \alert{Different shells exist}.
+\item The most popular and widely used shell is probably \alert{bash}. It is the
+default shell in most GNU/Linux distributions.
+\item If you learn how to use \alert{bash}, you will be able to use most \alert{remote servers}
+you'll have to connect to, and also the \alert{terminal} from MacOS or the \alert{Cygwin}
+tools on Windows
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label=sec-1-4]{The CSC center in Kajaani}
+\begin{center}
+\includegraphics[width=.9\linewidth]{img/digitice-csc-kajaani-800_ilmakuva_tehtaasta.jpg}
+\end{center}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-5]{Meet the Taito cluster (\texttt{taito.csc.fi})}
+ \begin{center}
+\includegraphics[width=.9\linewidth]{img/yle-taito-supertietokone-kajaani.jpg}
+\end{center}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-6]{Connection to a remote shell}
+ \begin{block}{The plan}
+\begin{itemize}
+\item Using the CSC server Taito in Kajaani (student account)
+\item Tools: \alert{putty} (windows) or \alert{ssh} (Mac and GNU/Linux)
+\item A word about \alert{ssh} and the \alert{security of connections}?
+\end{itemize}
+\end{block}
+\begin{block}{Student account}
+\begin{itemize}
+\item Logins: \texttt{jyybio01} to \texttt{jyybio20}
+\item Password: on the whiteboard
+\end{itemize}
+\end{block}
+\begin{block}<2->{Connection}
+\begin{itemize}
+\item From a terminal (Mac or GNU/Linux):
+\begin{verbatim}
+ssh jyybioxx@taito.csc.fi
+\end{verbatim}
+where \texttt{xx} is your student number.
+\item From Putty: ask a teacher if needed
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-7]{First contact with the shell}
+ \begin{block}{Just after connection}
+What you see after connection in the \alert{shell prompt}. It tells you the shell is
+ready to receive your input:
+\begin{verbatim}
+jyybioxx@taito-login3$
+\end{verbatim}
+\texttt{jyybioxx} is your username, \texttt{taito-login} is the host server to which you are
+connected. The number after \texttt{taito-login} can vary because Taito has several
+login nodes.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-8]{First contact with the shell}
+ \begin{block}{Execute a command (\texttt{ls})}
+The shell \alert{reads} and \alert{executes} commands you enter at the prompt, and \alert{prints}
+the output. Type \texttt{ls} and press \texttt{RETURN}. You should see:
+\begin{verbatim}
+appl_taito
+\end{verbatim}
+\end{block}
+\begin{block}<2->{}
+You just ran the \texttt{ls} command which produces an output: the list of files and
+folders present in the current directory. 
+
+Try another command: \texttt{whoami}. What does this command do?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-9]{First contact with the shell}
+ \begin{block}{Execute a command (\texttt{pwd})}
+When you login to a server, you are automatically sent to your home folder. You
+can see where you are by typing \texttt{pwd}, which produces:
+\begin{verbatim}
+/homeappl/home/jyybioxx
+\end{verbatim}
+So you are now in the folder \texttt{jyybioxx}, which is itself contained in \texttt{home},
+which is contained in \texttt{homeappl}, which is at the root of the file system (\texttt{/},
+there is no parent directory above).
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-10]{Adding options to a command}
+ \begin{block}{Using \texttt{ls} options}
+You can add options to a command with the dash sign \texttt{-}:
+\begin{verbatim}
+ls -l
+\end{verbatim}
+(this is -l, not -1)
+
+This runs the \texttt{ls} command with the \texttt{-l} option, which produces a detailed
+output:
+\begin{verbatim}
+total 4
+drwx------ 2 jyybio20 jyybio 4096 Apr 15 12:15 appl_taito
+drwx------ 2 jyybio20 jyybio 4096 Apr 15 15:22 ecoli-data
+\end{verbatim}
+Now you can see the date of last modification of the folders and some other
+information. We'll see later in more details what the other information means.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-11]{Clone the Git repository for the practicals}
+ \begin{block}{Clone the Git repository}
+Before going further, you should clone a Git repository containing the data
+which was prepared for you (Git is installed on Taito). The repository is
+hosted on GitHub.
+
+Check that you are in your home folder with \texttt{pwd}. You should see:
+\begin{verbatim}
+/homeappl/home/jyybioxx
+\end{verbatim}
+If not, go back to your home folder by typing simply \texttt{cd} without any argument.
+
+Clone the Git repository with:
+\begin{verbatim}
+git clone https://github.com/mdjbru-teaching-material/practicals.git
+\end{verbatim}
+and run \texttt{ls}. What happened?
+\end{block}
+\end{frame}
+\begin{frame}[label=sec-1-12]{Data content and motivation}
+\begin{block}{The data files}
+Each file corresponds to one \emph{Escherichia coli} strain for which a
+complete or draft genome sequence is available. The name of the strain
+is contained in the file name. Each file contains the peptide
+sequences from all translations resulting from Ensembl known or novel
+gene predictions for that given \emph{E. coli} strain.
+
+Files are in the FASTA format. The original address is
+\url{ftp://ftp.ensemblgenomes.org/pub/current/bacteria/fasta/}.
+\end{block}
+
+\begin{block}{Motivation}
+We want to determine the amino acod content of all proteins of each strain, and
+compare the results between strains. We already have a Python script ready
+which can determine the amino-acid composition for protein sequences.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-13]{Basic folder navigation}
+ \begin{block}{\texttt{cd} command}
+We can navigate from folder to folder using the \texttt{cd} command:
+\begin{verbatim}
+cd practicals
+ls
+cd ecoli-data
+ls
+\end{verbatim}
+We could have go directly to the second subfolder with \texttt{cd
+practicals/ecoli-data}
+
+You can see there are already some files in this
+folder. Let's ask for more details:
+\begin{verbatim}
+ls -l
+\end{verbatim}
+
+How many files are there? How large are they?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-14]{Basic folder navigation}
+ \begin{block}{Combining options for \texttt{ls}}
+We can ask for more human-readable sizes with:
+\begin{verbatim}
+ls -l -h
+\end{verbatim}
+Can you see the difference with \texttt{ls -l}? What does \texttt{ls -h} do?
+
+We could also combine both options to \texttt{ls}: \texttt{ls -lh}
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-15]{Basic folder navigation}
+ \begin{block}{Moving to the parent directory}
+We can go back through the parent folders using \texttt{cd ..}:
+\begin{verbatim}
+pwd    # Where are you at this point?
+cd ..
+pwd    # And now?
+ls
+cd ..
+pwd    # And here?
+ls
+\end{verbatim}
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-16]{Basic folder navigation}
+ \begin{block}{Going back to the home directory}
+A faster way to go back to your home directory, from any starting directory, is
+just to type \texttt{cd} without any argument.  Now go back to the \texttt{ecoli-data}
+subfolder and back again to your home directory using \texttt{cd}.
+\end{block}
+\begin{block}{Shortcut for the home folder}
+Another way to go to the home folder is to use the \texttt{\textasciitilde{}} character: this is
+automatically replaced by the path to your home folder by \texttt{bash}:
+\begin{verbatim}
+cd
+cd practicals
+cd ~
+cd appl_taito
+cd ~/practicals
+\end{verbatim}
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-17]{Creating folders}
+ \begin{block}{The \texttt{mkdir} command}
+Go back to the \texttt{practicals} folder and create a new folder in it:
+\begin{verbatim}
+cd ~/practicals
+mkdir results
+cd results
+ls
+\end{verbatim}
+\end{block}
+\begin{block}{Exercise}
+Create the following directory structure:
+\begin{verbatim}
+~/practicals/scripts/python/modules/seqAnalysis
+\end{verbatim}
+and go back to your home folder.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-18]{Auto-completion}
+ \begin{block}{The magic \texttt{TAB} key}
+Let's go into \texttt{seqAnalysis} folder=, but let's be lazy:
+\begin{verbatim}
+cd     # Start from your home folder
+cd pr  # Press TAB at this point
+\end{verbatim}
+Do you understand what happened? Use this feature to quickly go to
+\texttt{seqAnalysis}. What is the minimum number of keystrokes you have to use to go
+there from your home folder?
+\end{block}
+\begin{block}{Remember!}
+When you press \texttt{TAB}, the shell tries to complete what you just typed by
+itself. This auto-completion feature of the shell is very convenient and will
+save you a lot of typing!
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-19]{Auto-completion}
+ \begin{block}{Test auto-completion}
+Now create a folder:
+\begin{verbatim}
+~/practicals/scripts/python/modifiedSources
+\end{verbatim}
+Go back to your home folder, and go into \texttt{modifiedSources} using the \texttt{TAB}
+completion as much as you can. What do you notice?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-20]{Auto-completion}
+ \begin{block}{Double \texttt{TAB}}
+Now create the folder
+\begin{verbatim}
+~/practicals/scripts/python/modularComponents
+\end{verbatim}
+and type:
+\begin{verbatim}
+cd ~/practicals/scripts/python/mod  # Press =TAB= twice here
+                          # Type "ule" and press =TAB= again
+\end{verbatim}
+Do you understand how \texttt{TAB} completion works? This also works for command
+names.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-21]{Copying, moving and removing files}
+ \begin{block}{Creating an empty file}
+Go the the \texttt{seqAnalysis} folder and type:
+\begin{verbatim}
+touch DNA-analysis.py
+ls
+\end{verbatim}
+What happened?
+\end{block}
+\begin{block}{Moving a file}
+Now type:
+\begin{verbatim}
+mv DNA-analysis.py ../modularComponents
+\end{verbatim}
+What happened? Did you use the \texttt{TAB} key? (you should!) Explore the directory
+structure to find \texttt{DNA-analysis.py} again.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-22]{Copying, moving and removing files}
+ \begin{block}{Copying a file}
+Go to the \texttt{modularComponents} subfolder and type:
+\begin{verbatim}
+cp DNA-analysis.py ../modules
+\end{verbatim}
+What happened?
+\end{block}
+\begin{block}{Removing a file}
+From \texttt{modularComponents} folder, type:
+\begin{verbatim}
+rm DNA-analysis.py
+\end{verbatim}
+What happened?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-23]{Creating a directory hierarchy}
+ \begin{block}{Moving a folder}
+From the \texttt{scripts} folder, move \texttt{modularComponents} into \texttt{modules}:
+\begin{verbatim}
+mv modularComponents modules
+tree
+\end{verbatim}
+\end{block}
+\begin{block}{Copying a folder}
+Go to the \texttt{practicals} folder and make a copy of \texttt{scripts}:
+\begin{verbatim}
+cp -r scripts scripts-backup
+\end{verbatim}
+Note the \texttt{-r} option used for recursive copy inside the directories.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-24]{Creating a directory hierarchy}
+ \begin{block}{Removing a folder}
+Remove the newly created folder with:
+\begin{verbatim}
+rm -r scripts-backup
+\end{verbatim}
+Again, note the \texttt{-r} option to work on folders.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-25]{Creating a directory hierarchy}
+ \begin{block}{Exercise}
+Now that you have experience, create the exact following directory structure
+(only folders shown):
+\begin{verbatim}
+.
++-- appl_taito
+`-- practicals
+    +-- ecoli-data
+    |   `-- [...]
+    +-- results
+    |   `-- 2015-04-22
+    `-- scripts
+        +-- python
+        |   +-- popGenetics
+        |   +-- proteinStructure
+        |   `-- seqAnalysis
+        `-- R
+\end{verbatim}
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-26]{Viewing a file}
+ \begin{block}{\texttt{cat} command}
+Go to the \texttt{ecoli-data} folder and type:
+\begin{verbatim}
+cat README
+\end{verbatim}
+Try also \texttt{cat} on one of the fasta files. What happened?
+\end{block}
+\begin{block}{\texttt{head} and \texttt{tail} commands}
+\begin{verbatim}
+head Escherichia_coli_o5_k4_l_h4_str_atcc_23502.GCA_000333195.1.26.pep.all.fa
+tail Escherichia_coli_o5_k4_l_h4_str_atcc_23502.GCA_000333195.1.26.pep.all.fa
+head -n 30 Escherichia_coli_o5_k4_l_h4_str_atcc_23502.GCA_000333195.1.26.pep.all.fa
+tail -n 3 Escherichia_coli_o5_k4_l_h4_str_atcc_23502.GCA_000333195.1.26.pep.all.fa
+\end{verbatim}
+Do you understand what those commands do?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-1-27]{Viewing a file}
+ \begin{block}{\texttt{less} command}
+\texttt{less} is very useful to examine large file. You can navigate using the up and
+down arrows or \texttt{B} and \texttt{SPACE} keys, and you can exit with \texttt{Q}.
+\begin{verbatim}
+less Escherichia_coli_o5_k4_l_h4_str_atcc_23502.GCA_000333195.1.26.pep.all.fa
+\end{verbatim}
+\end{block}
+\end{frame}
+
+\section{Shell tools}
+\label{sec-2}
+
+\begin{frame}[fragile,label=sec-2-1]{Useful tools: \texttt{wc}}
+ \begin{block}{\texttt{wc} to count words}
+Go to the \texttt{ecoli-data} folder and type:
+\begin{verbatim}
+wc Escherichia_coli_o55_h7_str_06_3555.GCA_000617385.1.26.pep.all.fa
+\end{verbatim}
+which produces:
+\begin{verbatim}
+26318   51865 1824223 Esch...
+\end{verbatim}
+We can have only the number of lines with \texttt{wc -l} (try it).
+\end{block}
+\begin{block}{Wildcards}
+Try:
+\begin{verbatim}
+wc -l *.fa
+\end{verbatim}
+What happened?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-2-2]{Redirection}
+ \begin{block}{The \texttt{>} operator}
+When a command produces some output, it can be redirected to a file instead of
+to the terminal:
+\begin{verbatim}
+wc -l *.fa > lineCounts
+cat lineCounts
+\end{verbatim}
+\texttt{>} is a \alert{redirection} operator, and automatically creates a new file or erases
+an existing file.
+\end{block}
+\begin{block}{The \texttt{>>} operator}
+To redirect output and append it to an existing file, we can use the \texttt{>>}
+operator:
+\begin{verbatim}
+wc -l README >> lineCounts
+cat lineCounts
+\end{verbatim}
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-2-3]{Useful tools: \texttt{grep}}
+ \begin{block}{\texttt{grep} to search for matches}
+:grep "flagellin" Escherichia$_{\text{coli}}$$_{\text{o55}}$$_{\text{h7}}$$_{\text{str}}$$_{\text{06}}$$_{\text{3555}}$.GCA$_{\text{000617385}}$.1.26.pep.all.fa
+:grep --color=always "flagellin" Escherichia$_{\text{coli}}$$_{\text{o55}}$$_{\text{h7}}$$_{\text{str}}$$_{\text{06}}$$_{\text{3555}}$.GCA$_{\text{000617385}}$.1.26.pep.all.fa
+:grep -n --color=always "flagellin" Escherichia$_{\text{coli}}$$_{\text{o55}}$$_{\text{h7}}$$_{\text{str}}$$_{\text{06}}$$_{\text{3555}}$.GCA$_{\text{000617385}}$.1.26.pep.all.fa
+:grep -c --color=always "flagellin" Escherichia$_{\text{coli}}$$_{\text{o55}}$$_{\text{h7}}$$_{\text{str}}$$_{\text{06}}$$_{\text{3555}}$.GCA$_{\text{000617385}}$.1.26.pep.all.fa
+Do you understand what each of the \texttt{grep} options do?
+\end{block}
+\begin{block}{Exercise}
+Use \texttt{grep} to extract all the sequence names from one of the fasta file and
+store them in a file called \texttt{proteinNames}.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-2-4]{Useful tools: \texttt{grep}}
+ \begin{block}{\texttt{grep} is versatile}
+\begin{verbatim}
+grep -c flagellin *.fa
+grep -c flagel *.fa
+\end{verbatim}
+Do you understand the output?
+\end{block}
+\begin{block}{Exercise}
+How would you count the number of proteins in each fasta file?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-2-5]{Useful tools: \texttt{cut}}
+ \begin{block}{\texttt{cut} to get columns}
+\begin{verbatim}
+grep -c flagel *.fa > flagelCounts
+cat flagelCounts
+cut -d "_" -f 1 flagelCounts
+cut -d "_" -f 3 flagelCounts
+cut -d "_" -f 3,5 flagelCounts
+cut -d ":" -f 2 flagelCounts
+\end{verbatim}
+Do you understand what \texttt{cut} does and the roles of the \texttt{-d} and \texttt{-f} options?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-2-6]{Useful tools: \texttt{sort}}
+ \begin{block}{\texttt{sort} to sort things}
+Use \texttt{sort} to sort the line counts from \texttt{lineCounts}:
+\begin{verbatim}
+sort lineCounts
+\end{verbatim}
+Is everything correct? What if you try \texttt{sort -n lineCounts}? Can you see a
+difference? Try also \texttt{sort -r lineCounts}
+\end{block}
+\begin{block}{Exercise}
+Using \texttt{grep} and \texttt{sort} and an intermediate files, sort the bacterial proteomes
+by decreasing number of proteins. Hint: \texttt{sort} supports two interesting
+options, \texttt{-t} to specify a field separator and \texttt{-k} to specify which field to
+use for sorting, so that \texttt{sort -t"\_" -k2 myFileName} would sort the lines in
+\texttt{myFileName} using the second field using "\_" to delimit the fields.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-2-7]{Combining tools with pipes}
+ \begin{block}{Pipes can connect an output and an input streams}
+When we did \texttt{sort lineCounts}, we used \texttt{sort} of the output of \texttt{wc}, but we
+used an intermediate file.  The shell offers a powerful way to connect directly
+the output of a command to the input of another: the \alert{pipe operator}:
+\begin{verbatim}
+wc -l *.fa | sort -n
+\end{verbatim}
+\end{block}
+\begin{block}{Exercises}
+The \texttt{w} output the list of connected users on the server:
+\begin{verbatim}
+w
+w | head
+w | less
+\end{verbatim}
+Use a pipe to find all the users whose login contains "jyy". Extend the same
+pipe to count how many there are.
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-2-8]{Python script to determine amino acid composition}
+ \begin{block}{Test the Python script}
+The script \texttt{seqComposition.py} takes a fasta file and produces a table
+containing the amino-acid composition of each protein in the file.
+To run the script, type:
+\begin{verbatim}
+module load python-env/3.4.1   # This is specific to the server
+python3 seqComposition.py myFastaFile # Use the fasta file you wish
+\end{verbatim}
+The output is sent to the terminal. Propose at least two ways to have a look at
+this output.
+\end{block}
+\end{frame}
+\begin{frame}[label=sec-2-9]{Python script to determine amino acid composition}
+\begin{block}{Exercise}
+Using only the Unix tools you know, the Python script and pipes, determine the
+distribution of the number of histidines per protein in the proteome of the
+strain of your choice.
+\end{block}
+\end{frame}
+\section{Automating tasks}
+\label{sec-3}
+
+\begin{frame}[fragile,label=sec-3-1]{One step towards wizardry: shell scripts}
+ \begin{block}{Reusing your tool pipeline}
+Let's use \texttt{nano} to store your pipeline in a file:
+\begin{verbatim}
+nano getHistDistrib.sh
+\end{verbatim}
+(the usage of \texttt{nano} will be demonstrated live) The idea is to be able to
+produce the histidine distribution results just by typing:
+\begin{verbatim}
+bash getHistDistrib.sh myFastaFile
+\end{verbatim}
+\end{block}
+\begin{block}{Test your pipeline with a few files}
+Test your pipeline for 5 strains. How would you feel about doing it for 2000
+strains?
+\end{block}
+\end{frame}
+\begin{frame}[fragile,label=sec-3-2]{One step towards wizardry: shell scripts}
+ \begin{block}{Making a general purpose listing script}
+Create a shell script (\texttt{testListing.sh}) with this content:
+\begin{verbatim}
+listFiles=`ls *.fa`
+echo $listFiles
+for myFile in $listFiles; do
+    echo $myFile
+    echo $myFile.results
+done
+\end{verbatim}
+Run it with \texttt{bash}. What does this do?
+\end{block}
+\begin{block}{Exercise: final script}
+Combine the script with your pipeline and the listing script into a single
+script to get the histidine distribution for all the fasta files in this
+folder.
+\end{block}
+\end{frame}
+% Emacs 24.3.50.1 (Org mode 8.2.3a)
+\end{document}
