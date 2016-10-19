@@ -18,7 +18,6 @@ You will know how to:
 
 * What is the shell?
 
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
 [[images/shell-screenshot.png]]
 
 In brief:
@@ -61,10 +60,8 @@ To find a shell:
 
 * The CSC center in Kajaani
 
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
 [[images/digitice-csc-kajaani-800_ilmakuva_tehtaasta.jpg]]
 
 * Meet the Taito cluster (=taito.csc.fi=)
 
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
 [[images/yle-taito-supertietokone-kajaani.jpg]]
