@@ -35,6 +35,39 @@ Usage:
 - *Automate repetitive tasks*
 - Shell scripts to *reproduce* data manipulation
 
-*Note:* the words /shell/, /terminal/ and /console/ are *roughly* (but not
- exactly) synonyms and will be used interchangeably during this course.
+* Where can we find the shell?
 
+To find a shell:
+- On *GNU/Linux* and *MacOS* systems: open a *terminal*. This will provide you
+  with a Unix-like shell on both systems.
+- On *Windows*: run =cmd.exe= or =cmd=. This shell is quite different from the
+  Unix-like shell found in Linux and MacOS. To obtain a Unix shell on Windows,
+  one caninstall the Cygwin tools.
+- It is strongly recommended to learn how to use a *Unix shell* since it is
+  very likely it is this type of shell you will be exposed to when you connect
+  to a *remote server*.
+
+** One shell or several shells?
+
+- A shell: a program providing an *interface* between the user and the
+  computer. *Different shells exist*.
+- The most popular ad widely used shell is probably *bash*. It is the default
+  shell in most GNU/Linux distributions.
+- If you learn how to use *bash*, you will be able to use most *remote servers*
+  you'll have to connect to, and also the *terminal* from MacOS or the *Cygwin*
+  tools on Windows.
+
+*One word on terminology:* During the course, we will often say interchangeably
+ "the terminal", "the console", "the shell" or "bash".
+
+* The CSC center in Kajaani
+
+#+BEGIN_CENTER
+[[images/digitice-csc-kajaani-800_ilmakuva_tehtaasta.jpg]]
+#+END_CENTER
+
+* Meet the Taito cluster (=taito.csc.fi=)
+
+#+BEGIN_CENTER
+[[images/yle-taito-supertietokone-kajaani.jpg]]
+#+END_CENTER
