@@ -177,4 +177,56 @@ Connection:
     in `home`, which is contained in `homeappl`, which is at the root of
     the file system (`/`, there is no parent directory above).
 
+3. Adding options to a command
+------------------------------
+
+-   You can add options to a command with the dash sign `-`:
+
+    ``` {.bash}
+    ls -l
+    ```
+
+    (this is `-l`, not `-1`)
+-   This runs the `ls` command with the `-l` option, which produces a
+    detailed output:
+
+    ``` {.example}
+    total 4
+    drwx------ 2 jyybio20 jyybio 4096 Apr 15 12:15 appl_taito
+    ```
+
+-   Now you can see the date of last modification of the folders and
+    some other information.
+
+4. A word about rights
+----------------------
+
+### 4.1 The rights system
+
+-   In a Unix system, every file has a **owner** and belongs to a
+    **group**
+-   Every file has rights for **reading**, **writing** and **execution**
+-   Those rights are set for three categories of users: **owner**,
+    **group** and **others**
+
+### 4.2 `ls -l` output
+
+``` {.example}
+drwx------ 2 jyybio20 jyybio 4096 Apr 15 12:15 appl_taito
+```
+
+-   The very first letter (`d`) means this row is a directory. Let's
+    consider the nine following characters (`rwx------`)
+-   The three first letters are rights for the owner, the next three
+    rights for the group, and the last three rights for others.
+-   If a letter is replaced by a dash, the right is not granted.
+-   What do those mean?
+
+    ``` {.example}
+    -rwx------
+    -r--r--r--
+    -rwxr--r--
+    drwxr-xr-x
+    ```
+
 
