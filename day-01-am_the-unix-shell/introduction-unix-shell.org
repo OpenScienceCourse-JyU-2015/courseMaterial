@@ -19,7 +19,7 @@ You will know how to:
 * What is the shell?
 
 #+BEGIN_CENTER
-file::/images/shell-screenshot.png
+[[images/shell-screenshot.png]]
 #+END_CENTER
 
 In brief:
