@@ -3,8 +3,8 @@
 ** Before the course
 
 Prerequisites:
-- you are familiar with the concepts of "file" and "directory" or "folder" on a
-  computer
+- you have used a computer before and you are know what are "files" and
+  "directories" or "folders" on a computer
 
 ** After the course
 
@@ -18,6 +18,10 @@ You will know how to:
 
 * What is the shell?
 
+#+BEGIN_CENTER
+file::/images/shell-screenshot.png
+#+END_CENTER
+
 In brief:
 - Command-line interface, looks old-fashioned but very convenient
 - Main interface when you want to login to *remote servers* (e.g. CSC servers)
@@ -30,3 +34,7 @@ Usage:
 - Powerful built-in commands
 - *Automate repetitive tasks*
 - Shell scripts to *reproduce* data manipulation
+
+*Note:* the words /shell/, /terminal/ and /console/ are *roughly* (but not
+ exactly) synonyms and will be used interchangeably during this course.
+
