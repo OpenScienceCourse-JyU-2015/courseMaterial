@@ -1,0 +1,32 @@
+#+TITLE: Introduction to the Unix shell
+
+** Before the course
+
+Prerequisites:
+- you are familiar with the concepts of "file" and "directory" or "folder" on a
+  computer
+
+** After the course
+
+You will know how to:
+- connect to a remote server
+- navigate around files and folders from the command line
+- create, copy, move and delete files and folders
+- run programs from the command line
+- combine commands to perform complex operations
+- create scripts to automate task
+
+* What is the shell?
+
+In brief:
+- Command-line interface, looks old-fashioned but very convenient
+- Main interface when you want to login to *remote servers* (e.g. CSC servers)
+- Also present in *Linux* distributions for personal computers and *Macs*
+- With *Windows*, the =cmd= prompt is a bit similar (text-based) but not as
+  powerful
+
+Usage:
+- Often the only interface for remote connections
+- Powerful built-in commands
+- *Automate repetitive tasks*
+- Shell scripts to *reproduce* data manipulation
