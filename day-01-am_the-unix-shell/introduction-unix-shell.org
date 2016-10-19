@@ -65,3 +65,89 @@ To find a shell:
 * Meet the Taito cluster (=taito.csc.fi=)
 
 [[images/yle-taito-supertietokone-kajaani.jpg]]
+
+* A word about CSC servers
+
+Available servers:
+- *Taito:* 19152 cores (16 cores per node)
+- *Sisu:* 39408 cores, for massively parallel jobs
+
+Job submission:
+- CPU-intense calculations have to be submitted through a queue system
+- Server load and CPU quota
+- We can also run some simple commands directly at login
+
+Module system:
+- Many softwares installed
+- Sometimes different versions of a given software
+- User has to explicitly load *modules*
+
+* Hands-on practice
+
+** 1. Connection to a remote shell
+
+The plan:
+- Using the CSC server Taito in Kaajani (student account)
+- Tools: *putty* (Windows) or *ssh* (Mac and GNU/Linux)
+- A word about *ssh* and the *security of connections*?
+
+Student account:
+- Logins: =jyybio01= to =jyybio02=
+- Password: on the whiteboard
+
+Connection:
+- From a terminal (Mac or GNU/Linux):
+  #+BEGIN_SRC sh
+  ssh jyybioxx@taito.csc.fi
+  #+END_SRC
+  where =xx= is your student number.
+- From Putty: ask a teacher if needed
+
+** 2. First contact with the shell
+
+*** 2.1 Just after connection:
+
+- What you see after connection is the *shell prompt*. It tells you the shell
+  is ready to receive your input:
+  #+BEGIN_EXAMPLE
+  jyybioxx@taito-login3$
+  #+END_EXAMPLE
+- =jyybioxx= is your username, =taito-login= is the host server to which you
+  are connected. The number after =taito-login= can vary because Taito has
+  several login nodes.
+
+*** 2.2 Execute a command (=ls=)
+
+- The shell *reads* and *executes* commands you enter at the prompt, and
+  *prints* the output.
+- Type:
+  #+BEGIN_SRC sh
+  ls
+  #+END_SRC
+  and press =RETURN=. You should see:
+  #+BEGIN_EXAMPLE
+  appl_taito
+  #+END_EXAMPLE
+- You just ran the =ls= command which produces an output: the list of files and
+  folders present in the current directory.
+- Try another command:
+  #+BEGIN_SRC sh
+  whoami
+  #+END_SRC
+  What does this command do?
+
+*** 2.3 Execute a command (=pwd=)
+
+- When you login to a server, you are automatically sent to your home
+  folder.
+- You can see where you are by typing:
+  #+BEGIN_SRC sh
+  pwd
+  #+END_SRC
+  which produces:
+  #+BEGIN_EXAMPLE
+  /homeappl/home/jyybioxx
+  #+END_EXAMPLE
+- So you are now in the folder =jyybioxx=, which is itself contained in =home=,
+  which is contained in =homeappl=, which is at the root of the file system
+  (=/=, there is no parent directory above).
