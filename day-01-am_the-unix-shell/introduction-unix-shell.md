@@ -14,7 +14,7 @@ You will know how to:
 -   create, copy, move and delete files and folders
 -   run programs from the command line
 -   combine commands to perform complex operations
--   create scripts to automate task
+-   create scripts to automate tasks
 
 Introducing the shell
 =====================
@@ -74,8 +74,8 @@ Meet the Taito cluster (`taito.csc.fi`)
 
 ![](images/yle-taito-supertietokone-kajaani.jpg)
 
-Meet bio109-113
----------------
+Meet bio109-113 (130.234.109.113)
+---------------------------------
 
 -   Today, we are going to connect to a remote workstation on the other
     side of the lake: `bio109-113`.
@@ -89,9 +89,10 @@ Hands-on practice
 -------------------------------
 
 The plan:
--   Using our workstation in Ambiotica (student account)
+-   Use our workstation in Ambiotica (student accounts were created on
+    this server)
 -   Tools: **putty** (Windows) or **ssh** (Mac and GNU/Linux)
--   A word about **ssh** and the **security of connections**?
+-   A word about **ssh** and the **security of connections**
 
 ### 1.1 How to use ssh?
 
@@ -124,7 +125,8 @@ Connection:
     ```
 
     where `xx` is your student number.
--   From Putty: ask a teacher if needed
+-   From Windows using **putty**: live demonstration, ask a teacher if
+    needed
 
 2. First contact with the shell
 -------------------------------
@@ -196,7 +198,7 @@ Connection:
     ls -l
     ```
 
-    (this is `-l`, not `-1`)
+    (this is `-l` with the letter L, not `-1`)
 -   This runs the `ls` command with the `-l` option, which produces a
     detailed output:
 
@@ -825,4 +827,9 @@ One step towards wizardry: shell scripts
 -   Combine your pipeline script and the listing script into a single
     script to get the histidine distribution for all the fasta files in
     this folder.
+
+-   How would you do if you wanted to do the same analysis in two
+    months, after updating your genomic data with the latest sequences
+    available?
+
 
