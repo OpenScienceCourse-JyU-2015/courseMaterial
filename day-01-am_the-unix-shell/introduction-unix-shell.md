@@ -404,7 +404,7 @@ drwxr-xr-x. 3 jyybioxx users 23 Nov  9 16:22 practicals
                                          # Type "ule" and press TAB again
     ```
 
--   Do you understand how `TAB` completion work? This also works for
+-   Do you understand how `TAB` completion works? This also works for
     command names.
 
 8. Copying, moving and removing files
@@ -555,4 +555,169 @@ less Escherichia_coli_o5_k4_l_h4_str_atcc_23502.GCA_000333195.1.26.pep.all.fa
 11. A tour of some useful tools
 -------------------------------
 
+Let's go through a quick tour of some of the most useful commands in the
+shell toolbox!
+
 ### 11.1 `wc` to count words
+
+-   Go to the `ecoli-data` folder and type:
+
+    ``` {.bash}
+    wc Escherichia_coli_o55_h7_str_06_3555.GCA_000617385.1.26.pep.all.fa
+    ```
+
+    which produces:
+
+    ``` {.bash}
+      26318   51865 1824223 Escherichia_coli_o55_h7_str_06_3555.GCA_000617385.1.26.pep.all.fa
+    ```
+
+-   What does this output mean?
+
+-   We can have only the number of lines with `wc -l` (try it!)
+
+-   Which file in the `ecoli-data` folder has the most lines?
+
+#### Wildcards
+
+-   Try:
+
+    ``` {.bash}
+    wc -l *.fa
+    ```
+
+-   What happened?
+
+-   Which file in the `ecoli-data` folder has the most lines?
+
+### 11.2 Redirection
+
+#### The `>` operator
+
+-   When a command produces some output, it can be redirected to a file
+    instead of to the terminal:
+
+    ``` {.bash}
+    wc -l *.fa > lineCounts
+    cat lineCounts
+    ```
+
+-   `>` is a **redirection** operator, and automatically creates a new
+    file or erases an existing file.
+
+#### The `>>` operator
+
+-   To redirect output and append it to an existing file, we can use the
+    `>>` operator.
+
+-   Compare `lineCounts.1` and `lineCounts.2` when you type:
+
+    ``` {.bash}
+    # lineCounts.1
+    wc -l *.fa > lineCounts.1
+    wc -l README > lineCounts.1
+    # lineCounts.2
+    wc -l *.fa > lineCounts.2
+    wc -l README >> lineCounts.2
+    ```
+
+-   What happened?
+
+### 11.3 `grep` to search for matches
+
+-   Run the following commands from the `ecoli-data` folder:
+
+    ``` {.bash}
+    grep "flagellin" Escherichia_coli_o55_h7_str_06_3555.GCA_000617385.1.26.pep.all.fa
+    grep --color=always "flagellin" Escherichia_coli_o55_h7_str_06_3555.GCA_000617385.1.26.pep.all.fa
+    grep -n --color=always "flagellin" Escherichia_coli_o55_h7_str_06_3555.GCA_000617385.1.26.pep.all.fa
+    grep -c --color=always "flagellin" Escherichia_coli_o55_h7_str_06_3555.GCA_000617385.1.26.pep.all.fa
+    ```
+
+-   What does each of the `grep` option do?
+
+#### Exercise
+
+-   Use `grep` to extract all the sequence names from one of the fasta
+    file and store them in a file called `proteinNames`.
+
+#### =grep= is versatile
+
+-   Run the commands:
+
+    ``` {.bash}
+    grep -c flagellin *.fa
+    grep -c flagel *.fa
+    ```
+
+-   Can you explain what `grep` did?
+
+#### Exercise
+
+-   How would you count the number of proteins in each fasta file?
+
+### 11.4 `cut` to get columns
+
+-   Run the commands:
+
+    ``` {.bash}
+    grep -c flagel *.fa > flagelCounts
+    cat flagelCounts
+    cut -d "_" -f 1 flagelCounts
+    cut -d "_" -f 3 flagelCounts
+    cut -d "_" -f 3,5 flagelCounts
+    cut -d ":" -f 2 flagelCounts
+    ```
+
+-   Do you understand what `cut` does and the roles of the `-d` and `-f`
+    options?
+
+### 11.5 `sort` to sort things
+
+-   Use sort to sort the line counts from `lineCounts`:
+
+    ``` {.bash}
+    sort lineCounts
+    ```
+
+-   Is everything correct? What if you try `sort -n lineCounts`? Can you
+    see a difference?
+
+-   Try also `sort -r lineCounts`. What is the difference?
+
+#### Exercise
+
+-   Using `grep` and `sort` and an intermediate file, sort the bacterial
+    proteomes by decreasing number of proteins.
+
+-   Hint: `sort` supports two interesting options, `-t` to specify a
+    field separator and `-k` to specify which field to use for sorting.
+
+### 11.6 Combining tools with pipes
+
+#### Pipes can connect output and input streams
+
+-   When we did sort `lineCounts`, we used `sort` on the output of `wc`,
+    but we used an intermediate file.
+-   The shell offers a powerful way to connect directly the output of a
+    command to the input of another: the **pipe operator**.
+
+    ``` {.bash}
+    wc -l *.fa | sort -n
+    ```
+
+(to type a "|" on a Finnish keyboard, hold `AltGr` and press `<`)
+
+#### Exercise
+
+-   The `w` command output the list of connected users on the server.
+    Try it, and then try:
+
+        w | head
+        w | tail
+
+-   Use a pipe to find all the users whose login contains "jyy".
+
+-   Extend the same pipe to count how many there are.
+
+
