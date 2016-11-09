@@ -16,7 +16,9 @@ You will know how to:
 - combine commands to perform complex operations
 - create scripts to automate task
 
-* What is the shell?
+* Introducing the shell
+
+** What is the shell?
 
 [[images/shell-screenshot.png]]
 
@@ -34,7 +36,7 @@ Usage:
 - *Automate repetitive tasks*
 - Shell scripts to *reproduce* data manipulation
 
-* Where can we find the shell?
+** Where can we find the shell?
 
 To find a shell:
 - On *GNU/Linux* and *MacOS* systems: open a *terminal*. This will provide you
@@ -45,7 +47,7 @@ To find a shell:
 - It is strongly recommended to learn how to use a *Unix shell* (the most
   likely to be installed on a *remote server*).
 
-** One shell or several shells?
+*** One shell or several shells?
 
 - A shell: a program providing an *interface* between the user and the
   computer. *Different shells exist*.
@@ -58,15 +60,15 @@ To find a shell:
 *One word on terminology*: During the course, we will often say interchangeably
  "the terminal", "the console", "the shell" or "bash".
 
-* The CSC center in Kajaani
+** The CSC center in Kajaani
 
 [[images/digitice-csc-kajaani-800_ilmakuva_tehtaasta.jpg]]
 
-* Meet the Taito cluster (=taito.csc.fi=)
+** Meet the Taito cluster (=taito.csc.fi=)
 
 [[images/yle-taito-supertietokone-kajaani.jpg]]
 
-* Meet bio109-113
+** Meet bio109-113
 
 - Today, we are going to connect to a remote workstation on the other side of
   the lake: =bio109-113=.
@@ -642,3 +644,91 @@ toolbox!
 - Use a pipe to find all the users whose login contains "jyy".
 
 - Extend the same pipe to count how many there are.
+
+** 12. Wrap-up exercise
+
+At this stage, you can already leverage much of the shell power by using simple
+commands and combining them into more complex tools. Let's put what you learnt
+into practice!
+
+For the next exercise, we are going to use:
+- a *ready-made Python script* designed to perform one simple action
+- some of the *shell tools* which also perform one simple action each
+- some "duct tape" to connect them together: *pipes* and *redirections*
+
+*** 12.1 Test the Python script
+
+- The script =seqComposition.py= takes a fasta file and produces a table
+  containing the amino-acid composition of each protein in the file.
+
+- To run the script, type:
+  #+BEGIN_SRC sh
+  python seqComposition.py myFastaFile
+  # Use the fasta file you wish instead of "myFastaFile"
+  #+END_SRC
+
+- The output is sent to the terminal display.
+
+- *Exercise*: propose at least two practical ways to have a look at this
+  output.
+
+*** 12.2 Real-life exercise
+
+- Using only the shell tools you know, the Python script and pipes, determine
+  the distribution of the number of histidines per protein in the proteome of
+  the strain of your choice.
+
+- More clearly stated: for a given strain, determines how many proteins have
+  one histidine, how many have two, how many have three, ...
+
+- Good luck!
+
+* One step towards wizardry: shell scripts
+
+** 1. Reusing your tool pipeline
+
+*** Store your commands in a script
+
+- Let's use =nano= to store your pipeline in a file:
+  #+BEGIN_SRC sh
+  nano getHistDistrib.sh
+  #+END_SRC
+  (the usage of =nano= will be demonstrated live)
+
+- The idea is to be able to produce the histidine distribution results just by
+  typing:
+  #+BEGIN_SRC sh
+  bash getHistDistrib.sh myFastaFile
+  #+END_SRC
+
+*** Test your pipeline with a few files
+
+- Test your pipeline for five strains. Does it work fine? What would you do to
+  be confident that the code is working properly?
+
+- Now you want to make a comparative study of the histidine distributions
+  across the proteomes of all prokaryotic genomes available. How do you feel
+  about running your script manually for several thousands strains?
+
+- As Raymond Hettinger would put it: "there must be a better way!"
+
+** 2. Making a general purpose listing script
+
+(or replace this with =xargs=?)
+
+- Create a shell script =testListing.sh= with this content:
+  #+BEGIN_SRC sh
+  listFiles=‘ls *.fa‘
+  echo $listFiles
+  for myFile in $listFiles; do
+      echo $myFile
+      echo $myFile.results
+  done
+  #+END_SRC
+
+- Run it with =bash=. What does it do?
+
+** 3. Exercise: final script
+
+- Combine your pipeline script and the listing script into a single script to
+  get the histidine distribution for all the fasta files in this folder.
