@@ -12,15 +12,15 @@ For the home website of the course, please visit the
 All practicals material will be made available here.
 
 - **Day one (Tue Nov 15th 8:15 - 16:00):**
-	- *[Introduction to the Unix shell (morning)](day-01-am_the-unix-shell/introduction-unix-shell.md)* (go to the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-am_the-unix-shell) for this session)
-  - *Data organisation (afternoon)*
+	- *[Introduction to the Unix shell (morning)](day-01-am_the-unix-shell/introduction-unix-shell.md)* (>session [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-am_the-unix-shell))
+  - *Data organisation (afternoon)* 
 
 - **Day two (Wed Nov 16th 8:15 - 16:00):**
-  - *Introduction to Python (morning)*
-  - *Version control with Git (afternoon)*
+  - *Introduction to Python (morning)* (>session [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-am_intro-to-python))
+  - *Version control with Git (afternoon)* (>session [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-pm_version-control))
 
 - **Day three (Thu Nov 17th 8:15 - 14:00):**
-  **A case study: from data to analysis**
+	**A case study: from data to analysis** (>session [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-03_case-study))
   - *Data processing*
   - *Data analysis*
 
