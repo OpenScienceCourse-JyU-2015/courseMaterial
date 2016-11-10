@@ -89,9 +89,9 @@ A lab notebook for analyses ?
 
 - Existing version control tools
   + [[https://subversion.apache.org/][Subversion]]
-  + [[http://bazaar.canonical.com/en/),][Bazaar]]
-  + [[http://mercurial.selenic.com/)][Mercurial]]
-  + [[http://git-scm.com/][Git]]
+  + [[http://bazaar.canonical.com/en/][Bazaar]]
+  + [[http://mercurial.selenic.com/][Mercurial]]
+  + [[http://git-scm.com/][Git]], which is one of the most popular ones nowadays
 - Online servers for repositories
   + [[https://bitbucket.org/][BitBucket]] (free private repositories)
   + [[https://github.com][GitHub]] (free for public repositories but not for private repositories)
@@ -111,30 +111,79 @@ git config --global user.email "matthieu.d.bruneaux@jyu.fi"
 git config --global user.name "Matthieu Bruneaux"
 #+END_SRC
 
-* Basic Git usage
+* 2. Basic Git usage
 
 We want to develop some Python code to analyze DNA coding sequences. The
-sequences we are going to use in our test can be found [[https://github.com/mdjbru-teaching-material/turku_course/blob/master/course-material/version-control-with-git/test-seq.fasta][here]].
+sequences we are going to use in our test can be found [[files/test-seq.fasta][here]]. We will use Git to
+track the changes in our project.
 
-** Adding files and committing changes
+** 2.0 Set up your project folder
 
-*** Overview
+- For now all the work will be done on the remote server we used yesterday for
+  the lesson about the Unix shell.
+- This means you will learn how to use Git with the command line. This will
+  help you to understand better how Git works.
+- Later on, you can use one of the numerous Git graphical user interfaces to
+  use Git with your projects.
 
-- First commit
-- Second commit
-- Git staging area, commit hashes
-- Git log and graphical interfaces
-- Amend commit messages
+*** Your tasks
+
+**** Connect to the server
+
+- Log into the remote server using =ssh= (GNU/Linux or Mac) or =putty=
+  (Windows)
+
+- For =ssh= connection:
+  #+BEGIN_SRC sh
+  ssh jyybioxx@130.234.109.113
+  #+END_SRC
+
+- Username: =jyybioxx=
+
+- Password: on the whiteboard!
+
+**** Create your project folder
+
+- Create a new folder for your project:
+  #+BEGIN_SRC sh
+  mkdir myProject
+  # Go into the new folder
+  cd myProject
+  #+END_SRC
+
+**** Download the fasta file into your project folder
+
+- We can use the =wget= command to download a file from the shell. The syntax is:
+  #+BEGIN_SRC sh
+  wget myUrl
+  # where myUrl is the url of the file to download
+  #+END_SRC
+- Run the command:
+  #+BEGIN_SRC sh
+  wget 
+  #+END_SRC
+
+** 2.1 Tracking files and committing changes
 
 *** Your tasks
 
 - Write a simple Python function that takes a sequence string (DNA
-  nucleotides), and checks that it starts with a start codon. Test it with some
-  sequences from the fasta file.
-- Commit your first version of the script
-- What happens if you test your function with Milou's sequence? Modify your
-  function accordingly, and perform a second commit.
+  nucleotides), and checks that it starts with a start codon. Test it with at
+  least the three first sequences from the fasta file.
 
+- Save your Python to a file
+- Commit your first version of the script
+- What happens if you test your function with the unicorn's sequence? Modify
+  your function accordingly, and perform a second commit.
+  
+*** What we learnt about
+
+- Track a file and commit changes
+- Git staging area, commit hashes
+- Git log and graphical interfaces
+- Amend commit messages
+
+  
 ** Diff and reverting to previous versions
 
 *** Overview
