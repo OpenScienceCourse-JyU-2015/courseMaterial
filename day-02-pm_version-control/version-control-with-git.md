@@ -550,7 +550,8 @@ A lab notebook for analyses ?
 
 -   Remember: your commit messages should be clear and to the point!
 
-![](images/xkcd_git_commit.png)
+![](images/xkcd_git_commit.png) ([original
+link](https://xkcd.com/1296/))
 
 Creating a new remote repository and pushing code
 -------------------------------------------------
