@@ -146,6 +146,10 @@ Connection:
   #+END_SRC
   What does this command do?
 
+*Important note*: Do *not* copy-paste the commands from the course material to
+your terminal! You will get a much better feeling for the shell if you type the
+commands yourself.
+
 *** 2.3 Execute a command (=pwd=)
 
 - When you login to a server, you are automatically sent to your home
