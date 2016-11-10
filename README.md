@@ -13,7 +13,7 @@ All practicals material will be made available here.
 
 - **Day one (Tue Nov 15th 8:15 - 16:00):**
 	- *[Introduction to the Unix shell (morning)](day-01-am_the-unix-shell/introduction-unix-shell.md)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-am_the-unix-shell))
-  - *Data organisation (afternoon)* 
+  - *Data organisation (afternoon))* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-pm_data-organisation))
 
 - **Day two (Wed Nov 16th 8:15 - 16:00):**
   - *Introduction to Python (morning)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-am_intro-to-python))
