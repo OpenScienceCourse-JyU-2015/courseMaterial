@@ -1,7 +1,26 @@
-Version control with Git
-========================
+Before the course
+-----------------
 
-(Matthieu Bruneaux)
+Prerequisites:
+-   a basic knowledge of the **Unix shell** (cf. day one of bootcamp)
+-   a basic knowledge of **programming with Python** (cf. day two
+    of bootcamp)
+
+After the course
+----------------
+
+After completing this course you will know:
+-   what is version control and what it can do for you
+-   how to set up a new repository for your project
+-   how to track files, commit changes and view their history
+-   how to revert to a previous state of your project
+-   how to share your code publicly
+
+Plan
+====
+
+-   Intro to Git with command line to understand its functioning, but
+    GUI exists (try it at the end of the workshop)
 
 Overview
 --------
@@ -13,19 +32,21 @@ Overview
 -   Cloning, pushing and pulling
 -   Workflow example for a single developer
 
-Introduction to version control
--------------------------------
+1. Introduction to version control
+==================================
 
-### What is version control?
+1.1 A common problemm
+---------------------
 
 -   Some common issues arise when files are not version-controlled:
 
-    ![](https://github.com/mdjbru-teaching-material/turku_course/blob/master/course-material/version-control-with-git/img/phd052810s.png)
+![](images/phd052810s.png)
 
 -   This happens not only for data, but for scripts also... How can we
     do it better?
 
-### Reproducibility of research?
+1.2 Reproducibility of research?
+--------------------------------
 
 -   Research should be reproducible by others.
 -   This refers to the experiments generating the data, but also to the
@@ -41,20 +62,22 @@ A lab notebook for analyses ?
     must be possible.
 -   This ensures that we always exactly know how a result was generated.
 
-### Version control
+1.3 A possible solution: version control
+----------------------------------------
 
--   Version control is a tool to keep track of file changes.
+-   **Version control** is a tool to **keep track of file changes**.
 -   However, version control softwares offer more than simply recording
     successive versions of a file.
--   Version controlled projects can be forked, merged and shared
-    with collaborators.
--   Interesting both for collaborative work and for single developper
-    (the single developper case will be developped in more
+-   Version controlled projects can be **forked**, **merged** and
+    **shared with collaborators**.
+-   Interesting both for **collaborative work** and for **single
+    researcher** (the single researcher case will be developped in more
     details later)
 
-### Example of a version control flow for a Python script
+1.4 Example of a version control flow for a Python script
+---------------------------------------------------------
 
-![](https://github.com/mdjbru-teaching-material/turku_course/blob/master/course-material/version-control-with-git/img/version-control-workflow.gif)
+![](images/version-control-workflow.gif)
 
 -   **V1**, **V2**, and **V3** are successive versions of the script
 -   **V4** is committed, but then a mistake is found. We revert to
@@ -75,26 +98,30 @@ A lab notebook for analyses ?
     **V2**, keep all the rest as it is in **V8** and commit it as **V9**
 -   **V10** is the next commit
 
-### What are the available tools?
+1.5 What are the available tools?
+---------------------------------
 
 -   Existing version control tools
     -   [Subversion](https://subversion.apache.org/)
-    -   [Bazaar](http://bazaar.canonical.com/en/),)
-    -   [Mercurial](http://mercurial.selenic.com/))
-    -   [Git](http://git-scm.com/)
+    -   [Bazaar](http://bazaar.canonical.com/en/)
+    -   [Mercurial](http://mercurial.selenic.com/)
+    -   [Git](http://git-scm.com/), which is one of the most popular
+        ones nowadays
 -   Online servers for repositories
     -   [BitBucket](https://bitbucket.org/) (free private repositories)
     -   [GitHub](https://github.com) (free for public repositories but
         not for private repositories)
 
 Installing and setting up Git
------------------------------
+=============================
 
-### Git installation
+Git installation
+----------------
 
 -   Install Git
 
-### Git basic setup
+Git basic setup
+---------------
 
 -   Set up the PATH for accessing it from the command line
 -   Set up the user name and email
@@ -104,40 +131,96 @@ git config --global user.email "matthieu.d.bruneaux@jyu.fi"
 git config --global user.name "Matthieu Bruneaux"
 ```
 
-Basic Git usage
----------------
+2. Basic Git usage
+==================
 
 We want to develop some Python code to analyze DNA coding sequences. The
-sequences we are going to use in our test can be found
-[here](https://github.com/mdjbru-teaching-material/turku_course/blob/master/course-material/version-control-with-git/test-seq.fasta).
+sequences we are going to use in our test can be found *here*. We will
+use Git to track the changes in our project.
 
-### Adding files and committing changes
+2.0 Set up your project folder
+------------------------------
 
-#### Overview
+-   For now all the work will be done on the remote server we used
+    yesterday for the lesson about the Unix shell.
+-   This means you will learn how to use Git with the command line. This
+    will help you to understand better how Git works.
+-   Later on, you can use one of the numerous Git graphical user
+    interfaces to use Git with your projects.
 
--   First commit
--   Second commit
+### Your tasks
+
+#### Connect to the server
+
+-   Log into the remote server using `ssh` (GNU/Linux or Mac) or
+    `putty` (Windows)
+
+-   For `ssh` connection:
+
+    ``` {.bash}
+    ssh jyybioxx@130.234.109.113
+    ```
+
+-   Username: `jyybioxx`
+
+-   Password: on the whiteboard!
+
+#### Create your project folder
+
+-   Create a new folder for your project:
+
+    ``` {.bash}
+    mkdir myProject
+    # Go into the new folder
+    cd myProject
+    ```
+
+#### Download the fasta file into your project folder
+
+-   We can use the `wget` command to download a file from the shell. The
+    syntax is:
+
+    ``` {.bash}
+    wget myUrl
+    # where myUrl is the url of the file to download
+    ```
+
+-   Run the command:
+
+    ``` {.bash}
+    wget 
+    ```
+
+2.1 Tracking files and committing changes
+-----------------------------------------
+
+### Your tasks
+
+-   Write a simple Python function that takes a sequence string (DNA
+    nucleotides), and checks that it starts with a start codon. Test it
+    with at least the three first sequences from the fasta file.
+
+-   Save your Python to a file
+-   Commit your first version of the script
+-   What happens if you test your function with the unicorn's sequence?
+    Modify your function accordingly, and perform a second commit.
+
+### What we learnt about
+
+-   Track a file and commit changes
 -   Git staging area, commit hashes
 -   Git log and graphical interfaces
 -   Amend commit messages
 
-#### Your tasks
+Diff and reverting to previous versions
+---------------------------------------
 
--   Write a simple Python function that takes a sequence string (DNA
-    nucleotides), and checks that it starts with a start codon. Test it
-    with some sequences from the fasta file.
--   Commit your first version of the script
--   What happens if you test your function with Milou's sequence? Modify
-    your function accordingly, and perform a second commit.
-
-### Diff and reverting to previous versions
-
-#### Overview
+### Overview
 
 -   Diff between files
 -   How to revert to a previous version
 
-#### Your tasks
+### Your tasks
 
 -   Write a function that takes a sequence string, and returns a list
     of codons. Test your function with a few sequences. What happens
@@ -148,14 +231,15 @@ sequences we are going to use in our test can be found
     bat sequence. Modify the sequence data in the fasta file, commit the
     new data file, and revert to the previous version of your function.
 
-### Branching and merging
+Branching and merging
+---------------------
 
-#### Overview
+### Overview
 
 -   Branching and merging
 -   Resolving merge conflicts
 
-#### Your tasks
+### Your tasks
 
 -   Now you are ready for some serious analysis. You think that
     histidine is a particularly interesting amino-acid, and you would
@@ -175,15 +259,16 @@ sequences we are going to use in our test can be found
 -   Resolve merging conflicts as they arise.
 
 Setting up and using remote repositories
-----------------------------------------
+========================================
 
-### Cloning a remote repository
+Cloning a remote repository
+---------------------------
 
-#### Overview
+### Overview
 
 -   Getting a copy of a public repository
 
-#### Your task
+### Your task
 
 -   Search GitHub for a python script which could do enrichment test of
     gene ontologies. You can search terms like "python", "enrichment",
@@ -194,14 +279,15 @@ Setting up and using remote repositories
     the author used any branches?
 -   Modify one of the files and commit your changes.
 
-### Creating a new remote repository and pushing code
+Creating a new remote repository and pushing code
+-------------------------------------------------
 
-#### Overview
+### Overview
 
 -   Set up a GitHub account
 -   Create a new repository
 
-#### Your tasks
+### Your tasks
 
 -   You are pretty proud of your python code to analyse coding sequences
     and want to do good to the world: let's share it publicly!
@@ -211,14 +297,15 @@ Setting up and using remote repositories
 -   Set up your remote repository links
 -   Push your code online.
 
-### Collaborating to a public repository
+Collaborating to a public repository
+------------------------------------
 
-#### Overview
+### Overview
 
 -   Fork a repository
 -   Make changes and send a pull request
 
-#### Your task
+### Your task
 
 -   Fork the existing GitHub repository at
     <https://github.com/mdjbru-teaching-material/pyFastaParser>
@@ -228,10 +315,10 @@ Setting up and using remote repositories
 -   Push your modifications and send a pull request.
 
 Going further: workflow example for single developper
------------------------------------------------------
+=====================================================
 
 Resources
----------
+=========
 
 links go here
 
