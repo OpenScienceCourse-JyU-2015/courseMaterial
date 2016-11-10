@@ -15,7 +15,7 @@ You will know how to:
 - run programs from the command line
 - combine commands to perform complex operations
 - create scripts to automate tasks
-
+  
 * Introducing the shell
 
 ** What is the shell?
