@@ -62,8 +62,7 @@ A lab notebook for analyses ?
   successive versions of a file.
 - Version controlled projects can be *forked*, *merged* and *shared with
   collaborators*.
-- Interesting both for *collaborative work* and for *single researcher* (the
-  single researcher case will be developped in more details later)
+- Interesting both for *collaborative work* and for *single researcher*
 
 ** 1.4 Example of a version control flow for a Python script
 
@@ -487,27 +486,92 @@ A lab notebook for analyses ?
 - Remember: your commit messages should be clear and to the point!
 
 [[images/xkcd_git_commit.png]]
+
 ([[https://xkcd.com/1296/][original link]])
 
-** Creating a new remote repository and pushing code
-
-*** Overview
-
-- Set up a GitHub account
-- Create a new repository
-
-*** Your tasks
+** 3.2 Setting up a remote repository
 
 - You are pretty proud of your python code to analyse coding sequences and want
   to do good to the world: let's share it publicly!
-- Create a GitHub repository for you (you can use a pseudonyme and delete the
-  account afterwards if you don't want to gieve GitHub your real information)
-- Set up your remote repository links
-- Push your code online.
 
-** 2.4 Branching and merging
+- Let's use GitHub to host a public repository of your code.
 
-*** 2.4.1 Write some code
+*** 3.2.1 Create a GitHub account
+
+- We are going to create a GitHub repository for you (you can use a pseudonyme
+  and delete the account afterwards if you don't want to give GitHub your real
+  information)
+
+*Note*: you *don't have to* create a GitHub account if you don't want to - we
+totally understand you might be concerned about creating yet-another-account on
+a remote service. So please *don't feel obliged to do so*, and if you prefer
+not to do it just find a bootcamp partner who has a GitHub account to follow
+the next session with him/her.
+
+- Go to [[https://github.com/][GitHub]] and create an account.
+
+- If you are creating a temporary account, don't forget to delete it after the
+  course in order to clean things up on GitHub.
+
+- Login to your GitHub account.
+
+- Create a new repository for your small Python project.
+
+*** 3.2.2 Adding a remote to your local repository
+
+- Go back to your project directory where you wrote the Python code.
+
+- Add a remote to your repository with:
+  #+BEGIN_SRC sh
+  git remote add origin git@github.com:myusername/myrepo.git
+  # Use the appropriate address
+  #+END_SRC
+    + =git remote=: command to manage remote repositories
+    + =add=: we create a new link between our local repo and a remote server
+    + =origin=: this new link is called =origin= for ease of use
+    + =git@github.com:....=: this is the address of the remote repository
+
+- You are ready to push your local repository to the GitHub server:
+  #+BEGIN_SRC sh
+  git push origin master
+  #+END_SRC
+    + =git push=: command to push the local repository data to remote servers
+    + =origin=: the name of the link to a remote server we want to use (defined
+      when we created the remote link with =git remote add ...=)
+    + =master=: the branch we want to push. For now we have only been working
+      with a single, master branch called =master= by default
+
+- Have a look to your repository on GitHub now. How does it look like?
+
+*** 3.2.3 Pushing local changes to a remote server
+
+- Create a README file in your project folder, fill it with interesting
+  information and commit it to your repository.
+
+- Push your changes to the remote repository:
+  #+BEGIN_SRC sh
+  git push
+  #+END_SRC
+  
+- Have a look to the remote repository on GitHub (you might need to refresh the
+  browser page)
+
+** 3.3 Branching and merging
+
+In this last section, we are going to clone the remote repository you just made
+on your own computer and create branches to write exploratory code.
+
+*** 3.3.1 Clone your own repository to your machine
+
+- Now we will log out from the *bio109-113* server and work on your truly local
+  machine.
+
+- Create a local folder for the practicals and clone the repository which was
+  put on GitHub locally:
+  + If you are using Windows, you can use =git bash=
+  + If you are using GNU/Linux or a Mac, you can use =git= from a terminal
+
+*** 3.3.2 Write some code
 
 - Now you are ready for some serious analysis. You think that *histidine* is a
   particularly interesting amino-acid, and you would like to count how many
@@ -525,21 +589,6 @@ A lab notebook for analyses ?
   modification, test it and merge it with your master branch when you are
   happy.
 - Resolve merging conflicts as they arise.
-
-
-** Collaborating to a public repository
-
-*** Overview
-
-- Fork a repository
-- Make changes and send a pull request
-
-*** Your task
-
-- Fork the existing GitHub repository at [[https://github.com/mdjbru-teaching-material/pyFastaParser]]
-- Clone your fork on your local computer
-- Explore the code, test it, fix any bug you find and add some new functionality
-- Push your modifications and send a pull request.
 
 * Going further: workflow example for single developper
 
