@@ -477,9 +477,9 @@ A lab notebook for analyses ?
     batman's sequence. Modify the sequence data in the fasta file,
     commit the new data file.
 
--   Ok, maybe you didn't need this safeguard in your previous code in
-    the end. Let's revert to the previous version of the code: identify
-    the commit to which you want to revert and type:
+-   Ok, maybe you didn't need this less-than-ideal safeguard in your
+    previous code in the end. Let's revert to the previous version of
+    the code: identify the commit to which you want to revert and type:
 
     ``` {.bash}
     git checkout a4dee11 checkStartCodon.py
@@ -489,59 +489,68 @@ A lab notebook for analyses ?
 
 -   Commit your file.
 
+-   Wait again... We just removed a bad safeguard, but it would be good
+    if our code would tell us if a codon is incomplete. Better to throw
+    an error than to fail silently! Modify your code to throw an error
+    if the last codon is too short, and commit your code.
+
 ### What we learnt about in this section
 
 -   Use **diff** to compare files
 -   Commits are identified by unique **hashes**
 -   How to **revert** to a previous version with `git checkout`
 
-2.4 Branching and merging
--------------------------
+3. Setting up and using remote repositories
+===========================================
 
-### Overview
+3.1 Cloning a remote repository
+-------------------------------
 
--   Branching and merging
--   Resolving merge conflicts
+-   Repositories can easily be shared between collaborators, published
+    online and copied locally from a remote location.
 
-### Your tasks
+-   Copying a remote repository to your computer is called **cloning**.
 
--   Now you are ready for some serious analysis. You think that
-    histidine is a particularly interesting amino-acid, and you would
-    like to count how many histinde-coding triplets you have per
-    coding sequence. However, this is a quite experimental part of your
-    analysis: create a new branch, add your function and test it. When
-    you are satisfied with it, merge it to your master branch.
--   Actually, it would be nice if your function could count **any**
-    codons, not just histidine-coding ones. This is even more
-    experimental, so create another branch, modify your function, and...
--   Wait, your supervisor asks you to add as quickly as possible a
-    checking step so that only A, T, G, C are allowed in the sequences.
-    This is a crucial update, so do it in your master branch and commit.
--   Now you can go back to your experimental branch. Finish your
-    function modification, test it and merge it with your master branch
-    when you are happy.
--   Resolve merging conflicts as they arise.
+### 3.1.1 Find an interesting repository to clone on GitHub
 
-Setting up and using remote repositories
-========================================
+-   Go to [GitHub](https://github.com/), a platform to
+    host repositories.
 
-Cloning a remote repository
----------------------------
+-   Search for a repository of interest you might want to copy to
+    your computer. In this example, we will clone the **recipes**
+    repository from Hadley Wickham ([GitHub
+    repo](https://github.com/hadley/recipes)).
 
-### Overview
+-   Go back to your home folder with `cd`
 
--   Getting a copy of a public repository
+-   Clone the repository of your choice locally with:
 
-### Your task
+    ``` {.bash}
+    git clone https://github.com/hadley/recipes.git
+    # Replace the repository address appropriately
+    ```
 
--   Search GitHub for a python script which could do enrichment test of
-    gene ontologies. You can search terms like "python", "enrichment",
-    "gene ontology". Note that sometimes people refer to "gene ontology"
-    as "GO".
--   Clone an interesting repository to your computer.
--   Have a look at the history of the repository and at the files. Did
-    the author used any branches?
--   Modify one of the files and commit your changes.
+### 3.1.2 Explore the repository locally
+
+-   Now cd into the cloned repository
+
+-   Explore the history and commits of the repository. What were the
+    changes in the last commit? Who did it? Are there several
+    contributors?
+
+-   Did the author(s) use any branches?
+
+-   Any interesting commit message?
+
+-   Any interesting branching structure?
+
+-   Modify one of the files and commit your changes
+
+-   Have a look at the history and feel proud.
+
+-   Remember: your commit messages should be clear and to the point!
+
+![](images/xkcd_git_commit.png)
 
 Creating a new remote repository and pushing code
 -------------------------------------------------
@@ -560,6 +569,28 @@ Creating a new remote repository and pushing code
     real information)
 -   Set up your remote repository links
 -   Push your code online.
+
+2.4 Branching and merging
+-------------------------
+
+### 2.4.1 Write some code
+
+-   Now you are ready for some serious analysis. You think that
+    **histidine** is a particularly interesting amino-acid, and you
+    would like to count how many histidine-coding triplets you have per
+    coding sequence. However, this is a quite experimental part of your
+    analysis: create a new branch, add your function and test it. When
+    you are satisfied with it, merge it to your master branch.
+-   Actually, it would be nice if your function could count **any**
+    codons, not just histidine-coding ones. This is even more
+    experimental, so create another branch, modify your function, and...
+-   Wait, your supervisor asks you to add as quickly as possible a
+    checking step so that only A, T, G, C are allowed in the sequences.
+    This is a crucial update, so do it in your master branch and commit.
+-   Now you can go back to your experimental branch. Finish your
+    function modification, test it and merge it with your master branch
+    when you are happy.
+-   Resolve merging conflicts as they arise.
 
 Collaborating to a public repository
 ------------------------------------
