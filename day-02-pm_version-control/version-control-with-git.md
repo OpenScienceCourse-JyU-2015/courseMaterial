@@ -134,9 +134,30 @@ git config --global user.name "Matthieu Bruneaux"
 2. Basic Git usage
 ==================
 
-We want to develop some Python code to analyze DNA coding sequences. The
-sequences we are going to use in our test can be found *here*. We will
-use Git to track the changes in our project.
+-   We want to develop some Python code to analyze DNA coding sequences.
+    The sequences we are going to use in our test are stored in a fasta
+    file:
+
+    ``` {.example}
+    >bullfrog
+    ATGCTGATCGATTCGATCGATGCCGTACATGACATGACTCTAA
+    >dolphin
+    ATGCAGCTCACCATCGTATGCTACGTCTCTACGCTACGATTGA
+    >moomin
+    ATCGATCAGCTTACGCTAGCATCGTCTACGATCCAGCTAGCAT
+    >gryphon
+    ATGCACTCAGCTAACACACTAGCTACACTCTGCATCTATCTAG
+    >seagull
+    ATGCATGCATCGCTAGCcgGCATCGATCGATCGGATCGATCGA
+    >unicorn
+    AtGCATCGCATCAGCTACATcATCAGCATGCCCAGCTCGCTCGATC
+    >batman
+    ATGCTCATCAGTCCTACGCATCATCACGATCGATTACACGAGTACGAT
+    >robin
+    ATGCTAGTACATGAAAACTGATCACAGBACTCAGTACATCATT
+    ```
+
+-   We will use Git to track the changes in our project.
 
 2.0 Set up your project folder
 ------------------------------
@@ -188,7 +209,7 @@ use Git to track the changes in our project.
 -   Run the command:
 
     ``` {.bash}
-    wget 
+    wget https://github.com/OpenScienceCourse-JyU-2015/courseMaterial/blob/master/day-02-pm_version-control/files/test-seq.fasta
     ```
 
 2.1 Tracking files and committing changes
