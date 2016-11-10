@@ -112,25 +112,6 @@ A lab notebook for analyses ?
     -   [GitHub](https://github.com) (free for public repositories but
         not for private repositories)
 
-Installing and setting up Git
-=============================
-
-Git installation
-----------------
-
--   Install Git
-
-Git basic setup
----------------
-
--   Set up the PATH for accessing it from the command line
--   Set up the user name and email
-
-``` {.bash}
-git config --global user.email "matthieu.d.bruneaux@jyu.fi"
-git config --global user.name "Matthieu Bruneaux"
-```
-
 2. Basic Git usage
 ==================
 
@@ -140,21 +121,21 @@ git config --global user.name "Matthieu Bruneaux"
 
     ``` {.example}
     >bullfrog
-    ATGCTGATCGATTCGATCGATGCCGTACATGACATGACTCTAA
+    ATGCTGATCGATTCGATCGATGCCGTACATGACATGACTCTAATG
     >dolphin
-    ATGCAGCTCACCATCGTATGCTACGTCTCTACGCTACGATTGA
+    ATGCAGCTCACCATCGTATGCTACGTCTCTACGCTACGATTGAGT
     >moomin
-    ATCGATCAGCTTACGCTAGCATCGTCTACGATCCAGCTAGCAT
+    ATCGATCAGCTTACGCTAGCATCGTCTACGATCCAGCTAGCATGG
     >gryphon
-    ATGCACTCAGCTAACACACTAGCTACACTCTGCATCTATCTAG
+    ATGCACTCAGCTAACACACTAGCTACACTCTGCATCTATCTAGGT
     >seagull
-    ATGCATGCATCGCTAGCcgGCATCGATCGATCGGATCGATCGA
+    ATGCATGCATCGCTAGCcgGCATCGATCGATCGGATCGATCGATG
     >unicorn
-    AtGCATCGCATCAGCTACATcATCAGCATGCCCAGCTCGCTCGATC
+    AtGCATCGCATCAGCTACATcATCAGCATGCCCAGCTCGCTCGATCTT
     >batman
-    ATGCTCATCAGTCCTACGCATCATCACGATCGATTACACGAGTACGAT
+    ATGCTCATCAGTCCTACGCATCATCACGATCGATTACACGAGTACGATAT
     >robin
-    ATGCTAGTACATGAAAACTGATCACAGBACTCAGTACATCATT
+    ATGCTAGTACATGAAAACTGATCACAGBACTCAGTACATCATTGG
     ```
 
 -   We will use Git to track the changes in our project.
@@ -207,7 +188,7 @@ git config --global user.name "Matthieu Bruneaux"
 -   Run the command (you are allowed to copy-paste the URL):
 
     ``` {.bash}
-    wget https://github.com/OpenScienceCourse-JyU-2015/courseMaterial/blob/master/day-02-pm_version-control/files/test-seq.fasta
+    wget https://raw.githubusercontent.com/OpenScienceCourse-JyU-2015/courseMaterial/master/day-02-pm_version-control/files/test-seq.fasta
     ```
 
 -   Check that you are in the correct folder and that the fasta file
@@ -260,8 +241,9 @@ git config --global user.name "Matthieu Bruneaux"
     ls -al
     ```
 
--   The folders `.` and `..` (in `ls -al` output) represent the current
-    and the parent folders, respectively.
+-   In `ls -al` output:
+    -   the folder `.` is the current folder
+    -   the folder `..` is the parent folder
 
 ### 2.2.3 Track and commit your changes
 
@@ -279,6 +261,7 @@ git config --global user.name "Matthieu Bruneaux"
 
     ``` {.bash}
     git add checkStartCodon.py
+    git add test-seq.fasta
     ```
 
 -   What is the status now?
@@ -406,34 +389,114 @@ git config --global user.name "Matthieu Bruneaux"
     [ggplot2](https://github.com/tidyverse/ggplot2/commits/master) for
     an example of history for a large project.
 
-### What we learnt about
+### What we learnt about in this section
 
 -   **Tracking** a file and **committing** changes
 -   The **staging area** (and how to use the `-a` option)
 -   **Amend** commit messages
 -   Git **log** to explore project history
 
-Diff and reverting to previous versions
----------------------------------------
+2.3 Diff and revert to previous versions
+----------------------------------------
 
-### Overview
+### 2.3.1 Write some code
 
--   Diff between files
--   How to revert to a previous version
+-   Add a new function to `checkStartCodon.py`. This function should
+    take a sequence string, and returns a list of codons.
 
-### Your tasks
+-   Test your function with at least the three first sequnces.
 
--   Write a function that takes a sequence string, and returns a list
-    of codons. Test your function with a few sequences. What happens
-    with the bat sequence?
+-   If you are happy with your code, commit your changes:
+
+    ``` {.bash}
+    git status
+    git diff
+    git commit -am "Create function to split sequence into codons"
+    ```
+
+-   Wait, did we test the function enough? What happens with batman's
+    sequence?
+
 -   Modify your function to take it into account. Check the differences
-    between your files and commit.
--   Wait, your collaborator told you a T was missing on the
-    bat sequence. Modify the sequence data in the fasta file, commit the
-    new data file, and revert to the previous version of your function.
+    between your file and the previous version and commit.
 
-Branching and merging
----------------------
+-   Have a look at your history. Are your commit messages clear enough?
+
+### 2.3.2 Diff
+
+-   You want to see what is the overall difference between your latest
+    commit and the first commit you did.
+
+-   You already know how to get the difference between the last commit
+    and your current files with `git diff`. You can also use `git diff`
+    to compare commits.
+
+#### A word about commit hash
+
+-   Each commit is identified by a unique commit hash
+
+    ``` {.example}
+    commit d26f19ab15bf2baa9b2eaa42946689a4289546b0
+    Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
+    Date:   Thu Nov 10 14:11:21 2016 +0200
+
+        Basics for committing
+
+    commit 9119038c82837229fccb44e9e309d0c307b4a6c3
+    Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
+    Date:   Thu Nov 10 14:11:01 2016 +0200
+
+        Add note about no copy-paste
+
+    ```
+
+-   These commit hashes can be used to specify which commits to compare
+    with `git diff`:
+
+    ``` {.bash}
+    git diff 9119038c82837229fccb44e9e309d0c307b4a6c3 d26f19ab15bf2baa9b2eaa42946689a4289546b0
+    ```
+
+-   However, you don't need to always type the full hash. Often, the
+    first characters are enough:
+
+    ``` {.bash}
+    git diff 9119038 d26f19a
+    ```
+
+#### Do the `diff`
+
+-   Use `git diff` and commit hashes to compare your first and your
+    last commits.
+
+-   What about comparing your first and your second commit?
+
+### 2.3.3 Revert
+
+-   Wait, your collaborator told you a T was missing on
+    batman's sequence. Modify the sequence data in the fasta file,
+    commit the new data file.
+
+-   Ok, maybe you didn't need this safeguard in your previous code in
+    the end. Let's revert to the previous version of the code: identify
+    the commit to which you want to revert and type:
+
+    ``` {.bash}
+    git checkout a4dee11 checkStartCodon.py
+    ```
+
+-   What is your repository status now?
+
+-   Commit your file.
+
+### What we learnt about in this section
+
+-   Use **diff** to compare files
+-   Commits are identified by unique **hashes**
+-   How to **revert** to a previous version with `git checkout`
+
+2.4 Branching and merging
+-------------------------
 
 ### Overview
 
