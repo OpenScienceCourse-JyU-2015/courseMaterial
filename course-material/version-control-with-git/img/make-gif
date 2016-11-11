@@ -1,1 +1,0 @@
-convert -delay 300 version-control-workflow-* -delay 2000 version-control-workflow-last-frame.png -loop 0 version-control-workflow.gif
