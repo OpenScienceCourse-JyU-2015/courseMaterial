@@ -559,7 +559,9 @@ the next session with him/her.
 ** 3.3 Branching and merging
 
 In this last section, we are going to clone the remote repository you just made
-on your own computer and create branches to write exploratory code.
+to your own computer and create branches. Branches will allow you to write
+exploratory code which you are not sure you want to put in the master branch of
+your project yet.
 
 *** 3.3.1 Clone your own repository to your machine
 
