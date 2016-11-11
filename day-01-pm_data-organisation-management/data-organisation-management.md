@@ -4,8 +4,6 @@ Summary: Introduction to data management with spreadsheets and databases
 
 ---
 
----
-
 # Data organisation with spreadsheets
 
 http://www.datacarpentry.org/spreadsheet-ecology-lesson/
@@ -76,7 +74,7 @@ Exercise:
 
 ## Formatting problems
 Multiple tables
-* http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/2_datasheet_example.jpg
+![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/2_datasheet_example.jpg)  
 * Remember: row = observation!
 * Column names repeated many times
 
@@ -90,12 +88,13 @@ Not filling zeros
 * To a computer zero is a number and empty is disregarded
 
 Bad null values
-* Don't use numerical values for null! (e.g. -999)
-* http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/3_white_table_1.jpg
+* Don't use numerical values for null! (e.g. -999)  
+![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/3_white_table_1.jpg)
 
-Using formatting to convey information
-* http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/formatting.png
-* http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/good_formatting.png
+Using formatting to convey information  
+![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/formatting.png)
+
+![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/good_formatting.png)
 
 Prettifying data with formatting
 * E.g. merging cells – NO!
@@ -123,8 +122,8 @@ Inclusion of metadata in tables
 Dates usually stored in one column
 * Not a good idea due to storing and handling problems (show example in messy data spreadsheet)
 * Instead, store as separate columns: day, month, year or year, day-of-year
-* NOTE: 1899-12-31 (1904 default for mac) be careful when exporting dates from Excel!
-* http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/5_excel_dates_1.jpg
+* NOTE: 1899-12-31 (1904 default for mac) be careful when exporting dates from Excel!  
+![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/5_excel_dates_1.jpg)
 
 Excel stores dates as integers
 * Counts number of days since 1899-12-31
@@ -133,11 +132,14 @@ Excel stores dates as integers
 
 Best practices:
 * Day, month, year
-	* http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/6_excel_dates_2.jpg
-	* Eliminate chances of ambiguity
+	* Eliminate chances of ambiguity  
+![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/6_excel_dates_2.jpg)  
+
+
 * Year, day-of-year
 	* Easy to incorporate year as a factor, easy to calculate passage of time within year
-	* How? http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/7_excel_dates_3.jpg
+	* How?  
+![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/7_excel_dates_3.jpg)
 
 ## Quality assurance
 *Before* entering data
