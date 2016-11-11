@@ -12,11 +12,11 @@ For the home website of the course, please visit the
 All practicals material will be made available here.
 
 - **Day one (Tue Nov 15th 8:15 - 16:00):**
-	- *[Introduction to the Unix shell (morning)](day-01-am_the-unix-shell/introduction-unix-shell.md)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-am_the-unix-shell))
-  - *Data organisation (afternoon))* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-pm_data-organisation))
+	- *[Introduction to the Unix shell (morning)](day-01-am_the-unix-shell/introduction-unix-shell.md)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-am_the-unix-shell))  
+  - *[Data organisation and management (afternoon)](day-01-pm_data-organisation-management/data-organisation-management.md)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-01-pm_data-organisation))
 
 - **Day two (Wed Nov 16th 8:15 - 16:00):**
-  - *Introduction to Python (morning)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-am_intro-to-python))
+  - *[Introduction to Python and Jupyter notebooks (morning)](day-02-am_intro-to-python/python-jupyter-introduction.md)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-am_intro-to-python))
   - *[Version control with Git (afternoon)](day-02-pm_version-control/version-control-with-git.md)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-pm_version-control))
 
 - **Day three (Thu Nov 17th 8:15 - 14:00):**
