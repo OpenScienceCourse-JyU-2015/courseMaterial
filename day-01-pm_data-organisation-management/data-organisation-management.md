@@ -6,9 +6,23 @@ Summary: Introduction to data management with spreadsheets and databases
 
 # Data organisation with spreadsheets
 
-http://www.datacarpentry.org/spreadsheet-ecology-lesson/
+Lesson adapted from Data Carpentry's "Spreadsheets for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/spreadsheet-ecology-lesson/
 
 ---
+
+## Before the lesson
+
+Prerequisites:
+* You are familiar with spreadsheets
+
+## After the lesson
+
+You will know about:
+* What spreadsheets are suitable for, and what are not suitable for
+* Good data entry practices
+* Dates in spreadsheets
+* Exporting data from spreadsheets
+
 ## Background
 In this lesson, we're going to talk about:
 * Good data entry practices - formatting data tables in spreadsheets
@@ -185,7 +199,20 @@ What can you do?
 
 # Data management with SQL
 
-<http://www.datacarpentry.org/sql-ecology-lesson/>
+Lesson adapted from Data Carpentry's "SQL for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/sql-ecology-lesson/
+
+## Before the lesson
+
+Prerequisites:
+* -
+
+## After the lesson
+
+You will know about:
+* What is a database
+* How to perform basic queries from databases
+* How to agregate data from databases
+* How to join data from databases
 
 ## Introduction to SQL
 What we will learn:
