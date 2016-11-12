@@ -1,0 +1,21 @@
+Dear course participants,
+
+Here is some background information related to the bootcamp course, which will be held next week from Tuesday to Thursday at the Mattilanniemi campus in room MAD205 (Building MaD on the map: https://www.jyu.fi/yliopistopalvelut/viestinta/yliopistonesittelyt/kartat/Campuses2016.jpg).
+
+In order to better tailor the course to the level of the participants we kindly ask all students to fill in the survey form at the bottom of the email. Please fill it in and return by Friday evening.
+
+The bootcamp will take place in a computer room with desktops with all relevant programs pre-installed. We are happy if you want to use your own laptop. In that case please follow the instructions below to install all required programs:
+- A spreadsheet program. If you already have Microsoft Excel then great, otherwise you can download LibreOffice, which is an open- source office suite: http://www.libreoffice.org/
+- Firefox. Yes, specifically this browser! We will use it to learn SQL with a Firefox add-on. https://www.mozilla.org/en-US/firefox/new/
+- SQLite manager for Firefox. See installation instructions here: http://apawlik.github.io/2015-03-18-csc-espoo/#setup
+- A program for ssh connection (e.g. Putty on Windows: http://www.putty.org/). Linux or Mac users will use ssh, which is already installed by default on their machines
+- A program for remote file transfer (e.g FileZilla: https://filezilla-project.org/)
+- Git and Git GUI. Windows users: https://git-for-windows.github.io/. Mac users: https://git-scm.com/download/mac. Linux users can install Git here: https://git-scm.com/download/linux and Git GUI here: https://wiki.gnome.org/Apps/Gitg/
+- An Anaconda installation of Python 3.5. This will install Python, Jupyter notebook and a whole bunch of usefull Python libraries: https://www.continuum.io/downloads
+- A text editor with syntax highlighting. For Windows we suggest Notepad++ (https://notepad-plus-plus.org/). For Mac two good alternatives are TextMate (https://macromates.com/) and TextWrangler (http://www.barebones.com/products/TextWrangler/download.html). Linux users can install Geany (https://www.geany.org/) or Gedit (https://wiki.gnome.org/Apps/Gedit)
+
+General information about the course in general and the bootcamp can be found here: https://github.com/OpenScienceCourse-JyU-2015/courseMaterial/wiki
+
+We look forward to seeing you all next week!
+
+Eric and Matthieu
