@@ -26,9 +26,8 @@ All practicals material will be made available here.
     [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-pm_version-control))
 
 - **Day three (Thu Nov 17th 8:15 - 14:00):**
-	**A case study: from data to analysis** (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-03_case-study))
-  - *Data processing*
-  - *Data analysis*
+  - *[A case study: from data to analysis](day-03_case-study/case-study-fish-protein-evolution)*
+    (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-03_case-study))
 
 ## Important practical details
 

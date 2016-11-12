@@ -1,0 +1,60 @@
+#+TITLE: FROM DATA TO ANALYSIS: A CASE STUDY
+
+** Before the course
+
+Prerequisites:
+- understanding what is *tidy data* (and what is not)
+- basic *SQL* skills
+- *version control* skills with Git
+- basic knowledge of *programming with Python*
+
+** After the course
+
+This session is mostly aimed at putting together the foundations laid during
+the previous two days of the bootcamp through a case study example.
+
+During this session you will practice:
+- cloning a remote repository
+- being critical of dataset formats
+- writing Python functions
+- keeping track of your code
+- sharing your code with others
+
+However, some more advanced topics will also be introduced during the
+processing of the course data.
+
+After completing this course you will know:
+- how to load data from a database using Pandas
+- how to make plots using matplotlib
+
+* 1. Case study introduction: the evolution of fish mitochondrial proteins
+
+Mitochondrial genomes encode some proteins which are essential to the
+production of ATP by the cell mitochondrias through oxidative phosphorylation.
+
+You are an *evolutionary biologist* interested in *how those key proteins have
+evolved in fishes living in different habitats*, since different environments
+might exert different selection pressures on the cell energy machinery.
+
+There is a lot of *ecological* and *genomic data* about fish that have already
+been produced by the scientific community. There must be a way to leverage this
+knowledge by combining and analyzing these data together to get insights into
+fish protein evolution!
+
+
+- context: some fish data with species + habitats, species + protein sequences
+- all this provided in one sqlite db
+- sqlite db in its own repo (github)
+
+Course:
+1. students clone the data repo (git refresh)
+2. importing the data with python and pandas (from python intro but new thing:
+   SQL)
+3. data exploration and clean-up (dna seqs in proteins) (more pandas, maybe
+   already some plotting with matplotlib)
+4. data processing! writing some functions (one function per group), creating
+   new columns (python)
+5. commit all together, pull updated code
+6. final data visualization (pandas and matplotlib)
+
+
