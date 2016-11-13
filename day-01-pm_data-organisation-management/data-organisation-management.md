@@ -6,9 +6,23 @@ Summary: Introduction to data management with spreadsheets and databases
 
 # Data organisation with spreadsheets
 
-http://www.datacarpentry.org/spreadsheet-ecology-lesson/
+Lesson adapted from Data Carpentry's "Spreadsheets for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/spreadsheet-ecology-lesson/
 
 ---
+
+## Before the lesson
+
+Prerequisites:
+* You are familiar with spreadsheets
+
+## After the lesson
+
+You will know about:
+* What spreadsheets are suitable for, and what are not suitable for
+* Good data entry practices
+* Dates in spreadsheets
+* Exporting data from spreadsheets
+
 ## Background
 In this lesson, we're going to talk about:
 * Good data entry practices - formatting data tables in spreadsheets
@@ -58,10 +72,10 @@ Structuring data:
 **columns = variables, rows = observations, cells = data**
 
 Not like this:  
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/multiple-info.png)
+![](images/multiple-info.png)
 
 But like this:  
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/single-info.png)
+![](images/single-info.png)
 
 Excellent (R) reference: Hadley Wickham, *Tidy Data*, Vol. 59, Issue 10, Sep 2014, Journal of Statistical Software. <http://www.jstatsoft.org/v59/i10>.
 
@@ -74,7 +88,7 @@ Exercise:
 
 ## Formatting problems
 Multiple tables
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/2_datasheet_example.jpg)  
+![](images/2_datasheet_example.jpg)  
 * Remember: row = observation!
 * Column names repeated many times
 
@@ -89,12 +103,12 @@ Not filling zeros
 
 Bad null values
 * Don't use numerical values for null! (e.g. -999)  
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/3_white_table_1.jpg)
+![](images/3_white_table_1.jpg)
 
 Using formatting to convey information  
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/formatting.png)
+![](images/formatting.png)
 
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/good_formatting.png)
+![](images/good_formatting.png)
 
 Prettifying data with formatting
 * E.g. merging cells – NO!
@@ -123,7 +137,7 @@ Dates usually stored in one column
 * Not a good idea due to storing and handling problems (show example in messy data spreadsheet)
 * Instead, store as separate columns: day, month, year or year, day-of-year
 * NOTE: 1899-12-31 (1904 default for mac) be careful when exporting dates from Excel!  
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/5_excel_dates_1.jpg)
+![](images/5_excel_dates_1.jpg)
 
 Excel stores dates as integers
 * Counts number of days since 1899-12-31
@@ -133,13 +147,13 @@ Excel stores dates as integers
 Best practices:
 * Day, month, year
 	* Eliminate chances of ambiguity  
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/6_excel_dates_2.jpg)  
+![](images/6_excel_dates_2.jpg)  
 
 
 * Year, day-of-year
 	* Easy to incorporate year as a factor, easy to calculate passage of time within year
 	* How?  
-![](http://www.datacarpentry.org/spreadsheet-ecology-lesson/fig/7_excel_dates_3.jpg)
+![](images/7_excel_dates_3.jpg)
 
 ## Quality assurance
 *Before* entering data
@@ -185,7 +199,20 @@ What can you do?
 
 # Data management with SQL
 
-<http://www.datacarpentry.org/sql-ecology-lesson/>
+Lesson adapted from Data Carpentry's "SQL for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/sql-ecology-lesson/
+
+## Before the lesson
+
+Prerequisites:
+* -
+
+## After the lesson
+
+You will know about:
+* What is a database
+* How to perform basic queries from databases
+* How to agregate data from databases
+* How to join data from databases
 
 ## Introduction to SQL
 What we will learn:
