@@ -25,7 +25,7 @@ processing of the course data.
 
 After completing this course you will know:
 - how to load data from a database using *Pandas*
-- how to make plots using *matplotlib*
+- how to make plots using the *matplotlib* package
 
 * 1. Case study introduction: the evolution of fish mitochondrial proteins
 

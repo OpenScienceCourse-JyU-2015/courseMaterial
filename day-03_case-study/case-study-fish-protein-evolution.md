@@ -2,7 +2,6 @@ Before the course
 -----------------
 
 Prerequisites:
-
 -   understanding what is **tidy data** (and what is not)
 -   basic **SQL** skills
 -   **version control** skills with Git
@@ -16,7 +15,6 @@ during the previous two days of the bootcamp through a case study
 example.
 
 During this session you will practice:
-
 -   **cloning** a remote repository
 -   being **critical** of dataset formats
 -   writing **Python functions**
@@ -27,19 +25,18 @@ However, some more advanced topics will also be introduced during the
 processing of the course data.
 
 After completing this course you will know:
-
 -   how to load data from a database using **Pandas**
--   how to make plots using **matplotlib**
+-   how to make plots using the **matplotlib** package
 
--   1.  Case study introduction: the evolution of fish mitochondrial
-        proteins
+1. Case study introduction: the evolution of fish mitochondrial proteins
+========================================================================
 
 Once upon a time...
 -------------------
 
 -   Mitochondrial genomes encode some proteins which are essential to
-    the production of ATP by the cell mitochondrias through oxidative
-    phosphorylation.
+    the production of ATP by the cell mitochondrias through
+    oxidative phosphorylation.
 
 -   You are an **evolutionary biologist** interested in **how those key
     proteins have evolved in fishes living in different habitats**,
@@ -74,11 +71,9 @@ What you must do
     **starting point for your own work\***
 
 -   The files you will be using to start with are:
-
     -   **fishbase~data~.sqlite**
     -   **aa~properties~.sqlite**
 -   Your mission:
-
     -   **Load** and **explore** the data from the two provided SQLite
         databases
     -   Gather all the useful data into **one single, tidy dataset**
@@ -89,9 +84,11 @@ What you must do
         repository
     -   Use this **collaborative work** to explore the relation between
         **fish ecology** and **protein evolution**
--   1.  Clone the remote repository
--   The repository which will be used for this session is:
 
+2. Clone the remote repository
+==============================
+
+-   The repository which will be used for this session is:
     -   <https://github.com/OpenScienceCourse-JyU-2015/day-03-case-study>
 -   You must clone locally this repository to your own computer. At this
     stage, you should be able to do it by yourself (but call the
@@ -99,17 +96,21 @@ What you must do
 
 -   All students who have a GitHub account will now be added as
     **owner** of the repository. This gives each student the
-    administrative rights needed to push their modifications to the
-    repository.
+    administrative rights needed to push their modifications to
+    the repository.
 
--   1.  Load and explore the data from the SQLite databases
+3. Load and explore the data from the SQLite databases
+======================================================
+
 -   Load the datasets into Python
 
 -   Examine the tables: are they tidy? If not, how to make them tidy?
 
 -   Which data will we need later on?
 
--   1.  Produce a single, tidy dataset for the rest of the analyses
+4. Produce a single, tidy dataset for the rest of the analyses
+==============================================================
+
 -   Use Python and Pandas to prepare a single, tidy dataset
 
 -   Remember to keep track of your code: commit your changes!
@@ -118,7 +119,9 @@ What you must do
     version of the tidy dataset in the repository, and everyone will
     clone it back locally.
 
--   1.  By groups: calculate protein biochemical properties
+5. By groups: calculate protein biochemical properties
+======================================================
+
 -   Each group (pair) chooses one biochemical property they are
     interested in.
 
@@ -128,24 +131,28 @@ What you must do
 -   Apply this function to the tidy dataset to calculate this property
     for all proteins, for all species. Is it working properly?
 
--   1.  Share your code with your collaborators
+6. Share your code with your collaborators
+==========================================
+
 -   Each group will run their code, commit their changes and push to the
     remote repository one after the other.
 
 -   By the end of this part, the remote repository will contain a
     complete tidy dataset and all the code needed to reproduce it.
 
--   1.  Explore the relation between fish ecology and protein evolution
+7. Explore the relation between fish ecology and protein evolution
+==================================================================
+
 -   Pull the changes to the repository in order to get a full, updated
     copy of the dataset and of the code from your collaborators
 
 -   Use Pandas and matplotlib to explore graphically the relationship
     between fish ecology and their protein biochemical properties.
 
--   Teacher's notes
+Teacher's notes
+===============
 
 Course:
-
 1.  students clone the data repo (git refresh)
 2.  importing the data with python and pandas (from python intro but new
     thing: SQL)
