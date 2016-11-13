@@ -20,14 +20,14 @@ All practicals material will be made available here.
   - *[Version control with Git (afternoon)](day-02-pm_version-control/version-control-with-git.md)* (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-02-pm_version-control))
 
 - **Day three (Thu Nov 17th 8:15 - 14:00):**
-  - *[A case study: from data to analysis](day-03_case-study/case-study-fish-protein-evolution)*
+  - *[A case study: from data to analysis](day-03_case-study/case-study-fish-protein-evolution.md)*
     (see the [Etherpad](https://etherpad.wikimedia.org/p/jyybio_day-03_case-study))
 
 ## Important practical details
 
 Most of the course will be hands-on work. Workstations running Windows will be
 provided, but students can bring their own laptop with a wireless internet
-connection if they wish. *Eduroam* is available at the University.
+connection if they wish. **Eduroam** is available at the University.
 
 The material taught is platform-independent and should work with Windows,
 GNU/Linux and MacOS systems. The students who wish to use their own laptop are
