@@ -113,20 +113,37 @@ The plan:
 
 ### 1.2 Connect to your student account
 
-Student account:
+#### Student account:
+
 -   Logins: `jyybio01` to `jyybio25`
 -   Password: on the whiteboard!
 
-Connection:
--   From a terminal (Mac or GNU/Linux):
+#### Connection:
+
+-   **Mac or GNU/Linux**: from a terminal
 
     ``` {.bash}
     ssh jyybioxx@130.234.109.113
     ```
 
     where `xx` is your student number.
--   From Windows using **putty**: live demonstration, ask a teacher if
-    needed
+
+-   **Windows**: using putty. Live demonstration, ask a teacher
+    if needed. Remember to tune your putty settings for a better look
+    and feel:
+    -   **Window** &gt; **Appearance** &gt; Change font to "Deja Vu Sans
+        Mono", 11-point
+    -   **Window** &gt; **Translation** &gt; Change "Remote character
+        set" to UTF-8 (top of the list)
+    -   **Window** &gt; **Colours** &gt; Tick "Use system colours"
+    -   Save settings if you wish
+-   You might be asked to accept the **host RSA key fingerprint**. It
+    should be:
+
+        2048 74:55:8b:ad:2d:85:84:74:be:ce:53:da:12:5a:13:32   (RSA)
+
+    (this ensures that you are connecting to the intended host, not to a
+    malicious server impersonating the host)
 
 2. First contact with the shell
 -------------------------------
@@ -415,6 +432,18 @@ drwxr-xr-x. 3 jyybioxx users 23 Nov  9 16:22 practicals
 -   Do you understand how `TAB` completion works? This also works for
     command names.
 
+### 7.5 `UP` and `DOWN` arrow
+
+-   Try typing a few times on the `UP ARROW`. What happens?
+
+-   Try typing a few times on the `UP ARROW`, and then on the
+    `DOWN ARROW`. What happens?
+
+-   Try typing a few times on the `UP ARROW`, and then press `CTRL + C`.
+    What happens?
+
+-   Type `history`. What happens?
+
 8. Copying, moving and removing files
 -------------------------------------
 
@@ -506,6 +535,8 @@ drwxr-xr-x. 3 jyybioxx users 23 Nov  9 16:22 practicals
     .
     ├── archives
     ├── practicals
+    │   ├── book
+    │   │   └── ...
     │   ├── ecoli-data
     │   │   └── ...
     │   └── results
@@ -682,7 +713,7 @@ shell toolbox!
 
 ### 11.5 `sort` to sort things
 
--   Use sort to sort the line counts from `lineCounts`:
+-   Use `sort` to sort the line counts from `lineCounts`:
 
     ``` {.bash}
     sort lineCounts
@@ -701,7 +732,29 @@ shell toolbox!
 -   Hint: `sort` supports two interesting options, `-t` to specify a
     field separator and `-k` to specify which field to use for sorting.
 
-### 11.6 Combining tools with pipes
+### 11.6 `uniq` to remove or count duplicates
+
+-   Go to the folder `~/practicals/boook` and use the Python script
+    provided in the folder to convert *The Hound of the Baskervilles* to
+    a list of words. Store this list in a file called `houndList`
+
+-   Have a look at `houndList` using `head`, `tail` and `less`
+
+-   Which words Arthur Conan Doyle used in his book? To get a list of
+    distinct words, we can use `uniq`:
+
+        uniq houndList > uniqueList
+
+-   Have a look at this list. Are words really unique?
+
+-   `uniq` only removes duplicates which are grouped together. How would
+    you do to sort the list of all words, and then get a list of unique
+    words used in this text file?
+
+-   When using the `-c` option, `uniq` gives another
+    additional information. Can you guess what it is?
+
+### 11.7 Combining tools with pipes
 
 #### Pipes can connect output and input streams
 
@@ -716,7 +769,7 @@ shell toolbox!
 
 (to type a "|" on a Finnish keyboard, hold `AltGr` and press `<`)
 
-#### Exercise
+#### Exercises
 
 -   The `w` command output the list of connected users on the server.
     Try it, and then try:
@@ -727,6 +780,11 @@ shell toolbox!
 -   Use a pipe to find all the users whose login contains "jyy".
 
 -   Extend the same pipe to count how many there are.
+
+-   Using only pipes, get a sorted list of the word counts from *The
+    Hound of the Baskervilles*. Which are the top ten most used words?
+    How many times was "elementary" used? How many times "dear"? How
+    many times "Watson"?
 
 12. Wrap-up exercise
 --------------------
@@ -809,8 +867,6 @@ One step towards wizardry: shell scripts
 
 2. Making a general purpose listing script
 ------------------------------------------
-
-(or replace this with `xargs`?)
 
 -   Create a shell script `testListing.sh` with this content:
 
