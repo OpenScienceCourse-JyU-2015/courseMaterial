@@ -2,6 +2,7 @@ Before the course
 -----------------
 
 Prerequisites:
+
 -   understanding what is **tidy data** (and what is not)
 -   basic **SQL** skills
 -   **version control** skills with Git
@@ -15,6 +16,7 @@ during the previous two days of the bootcamp through a case study
 example.
 
 During this session you will practice:
+
 -   **cloning** a remote repository
 -   being **critical** of dataset formats
 -   writing **Python functions**
@@ -25,6 +27,7 @@ However, some more advanced topics will also be introduced during the
 processing of the course data.
 
 After completing this course you will know:
+
 -   how to load data from a database using **Pandas**
 -   how to make plots using the **matplotlib** package
 
@@ -43,7 +46,7 @@ Once upon a time...
     since different environments might exert different selection
     pressures on the cell energy machinery.
 
-    ![](images/yellowgin-tuna_molly-edmonds_worldwildlife_org.jpg)
+    *images/yellowgin-tuna\_molly-edmonds\_worldwildlife\_org.jpg*
 
     (image by Molly Edmonds, taken from
     [worldwildlife.org](http://www.worldwildlife.org/stories/tracking-tuna-in-the-coral-triangle))
@@ -153,6 +156,7 @@ Teacher's notes
 ===============
 
 Course:
+
 1.  students clone the data repo (git refresh)
 2.  importing the data with python and pandas (from python intro but new
     thing: SQL)

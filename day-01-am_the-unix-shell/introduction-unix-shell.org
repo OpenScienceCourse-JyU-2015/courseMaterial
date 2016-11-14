@@ -114,6 +114,13 @@ Connection:
   where =xx= is your student number.
 - From Windows using *putty*: live demonstration, ask a teacher if needed
 
+- You might be asked to asked the host RSA key fingerprint. It should be:
+  #+BEGIN_SRC 
+  2048 74:55:8b:ad:2d:85:84:74:be:ce:53:da:12:5a:13:32   (RSA)
+  #+END_SRC
+  (this ensures that you are connecting to the intended host, not to a
+  malicious server impersonating the host)
+
 ** 2. First contact with the shell
 
 *** 2.1 Just after connection:
