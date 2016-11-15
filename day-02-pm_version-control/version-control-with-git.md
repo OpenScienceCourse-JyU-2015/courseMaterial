@@ -2,14 +2,12 @@ Before the course
 -----------------
 
 Prerequisites:
-
 -   a basic knowledge of the **Unix shell** (cf. day one of bootcamp)
 
 After the course
 ----------------
 
 After completing this course you will know:
-
 -   what is version control and what it can do for you
 -   how to set up a new repository for your project
 -   how to track files, commit changes and view their history
@@ -24,9 +22,9 @@ After completing this course you will know:
 
 -   Some common issues arise when files are not version-controlled:
 
-*images/phd052810s.png*
+![](images/phd052810s.png)
 
-*images/phd\_notfinal.gif*
+![](images/phd_notfinal.gif)
 
 -   This happens not only for data or manuscripts, but for
     scripts also... How can we do it better?
@@ -62,7 +60,7 @@ A lab notebook for files?
 1.4 Example of a version control flow for a Python script
 ---------------------------------------------------------
 
-*images/version-control-workflow.gif*
+![](images/version-control-workflow.gif)
 
 -   **V1**, **V2**, and **V3** are successive versions of the script
 -   **V4** is committed, but then a mistake is found. We revert to
@@ -131,12 +129,12 @@ A lab notebook for files?
 -   Create a new folder for your recipes
 
     ``` {.bash}
-    mkdir recipes
+    mkdir cookbook
     # Go into the new folder
-    cd recipes
+    cd cookbook
     ```
 
--   Create an empty file for this week report:
+-   Create an empty file for your first recipe:
 
         touch pancakes
 
@@ -158,20 +156,20 @@ A lab notebook for files?
     Pancake recipe
 
     Ingredients:
-     500g of flour
-     5 eggs
-     1 liter of milk
+    * 500g of flour
+    * 5 eggs
+    * 1 liter of milk
     ```
 
 -   Save your edited file and go back to the command line prompt.
 
-3 Git basics (1) - Tracking files and committing changes
-========================================================
+3 Git basics - Tracking files and committing changes
+====================================================
 
 3.1 Initialize a Git repository
 -------------------------------
 
--   Now we are ready to track our report file. First we need to initiate
+-   Now we are ready to track our recipe file. First we need to initiate
     a Git repository in our project folder:
 
     ``` {.bash}
@@ -283,10 +281,10 @@ A lab notebook for files?
     Pancake recipe
 
     Ingredients:
-     500g of flour
-     5 (or 4) eggs
-     1 liter of milk
-     salt, oil
+    * 500g of flour
+    * 5 (or 4) eggs
+    * 1 liter of milk
+    * salt, oil
     ```
 
 -   What is the status of the repository now?
@@ -369,15 +367,15 @@ A lab notebook for files?
 -   **Amend** commit messages
 -   Git **log** to explore project history
 
-4 Git basics (2) - Commit hashes and revert to previous versions
-================================================================
+4 Git basics - Commit hashes and revert to previous versions
+============================================================
 
 4.1 Write some recipe instructions
 ----------------------------------
 
 -   Add some instructions about to make the pancake dough
 
--   If you are happy with your report, commit your changes:
+-   If you are happy with your recipe, commit your changes:
 
     ``` {.bash}
     git status
@@ -448,12 +446,12 @@ A lab notebook for files?
         Pancake recipe
 
         Ingredients:
-         500g of flour
-         5 (or 4) eggs
-         1 liter of milk
-         salt, oil
-         pineapple juice
-         coconut syrup
+        * 500g of flour
+        * 5 (or 4) eggs
+        * 1 liter of milk
+        * salt, oil
+        * pineapple juice
+        * coconut syrup
 
 -   Commit your changes.
 
@@ -461,10 +459,11 @@ A lab notebook for files?
     Pancakes emitted an official recommendation against pineapple in
     pancake dough. We have to revert to the previous version.
 
--   To revert to a previous version, observe the hash of the version you
-    want to revert to in Git history, and type:
+-   To revert to a previous version of `pancakes`, observe the hash of
+    the version you want to revert to in Git history, and type:
 
-        git checkout f32a121
+        # Use the appropriate hash
+        git checkout f32a121 -- pancakes
 
 -   Commit your changes.
 
@@ -473,16 +472,17 @@ What we learnt about in this section
 
 -   Use **diff** to compare files
 -   Commits are identified by unique **hashes**
--   How to **revert** to a previous version with `git checkout`
+-   How to **revert** to a previous version of a file with
+    `git checkout`
 
-5 Intermediate (1) - Branching and merging
-==========================================
+5 Intermediate - Branching and merging
+======================================
 
 -   You think about adding a Christmas section to your book. You want to
     start working in this direction, but you are not totally sure you
     will end up using this version.
 
--   Let's create a new branch for our work:
+-   Let's create a new branch for our recipe prototype:
 
         git branch christmas
         git checkout christmas
@@ -500,20 +500,20 @@ What we learnt about in this section
         Pancake recipe
 
         Ingredients:
-         500g of flour
-         5 (or 4) eggs
-         0.5 liter of milk
-         0.5 liter of Glögi
-         salt, oil
-         cinnamon
+        * 500g of flour
+        * 5 (or 4) eggs
+        * 0.5 liter of milk
+        * 0.5 liter of Glögi
+        * salt, oil
+        * cinnamon
 
 -   Create a new recipe in a file called `snails`:
 
         Snails recipe
 
         Ingredients:
-         Burgundy snails
-         lots of garlic butter
+        * Burgundy snails
+        * lots of garlic butter
 
 -   Commit both the changes to `pancakes` and the new file `snails`
 
@@ -532,8 +532,8 @@ What we learnt about in this section
 
 -   Have a look at your repository history.
 
-6 Intermediate (2) - Cloning a remote repository
-================================================
+6 Intermediate - Cloning a remote repository
+============================================
 
 -   Repositories can easily be shared between collaborators, published
     online and copied locally from a remote location.
@@ -556,6 +556,10 @@ What we learnt about in this section
 -   Clone the repository of your choice locally with:
 
     ``` {.bash}
+    # First, we have to get out from our own repository
+    cd
+    # Now we are back to our home directory,
+    # we can clone somebody else's repository safely
     git clone https://github.com/hadley/recipes.git
     # Replace the repository address appropriately
     ```
@@ -581,15 +585,15 @@ What we learnt about in this section
 
 -   Remember: your commit messages should be clear and to the point!
 
-*images/xkcd\_git\_commit.png*
+![](images/xkcd_git_commit.png)
 
 ([original link](https://xkcd.com/1296/))
 
 7. Advanced - Setting up a remote repository
 ============================================
 
--   You are pretty proud of your python code to analyse coding sequences
-    and want to do good to the world: let's share it publicly!
+-   You are pretty proud of your recipes and want to do good to the
+    world: let's share your cookbook publicly!
 
 -   Let's use GitHub to host a public repository of your code.
 
@@ -613,17 +617,17 @@ who has a GitHub account to follow the next session with him/her.
 
 -   Login to your GitHub account.
 
--   Create a new repository for your small Python project.
+-   Create a new repository for your cookbook project.
 
 7.2 Adding a remote to your local repository
 --------------------------------------------
 
--   Go back to your project directory where you wrote the Python code.
+-   Go back to your project directory where you wrote your own cookbook.
 
 -   Add a remote to your repository with:
 
     ``` {.bash}
-    git remote add origin git@github.com:myusername/myrepo.git
+    git remote add origin https://github.com/myusername/myrepo.git/
     # Use the appropriate address
     ```
 
@@ -631,7 +635,7 @@ who has a GitHub account to follow the next session with him/her.
     -   `add`: we create a new link between our local repo and a remote
         server
     -   `origin`: this new link is called `origin` for ease of use
-    -   `git@github.com:....`: this is the address of the remote
+    -   `https://github.com/....`: this is the address of the remote
         repository
 -   You are ready to push your local repository to the GitHub server:
 
@@ -657,75 +661,10 @@ who has a GitHub account to follow the next session with him/her.
 -   Push your changes to the remote repository:
 
     ``` {.bash}
-    git push
+    git push origin master
     ```
 
 -   Have a look to the remote repository on GitHub (you might need to
     refresh the browser page)
 
-8. Advanced - Collaborative work
-================================
 
-TODO merge conflicts
-
-In this last section, we are going to clone the remote repository you
-just made to your own computer and create branches. Branches will allow
-you to write exploratory code which you are not sure you want to put in
-the master branch of your project yet.
-
-### 3.3.1 Clone your own repository to your machine
-
--   Now we will log out from the **bio109-113** server and work on your
-    truly local machine.
-
--   Create a local folder for the practicals and clone the repository
-    which was put on GitHub locally:
-    -   If you are using Windows, you can use `git bash`
-    -   If you are using GNU/Linux or a Mac, you can use `git` from a
-        terminal
-
-### 3.3.2 Write some code
-
--   Now you are ready for some serious analysis. You think that
-    **histidine** is a particularly interesting amino-acid, and you
-    would like to count how many histidine-coding triplets you have per
-    coding sequence. However, this is a quite experimental part of your
-    analysis: create a new branch, add your function and test it. When
-    you are satisfied with it, merge it to your master branch.
--   Actually, it would be nice if your function could count **any**
-    codons, not just histidine-coding ones. This is even more
-    experimental, so create another branch, modify your function, and...
--   Wait, your supervisor asks you to add as quickly as possible a
-    checking step so that only A, T, G, C are allowed in the sequences.
-    This is a crucial update, so do it in your master branch and commit.
--   Now you can go back to your experimental branch. Finish your
-    function modification, test it and merge it with your master branch
-    when you are happy.
--   Resolve merging conflicts as they arise.
-
-Going further: workflow example for single developper
-=====================================================
-
-Resources
-=========
-
-links go here
-
-Notes
-=====
-
-Exercise: design a set of Python scripts to handle fasta sequences
-
-Coding sequences, check for beginning of ORF, stop-codon, translation,
-etc...
-
-Load the translation table from a text file
-
-Track and fix errors in this file
-
-Testing with this file
-
-Profiling: translation with list vs dictionary
-
-What is version-controlled? Scripts, not data, except if hand-generated
-data (e.g. transcription of written records)
