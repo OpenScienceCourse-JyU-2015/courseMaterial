@@ -4,8 +4,6 @@ Before the course
 Prerequisites:
 
 -   a basic knowledge of the **Unix shell** (cf. day one of bootcamp)
--   a basic knowledge of **programming with Python** (cf. day two
-    of bootcamp)
 
 After the course
 ----------------
@@ -18,22 +16,6 @@ After completing this course you will know:
 -   how to revert to a previous state of your project
 -   how to share your code publicly
 
-Plan
-====
-
--   Intro to Git with command line to understand its functioning, but
-    GUI exists (try it at the end of the workshop)
-
-Overview
---------
-
--   Introduction to version control
--   Setting up and using Git
--   Basic Git usage
--   Setting up a remote repository for collaborative work
--   Cloning, pushing and pulling
--   Workflow example for a single developer
-
 1. Introduction to version control
 ==================================
 
@@ -44,8 +26,10 @@ Overview
 
 *images/phd052810s.png*
 
--   This happens not only for data, but for scripts also... How can we
-    do it better?
+*images/phd\_notfinal.gif*
+
+-   This happens not only for data or manuscripts, but for
+    scripts also... How can we do it better?
 
 1.2 Reproducibility of research?
 --------------------------------
@@ -56,7 +40,7 @@ Overview
 -   The first researcher who will need to reproduce your results is
     likely to be **you**.
 
-A lab notebook for analyses ?
+A lab notebook for files?
 
 -   Lab books make lab work traceable. Analyses should also
     be traceable.
