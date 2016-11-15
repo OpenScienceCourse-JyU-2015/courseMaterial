@@ -3,8 +3,6 @@ Before the course
 
 Prerequisites:
 -   a basic knowledge of the **Unix shell** (cf. day one of bootcamp)
--   a basic knowledge of **programming with Python** (cf. day two
-    of bootcamp)
 
 After the course
 ----------------
@@ -16,22 +14,6 @@ After completing this course you will know:
 -   how to revert to a previous state of your project
 -   how to share your code publicly
 
-Plan
-====
-
--   Intro to Git with command line to understand its functioning, but
-    GUI exists (try it at the end of the workshop)
-
-Overview
---------
-
--   Introduction to version control
--   Setting up and using Git
--   Basic Git usage
--   Setting up a remote repository for collaborative work
--   Cloning, pushing and pulling
--   Workflow example for a single developer
-
 1. Introduction to version control
 ==================================
 
@@ -42,8 +24,10 @@ Overview
 
 ![](images/phd052810s.png)
 
--   This happens not only for data, but for scripts also... How can we
-    do it better?
+![](images/phd_notfinal.gif)
+
+-   This happens not only for data or manuscripts, but for
+    scripts also... How can we do it better?
 
 1.2 Reproducibility of research?
 --------------------------------
@@ -54,7 +38,7 @@ Overview
 -   The first researcher who will need to reproduce your results is
     likely to be **you**.
 
-A lab notebook for analyses ?
+A lab notebook for files?
 
 -   Lab books make lab work traceable. Analyses should also
     be traceable.
@@ -111,45 +95,20 @@ A lab notebook for analyses ?
     -   [GitHub](https://github.com) (free for public repositories but
         not for private repositories)
 
-2. Basic Git usage
-==================
+2 Set up your project folder
+============================
 
--   We want to develop some Python code to analyze DNA coding sequences.
-    The sequences we are going to use in our test are stored in a fasta
-    file:
+-   We want to write a book of recipes. We decide to create a folder to
+    hold all our recipes, with one file for each recipe.
 
-    ``` {.example}
-    >bullfrog
-    ATGCTGATCGATTCGATCGATGCCGTACATGACATGACTCTAATG
-    >dolphin
-    ATGCAGCTCACCATCGTATGCTACGTCTCTACGCTACGATTGAGT
-    >moomin
-    ATCGATCAGCTTACGCTAGCATCGTCTACGATCCAGCTAGCATGG
-    >gryphon
-    ATGCACTCAGCTAACACACTAGCTACACTCTGCATCTATCTAGGT
-    >seagull
-    ATGCATGCATCGCTAGCcgGCATCGATCGATCGGATCGATCGATG
-    >unicorn
-    AtGCATCGCATCAGCTACATcATCAGCATGCCCAGCTCGCTCGATCTT
-    >batman
-    ATGCTCATCAGTCCTACGCATCATCACGATCGATTACACGAGTACGATAT
-    >robin
-    ATGCTAGTACATGAAAACTGATCACAGBACTCAGTACATCATTGG
-    ```
+-   We will use Git to track the changes in our recipe folder.
 
--   We will use Git to track the changes in our project.
+-   You will first learn how to use Git with the command line to
+    understand how it works. Later, you can use one of the numerous Git
+    graphical user interfaces to use Git with your projects.
 
-2.1 Set up your project folder
-------------------------------
-
--   For now all the work will be done on the remote server we used
-    yesterday for the lesson about the Unix shell.
--   This means you will learn how to use Git with the command line. This
-    will help you to understand better how Git works.
--   Later on, you can use one of the numerous Git graphical user
-    interfaces to use Git with your projects.
-
-### Connect to the server
+2.1 Connect to the server
+-------------------------
 
 -   Log into the remote server using `ssh` (GNU/Linux or Mac) or
     `putty` (Windows)
@@ -164,50 +123,53 @@ A lab notebook for analyses ?
 
 -   Password: on the whiteboard!
 
-### Create your project folder
+2.2 Create your project folder
+------------------------------
 
--   Create a new folder for your project:
+-   Create a new folder for your recipes
 
     ``` {.bash}
-    mkdir myProject
+    mkdir cookbook
     # Go into the new folder
-    cd myProject
+    cd cookbook
     ```
 
-### Download the fasta file into your project folder
+-   Create an empty file for your first recipe:
 
--   We can use the `wget` command to download a file from the shell. The
-    syntax is:
+        touch pancakes
 
-    ``` {.bash}
-    wget myURL
-    # where myURL is the URL of the file to download
+2.3 Write some text
+-------------------
+
+-   Edit your file with `nano`. Nano is a basic text editor which can be
+    used from the command line.
+
+-   Nano usage:
+    -   `nano pancakes` to start editing
+    -   Type text as you wish
+    -   Use arrows to move around your text
+    -   Press `CTRL + O` to save your edited text
+    -   Press `CTRL + X` to exit
+-   Fill in some text for the three first days of the week:
+
+    ``` {.example}
+    Pancake recipe
+
+    Ingredients:
+    * 500g of flour
+    * 5 eggs
+    * 1 liter of milk
     ```
 
--   Run the command (you are allowed to copy-paste the URL):
+-   Save your edited file and go back to the command line prompt.
 
-    ``` {.bash}
-    wget https://raw.githubusercontent.com/OpenScienceCourse-JyU-2015/courseMaterial/master/day-02-pm_version-control/files/test-seq.fasta
-    ```
+3 Git basics - Tracking files and committing changes
+====================================================
 
--   Check that you are in the correct folder and that the fasta file
-    is here. Display the fasta file contents. Which commands did you
-    use?
+3.1 Initialize a Git repository
+-------------------------------
 
-2.2 Tracking files and committing changes
------------------------------------------
-
-### 2.2.1 Write some code
-
--   Write a simple Python function that takes a sequence string (DNA
-    nucleotides), and checks that it starts with a start codon. Test it
-    with at least the three first sequences from the fasta file.
-
--   Save your Python code to a file called `checkStartCodon.py`
-
-### 2.2.2 Initialize a Git repository
-
--   Now we are ready to track our Python code. First we need to initiate
+-   Now we are ready to track our recipe file. First we need to initiate
     a Git repository in our project folder:
 
     ``` {.bash}
@@ -223,7 +185,7 @@ A lab notebook for analyses ?
 -   Each time you want to use version control for a new project, you
     have first to create an empty repository with `git init`.
 
-#### Where does Git store its files?
+### Where does Git store its files?
 
 -   Git stores all its information in the `.git` folder.
 
@@ -244,7 +206,8 @@ A lab notebook for analyses ?
     -   the folder `.` is the current folder
     -   the folder `..` is the parent folder
 
-### 2.2.3 Track and commit your changes
+3.2 Check current status, track and commit your changes
+-------------------------------------------------------
 
 -   We can always ask Git about the status of our current repository
     with `git
@@ -259,8 +222,7 @@ A lab notebook for analyses ?
     the `git add` command for that:
 
     ``` {.bash}
-    git add checkStartCodon.py
-    git add test-seq.fasta
+    git add pancakes
     ```
 
 -   What is the status now?
@@ -275,12 +237,12 @@ A lab notebook for analyses ?
 
     ``` {.bash}
     # Specify a commit message after the -m option
-    git commit -m "Create function to check start codon"
+    git commit -m "Create a recipe for pancakes"
     ```
 
 -   What happened?
 
-#### Tell Git who you are
+### Tell Git who you are
 
 -   One of the key feature of a version control system is to assign each
     change to someone. This ensures that all modifications can be traced
@@ -296,13 +258,13 @@ A lab notebook for analyses ?
     git config --global user.name "Your Name"
     ```
 
-#### Back to the commit
+### Back to the commit
 
 -   Try again to commit:
 
     ``` {.bash}
     # Specify a commit message after the -m option
-    git commit -m "Create function to check start codon"
+    git commit -m "Create a recipe for pancakes"
     ```
 
 -   It is **very important** to use **concise and meaningful commit
@@ -310,11 +272,20 @@ A lab notebook for analyses ?
 
 -   What is the current status of the repository?
 
-### 2.2.4 Commit more changes
+3.3 Commit more changes
+-----------------------
 
--   What happens if you test your function with the unicorn's sequence?
+-   Your list of ingredients is missing something. Update it:
 
--   Modify your function accordingly.
+    ``` {.example}
+    Pancake recipe
+
+    Ingredients:
+    * 500g of flour
+    * 5 (or 4) eggs
+    * 1 liter of milk
+    * salt, oil
+    ```
 
 -   What is the status of the repository now?
 
@@ -334,12 +305,12 @@ A lab notebook for analyses ?
 -   Let's commit our changes:
 
     ``` {.bash}
-    git commit -m "Fix function for upper and lower case differences"
+    git commit -m "Add missing ingredients for pancakes"
     ```
 
 -   What happened?
 
-#### The staging area
+### The staging area
 
 -   Even if Git knows which files to track, by default it **does not**
     commit automatically all changes.
@@ -348,8 +319,8 @@ A lab notebook for analyses ?
     and **then** to commit them with `git commit`:
 
     ``` {.bash}
-    git add checkStartCodon.py
-    git commit -m "Fix function for upper and lower case differences"
+    git add pancakes
+    git commit -m "Add missing ingredients for pancakes"
     ```
 
 -   This might look pretty inefficient, but it gives you more control
@@ -360,15 +331,16 @@ A lab notebook for analyses ?
     files in one go. In this case, you can use the shortcut:
 
     ``` {.bash}
-    git commit -a -m "Fix function for upper and lower case differences"
+    git commit -a -m "Add missing ingredients for pancakes"
     # which is equivalent to
-    git commit -am "Fix function for upper and lower case differences"
+    git commit -am "Add missing ingredients for pancakes"
     ```
 
 -   The `-a` option tells Git to automatically add all changes in
     tracked files for commit.
 
-### 2.2.5 Explore history
+3.4 Explore history
+-------------------
 
 -   Your repository history can be explored with:
 
@@ -379,7 +351,7 @@ A lab notebook for analyses ?
 -   You can amend your last commit message with:
 
     ``` {.bash}
-    git commit --amend -m "Fix hasStartCodon function for case differences"
+    git commit --amend -m "Add salt and oil for pancakes"
     # View history
     git log
     ```
@@ -395,33 +367,28 @@ A lab notebook for analyses ?
 -   **Amend** commit messages
 -   Git **log** to explore project history
 
-2.3 Diff and revert to previous versions
-----------------------------------------
+4 Git basics - Commit hashes and revert to previous versions
+============================================================
 
-### 2.3.1 Write some code
+4.1 Write some recipe instructions
+----------------------------------
 
--   Add a new function to `checkStartCodon.py`. This function should
-    take a sequence string, and returns a list of codons.
+-   Add some instructions about to make the pancake dough
 
--   Test your function with at least the three first sequnces.
-
--   If you are happy with your code, commit your changes:
+-   If you are happy with your recipe, commit your changes:
 
     ``` {.bash}
     git status
     git diff
-    git commit -am "Create function to split sequence into codons"
+    git commit -am "Add preparation instruction for the pancake recipe"
     ```
 
--   Wait, did we test the function enough? What happens with batman's
-    sequence?
-
--   Modify your function to take it into account. Check the differences
-    between your file and the previous version and commit.
+-   Add more information about the cooking. Commit your changes.
 
 -   Have a look at your history. Are your commit messages clear enough?
 
-### 2.3.2 Diff
+4.2 Diff
+--------
 
 -   You want to see what is the overall difference between your latest
     commit and the first commit you did.
@@ -430,7 +397,7 @@ A lab notebook for analyses ?
     and your current files with `git diff`. You can also use `git diff`
     to compare commits.
 
-#### A word about commit hash
+### A word about commit hash
 
 -   Each commit is identified by a unique commit hash
 
@@ -463,54 +430,118 @@ A lab notebook for analyses ?
     git diff 9119038 d26f19a
     ```
 
-#### Do the `diff`
+### Do the `diff`
 
 -   Use `git diff` and commit hashes to compare your first and your
     last commits.
 
 -   What about comparing your first and your second commit?
 
-### 2.3.3 Revert
+4.3 Revert
+----------
 
--   Wait, your collaborator told you a T was missing on
-    batman's sequence. Modify the sequence data in the fasta file,
-    commit the new data file.
+-   Add some ingredients so that your pancake becomes a Hawaiian
+    pancake:
 
--   Ok, maybe you didn't need this less-than-ideal safeguard in your
-    previous code in the end. Let's revert to the previous version of
-    the code: identify the commit to which you want to revert and type:
+        Pancake recipe
 
-    ``` {.bash}
-    git checkout a4dee11 checkStartCodon.py
-    ```
+        Ingredients:
+        * 500g of flour
+        * 5 (or 4) eggs
+        * 1 liter of milk
+        * salt, oil
+        * pineapple juice
+        * coconut syrup
 
--   What is your repository status now?
+-   Commit your changes.
 
--   Commit your file.
+-   Unfortunately, you heard that the National Finnish Institute for
+    Pancakes emitted an official recommendation against pineapple in
+    pancake dough. We have to revert to the previous version.
 
--   Wait again... We just removed a bad safeguard, but it would be good
-    if our code would tell us if a codon is incomplete. Better to throw
-    an error than to fail silently! Modify your code to throw an error
-    if the last codon is too short, and commit your code.
+-   To revert to a previous version of `pancakes`, observe the hash of
+    the version you want to revert to in Git history, and type:
 
-### What we learnt about in this section
+        # Use the appropriate hash
+        git checkout f32a121 -- pancakes
+
+-   Commit your changes.
+
+What we learnt about in this section
+------------------------------------
 
 -   Use **diff** to compare files
 -   Commits are identified by unique **hashes**
--   How to **revert** to a previous version with `git checkout`
+-   How to **revert** to a previous version of a file with
+    `git checkout`
 
-3. Setting up and using remote repositories
-===========================================
+5 Intermediate - Branching and merging
+======================================
 
-3.1 Cloning a remote repository
--------------------------------
+-   You think about adding a Christmas section to your book. You want to
+    start working in this direction, but you are not totally sure you
+    will end up using this version.
+
+-   Let's create a new branch for our recipe prototype:
+
+        git branch christmas
+        git checkout christmas
+
+-   We are now working in the `christmas` branch. Everything we do here
+    will not have any effect on the `master` branch, which will
+    remain clean.
+
+-   Run `git status`. What do you observe?
+
+-   Run `git log`. What do you observe?
+
+-   Modify the recipe in `pancakes`:
+
+        Pancake recipe
+
+        Ingredients:
+        * 500g of flour
+        * 5 (or 4) eggs
+        * 0.5 liter of milk
+        * 0.5 liter of Glögi
+        * salt, oil
+        * cinnamon
+
+-   Create a new recipe in a file called `snails`:
+
+        Snails recipe
+
+        Ingredients:
+        * Burgundy snails
+        * lots of garlic butter
+
+-   Commit both the changes to `pancakes` and the new file `snails`
+
+-   Have a look to your repository history
+
+-   Switch back to the master branch with:
+
+        git checkout master
+
+-   Have a look at your folder content and at `pancakes`.
+
+-   You now think that this Christmas project is a good thing and want
+    to merge it with your master branch:
+
+        git merge christmas
+
+-   Have a look at your repository history.
+
+6 Intermediate - Cloning a remote repository
+============================================
 
 -   Repositories can easily be shared between collaborators, published
     online and copied locally from a remote location.
 
 -   Copying a remote repository to your computer is called **cloning**.
 
-### 3.1.1 Find an interesting repository to clone on GitHub
+6.1 Find an interesting repository to clone on GitHub
+-----------------------------------------------------
 
 -   Go to [GitHub](https://github.com/), a platform to
     host repositories.
@@ -525,11 +556,16 @@ A lab notebook for analyses ?
 -   Clone the repository of your choice locally with:
 
     ``` {.bash}
+    # First, we have to get out from our own repository
+    cd
+    # Now we are back to our home directory,
+    # we can clone somebody else's repository safely
     git clone https://github.com/hadley/recipes.git
     # Replace the repository address appropriately
     ```
 
-### 3.1.2 Explore the repository locally
+6.2 Explore the repository locally
+----------------------------------
 
 -   Now cd into the cloned repository
 
@@ -553,15 +589,16 @@ A lab notebook for analyses ?
 
 ([original link](https://xkcd.com/1296/))
 
-3.2 Setting up a remote repository
-----------------------------------
+7. Advanced - Setting up a remote repository
+============================================
 
--   You are pretty proud of your python code to analyse coding sequences
-    and want to do good to the world: let's share it publicly!
+-   You are pretty proud of your recipes and want to do good to the
+    world: let's share your cookbook publicly!
 
 -   Let's use GitHub to host a public repository of your code.
 
-### 3.2.1 Create a GitHub account
+7.1 Create a GitHub account
+---------------------------
 
 -   We are going to create a GitHub repository for you (you can use a
     pseudonyme and delete the account afterwards if you don't want to
@@ -580,16 +617,17 @@ who has a GitHub account to follow the next session with him/her.
 
 -   Login to your GitHub account.
 
--   Create a new repository for your small Python project.
+-   Create a new repository for your cookbook project.
 
-### 3.2.2 Adding a remote to your local repository
+7.2 Adding a remote to your local repository
+--------------------------------------------
 
--   Go back to your project directory where you wrote the Python code.
+-   Go back to your project directory where you wrote your own cookbook.
 
 -   Add a remote to your repository with:
 
     ``` {.bash}
-    git remote add origin git@github.com:myusername/myrepo.git
+    git remote add origin https://github.com/myusername/myrepo.git/
     # Use the appropriate address
     ```
 
@@ -597,7 +635,7 @@ who has a GitHub account to follow the next session with him/her.
     -   `add`: we create a new link between our local repo and a remote
         server
     -   `origin`: this new link is called `origin` for ease of use
-    -   `git@github.com:....`: this is the address of the remote
+    -   `https://github.com/....`: this is the address of the remote
         repository
 -   You are ready to push your local repository to the GitHub server:
 
@@ -614,7 +652,8 @@ who has a GitHub account to follow the next session with him/her.
         working with a single, master branch called `master` by default
 -   Have a look to your repository on GitHub now. How does it look like?
 
-### 3.2.3 Pushing local changes to a remote server
+7.3 Pushing local changes to a remote server
+--------------------------------------------
 
 -   Create a README file in your project folder, fill it with
     interesting information and commit it to your repository.
@@ -622,72 +661,10 @@ who has a GitHub account to follow the next session with him/her.
 -   Push your changes to the remote repository:
 
     ``` {.bash}
-    git push
+    git push origin master
     ```
 
 -   Have a look to the remote repository on GitHub (you might need to
     refresh the browser page)
 
-3.3 Branching and merging
--------------------------
 
-In this last section, we are going to clone the remote repository you
-just made on your own computer and create branches to write exploratory
-code.
-
-### 3.3.1 Clone your own repository to your machine
-
--   Now we will log out from the **bio109-113** server and work on your
-    truly local machine.
-
--   Create a local folder for the practicals and clone the repository
-    which was put on GitHub locally:
-    -   If you are using Windows, you can use `git bash`
-    -   If you are using GNU/Linux or a Mac, you can use `git` from a
-        terminal
-
-### 3.3.2 Write some code
-
--   Now you are ready for some serious analysis. You think that
-    **histidine** is a particularly interesting amino-acid, and you
-    would like to count how many histidine-coding triplets you have per
-    coding sequence. However, this is a quite experimental part of your
-    analysis: create a new branch, add your function and test it. When
-    you are satisfied with it, merge it to your master branch.
--   Actually, it would be nice if your function could count **any**
-    codons, not just histidine-coding ones. This is even more
-    experimental, so create another branch, modify your function, and...
--   Wait, your supervisor asks you to add as quickly as possible a
-    checking step so that only A, T, G, C are allowed in the sequences.
-    This is a crucial update, so do it in your master branch and commit.
--   Now you can go back to your experimental branch. Finish your
-    function modification, test it and merge it with your master branch
-    when you are happy.
--   Resolve merging conflicts as they arise.
-
-Going further: workflow example for single developper
-=====================================================
-
-Resources
-=========
-
-links go here
-
-Notes
-=====
-
-Exercise: design a set of Python scripts to handle fasta sequences
-
-Coding sequences, check for beginning of ORF, stop-codon, translation,
-etc...
-
-Load the translation table from a text file
-
-Track and fix errors in this file
-
-Testing with this file
-
-Profiling: translation with list vs dictionary
-
-What is version-controlled? Scripts, not data, except if hand-generated
-data (e.g. transcription of written records)
