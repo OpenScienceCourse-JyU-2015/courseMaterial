@@ -2,6 +2,7 @@ Before the course
 -----------------
 
 Prerequisites:
+
 -   a basic knowledge of the **Unix shell** (cf. day one of bootcamp)
 -   a basic knowledge of **programming with Python** (cf. day two
     of bootcamp)
@@ -10,6 +11,7 @@ After the course
 ----------------
 
 After completing this course you will know:
+
 -   what is version control and what it can do for you
 -   how to set up a new repository for your project
 -   how to track files, commit changes and view their history
@@ -40,7 +42,7 @@ Overview
 
 -   Some common issues arise when files are not version-controlled:
 
-![](images/phd052810s.png)
+*images/phd052810s.png*
 
 -   This happens not only for data, but for scripts also... How can we
     do it better?
@@ -76,7 +78,7 @@ A lab notebook for analyses ?
 1.4 Example of a version control flow for a Python script
 ---------------------------------------------------------
 
-![](images/version-control-workflow.gif)
+*images/version-control-workflow.gif*
 
 -   **V1**, **V2**, and **V3** are successive versions of the script
 -   **V4** is committed, but then a mistake is found. We revert to
@@ -114,30 +116,10 @@ A lab notebook for analyses ?
 2. Basic Git usage
 ==================
 
--   We want to develop some Python code to analyze DNA coding sequences.
-    The sequences we are going to use in our test are stored in a fasta
-    file:
+-   We want to write a book of recipes. We decide to create a folder to
+    hold all our recipes, with one file for each recipe.
 
-    ``` {.example}
-    >bullfrog
-    ATGCTGATCGATTCGATCGATGCCGTACATGACATGACTCTAATG
-    >dolphin
-    ATGCAGCTCACCATCGTATGCTACGTCTCTACGCTACGATTGAGT
-    >moomin
-    ATCGATCAGCTTACGCTAGCATCGTCTACGATCCAGCTAGCATGG
-    >gryphon
-    ATGCACTCAGCTAACACACTAGCTACACTCTGCATCTATCTAGGT
-    >seagull
-    ATGCATGCATCGCTAGCcgGCATCGATCGATCGGATCGATCGATG
-    >unicorn
-    AtGCATCGCATCAGCTACATcATCAGCATGCCCAGCTCGCTCGATCTT
-    >batman
-    ATGCTCATCAGTCCTACGCATCATCACGATCGATTACACGAGTACGATAT
-    >robin
-    ATGCTAGTACATGAAAACTGATCACAGBACTCAGTACATCATTGG
-    ```
-
--   We will use Git to track the changes in our project.
+-   We will use Git to track the changes in our recipe folder.
 
 2.1 Set up your project folder
 ------------------------------
@@ -166,48 +148,48 @@ A lab notebook for analyses ?
 
 ### Create your project folder
 
--   Create a new folder for your project:
+-   Create a new folder for your reports
 
     ``` {.bash}
-    mkdir myProject
+    mkdir reports
     # Go into the new folder
-    cd myProject
+    cd reports
     ```
 
-### Download the fasta file into your project folder
+-   Create an empty file for this week report:
 
--   We can use the `wget` command to download a file from the shell. The
-    syntax is:
-
-    ``` {.bash}
-    wget myURL
-    # where myURL is the URL of the file to download
-    ```
-
--   Run the command (you are allowed to copy-paste the URL):
-
-    ``` {.bash}
-    wget https://raw.githubusercontent.com/OpenScienceCourse-JyU-2015/courseMaterial/master/day-02-pm_version-control/files/test-seq.fasta
-    ```
-
--   Check that you are in the correct folder and that the fasta file
-    is here. Display the fasta file contents. Which commands did you
-    use?
+        touch pancakes
 
 2.2 Tracking files and committing changes
 -----------------------------------------
 
-### 2.2.1 Write some code
+### 2.2.1 Write some text
 
--   Write a simple Python function that takes a sequence string (DNA
-    nucleotides), and checks that it starts with a start codon. Test it
-    with at least the three first sequences from the fasta file.
+-   Edit your file with `nano`. Nano is a basic text editor which can be
+    used from the command line.
 
--   Save your Python code to a file called `checkStartCodon.py`
+-   Nano usage:
+    -   `nano pancakes` to start editing
+    -   Type text as you wish
+    -   Use arrows to move around your text
+    -   Press `CTRL + O` to save your edited text
+    -   Press `CTRL + X` to exit
+-   Fill in some text for the three first days of the week:
+
+    ``` {.example}
+    Pancake recipe:
+
+    Ingredients:
+    - 500g of flour
+    - 5 eggs
+    - 1 liter of milk
+    ```
+
+-   Save your edited file and go back to the command line prompt.
 
 ### 2.2.2 Initialize a Git repository
 
--   Now we are ready to track our Python code. First we need to initiate
+-   Now we are ready to track our report file. First we need to initiate
     a Git repository in our project folder:
 
     ``` {.bash}
@@ -223,26 +205,27 @@ A lab notebook for analyses ?
 -   Each time you want to use version control for a new project, you
     have first to create an empty repository with `git init`.
 
-#### Where does Git store its files?
+1.  Where does Git store its files?
 
--   Git stores all its information in the `.git` folder.
+    -   Git stores all its information in the `.git` folder.
 
--   Folders and files whose name starts with a dot are hidden from the
-    `ls` output by default, but you can force their display with:
+    -   Folders and files whose name starts with a dot are hidden from
+        the `ls` output by default, but you can force their display
+        with:
 
-    ``` {.bash}
-    ls -a
-    ```
+        ``` {.bash}
+        ls -a
+        ```
 
--   You can combine `ls` options:
+    -   You can combine `ls` options:
 
-    ``` {.bash}
-    ls -al
-    ```
+        ``` {.bash}
+        ls -al
+        ```
 
--   In `ls -al` output:
-    -   the folder `.` is the current folder
-    -   the folder `..` is the parent folder
+    -   In `ls -al` output:
+        -   the folder `.` is the current folder
+        -   the folder `..` is the parent folder
 
 ### 2.2.3 Track and commit your changes
 
@@ -259,8 +242,7 @@ A lab notebook for analyses ?
     the `git add` command for that:
 
     ``` {.bash}
-    git add checkStartCodon.py
-    git add test-seq.fasta
+    git add pancakes
     ```
 
 -   What is the status now?
@@ -275,46 +257,54 @@ A lab notebook for analyses ?
 
     ``` {.bash}
     # Specify a commit message after the -m option
-    git commit -m "Create function to check start codon"
+    git commit -m "Create a recipe for pancakes"
     ```
 
 -   What happened?
 
-#### Tell Git who you are
+1.  Tell Git who you are
 
--   One of the key feature of a version control system is to assign each
-    change to someone. This ensures that all modifications can be traced
-    to their original author.
+    -   One of the key feature of a version control system is to assign
+        each change to someone. This ensures that all modifications can
+        be traced to their original author.
 
--   The first time you use Git, you have to configure it with your name
-    and your email address. You have to do this only once.
+    -   The first time you use Git, you have to configure it with your
+        name and your email address. You have to do this only once.
 
--   Configure Git with:
+    -   Configure Git with:
 
-    ``` {.bash}
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
-    ```
+        ``` {.bash}
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+        ```
 
-#### Back to the commit
+2.  Back to the commit
 
--   Try again to commit:
+    -   Try again to commit:
 
-    ``` {.bash}
-    # Specify a commit message after the -m option
-    git commit -m "Create function to check start codon"
-    ```
+        ``` {.bash}
+        # Specify a commit message after the -m option
+        git commit -m "Create a recipe for pancakes"
+        ```
 
--   It is **very important** to use **concise and meaningful commit
-    messages**!
+    -   It is **very important** to use **concise and meaningful commit
+        messages**!
 
--   What is the current status of the repository?
+    -   What is the current status of the repository?
 
 ### 2.2.4 Commit more changes
 
--   What happens if you test your function with the unicorn's sequence?
+-   Your list of ingredients is missing something. Update it:
 
--   Modify your function accordingly.
+    ``` {.example}
+    Pancake recipe:
+
+    Ingredients:
+    - 500g of flour
+    - 5 (or 4) eggs
+    - 1 liter of milk
+    - salt, oil
+    ```
 
 -   What is the status of the repository now?
 
@@ -334,39 +324,39 @@ A lab notebook for analyses ?
 -   Let's commit our changes:
 
     ``` {.bash}
-    git commit -m "Fix function for upper and lower case differences"
+    git commit -m "Add missing ingredients for pancakes"
     ```
 
 -   What happened?
 
-#### The staging area
+1.  The staging area
 
--   Even if Git knows which files to track, by default it **does not**
-    commit automatically all changes.
+    -   Even if Git knows which files to track, by default it **does
+        not** commit automatically all changes.
 
--   You have first to **stage** the changes by using `git add` again,
-    and **then** to commit them with `git commit`:
+    -   You have first to **stage** the changes by using `git add`
+        again, and **then** to commit them with `git commit`:
 
-    ``` {.bash}
-    git add checkStartCodon.py
-    git commit -m "Fix function for upper and lower case differences"
-    ```
+        ``` {.bash}
+        git add pancakes
+        git commit -m "Add missing ingredients for pancakes"
+        ```
 
--   This might look pretty inefficient, but it gives you more control
-    and flexibility over what you want to commit exactly when you have
-    several files which have been changed.
+    -   This might look pretty inefficient, but it gives you more
+        control and flexibility over what you want to commit exactly
+        when you have several files which have been changed.
 
--   Often, however, you want to commit all the changes in the tracked
-    files in one go. In this case, you can use the shortcut:
+    -   Often, however, you want to commit all the changes in the
+        tracked files in one go. In this case, you can use the shortcut:
 
-    ``` {.bash}
-    git commit -a -m "Fix function for upper and lower case differences"
-    # which is equivalent to
-    git commit -am "Fix function for upper and lower case differences"
-    ```
+        ``` {.bash}
+        git commit -a -m "Add missing ingredients for pancakes"
+        # which is equivalent to
+        git commit -am "Add missing ingredients for pancakes"
+        ```
 
--   The `-a` option tells Git to automatically add all changes in
-    tracked files for commit.
+    -   The `-a` option tells Git to automatically add all changes in
+        tracked files for commit.
 
 ### 2.2.5 Explore history
 
@@ -379,7 +369,7 @@ A lab notebook for analyses ?
 -   You can amend your last commit message with:
 
     ``` {.bash}
-    git commit --amend -m "Fix hasStartCodon function for case differences"
+    git commit --amend -m "Add salt and oil for pancakes"
     # View history
     git log
     ```
@@ -398,26 +388,19 @@ A lab notebook for analyses ?
 2.3 Diff and revert to previous versions
 ----------------------------------------
 
-### 2.3.1 Write some code
+### 2.3.1 Write some recipe instructions
 
--   Add a new function to `checkStartCodon.py`. This function should
-    take a sequence string, and returns a list of codons.
+-   Add some instructions about to make the pancake dough
 
--   Test your function with at least the three first sequnces.
-
--   If you are happy with your code, commit your changes:
+-   If you are happy with your report, commit your changes:
 
     ``` {.bash}
     git status
     git diff
-    git commit -am "Create function to split sequence into codons"
+    git commit -am "Add preparation instruction for the pancake recipe"
     ```
 
--   Wait, did we test the function enough? What happens with batman's
-    sequence?
-
--   Modify your function to take it into account. Check the differences
-    between your file and the previous version and commit.
+-   Add more information about the cooking. Commit your changes.
 
 -   Have a look at your history. Are your commit messages clear enough?
 
@@ -430,74 +413,136 @@ A lab notebook for analyses ?
     and your current files with `git diff`. You can also use `git diff`
     to compare commits.
 
-#### A word about commit hash
+1.  A word about commit hash
 
--   Each commit is identified by a unique commit hash
+    -   Each commit is identified by a unique commit hash
 
-    ``` {.example}
-    commit d26f19ab15bf2baa9b2eaa42946689a4289546b0
-    Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
-    Date:   Thu Nov 10 14:11:21 2016 +0200
+        ``` {.example}
+        commit d26f19ab15bf2baa9b2eaa42946689a4289546b0
+        Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
+        Date:   Thu Nov 10 14:11:21 2016 +0200
 
-        Basics for committing
+            Basics for committing
 
-    commit 9119038c82837229fccb44e9e309d0c307b4a6c3
-    Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
-    Date:   Thu Nov 10 14:11:01 2016 +0200
+        commit 9119038c82837229fccb44e9e309d0c307b4a6c3
+        Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
+        Date:   Thu Nov 10 14:11:01 2016 +0200
 
-        Add note about no copy-paste
+            Add note about no copy-paste
 
-    ```
+        ```
 
--   These commit hashes can be used to specify which commits to compare
-    with `git diff`:
+    -   These commit hashes can be used to specify which commits to
+        compare with `git diff`:
 
-    ``` {.bash}
-    git diff 9119038c82837229fccb44e9e309d0c307b4a6c3 d26f19ab15bf2baa9b2eaa42946689a4289546b0
-    ```
+        ``` {.bash}
+        git diff 9119038c82837229fccb44e9e309d0c307b4a6c3 d26f19ab15bf2baa9b2eaa42946689a4289546b0
+        ```
 
--   However, you don't need to always type the full hash. Often, the
-    first characters are enough:
+    -   However, you don't need to always type the full hash. Often, the
+        first characters are enough:
 
-    ``` {.bash}
-    git diff 9119038 d26f19a
-    ```
+        ``` {.bash}
+        git diff 9119038 d26f19a
+        ```
 
-#### Do the `diff`
+2.  Do the `diff`
 
--   Use `git diff` and commit hashes to compare your first and your
-    last commits.
+    -   Use `git diff` and commit hashes to compare your first and your
+        last commits.
 
--   What about comparing your first and your second commit?
+    -   What about comparing your first and your second commit?
 
 ### 2.3.3 Revert
 
--   Wait, your collaborator told you a T was missing on
-    batman's sequence. Modify the sequence data in the fasta file,
-    commit the new data file.
+-   Add some ingredients so that your pancake becomes a Hawaiian
+    pancake:
 
--   Ok, maybe you didn't need this less-than-ideal safeguard in your
-    previous code in the end. Let's revert to the previous version of
-    the code: identify the commit to which you want to revert and type:
+        Pancake recipe:
 
-    ``` {.bash}
-    git checkout a4dee11 checkStartCodon.py
-    ```
+        Ingredients:
+        - 500g of flour
+        - 5 (or 4) eggs
+        - 1 liter of milk
+        - salt, oil
+        - pineapple juice
+        - coconut syrup
 
--   What is your repository status now?
+-   Commit your changes.
 
--   Commit your file.
+-   Unfortunately, you heard that the National Finnish Institute for
+    Pancakes emitted an official recommendation against pineapple in
+    pancake dough. We have to revert to the previous version.
 
--   Wait again... We just removed a bad safeguard, but it would be good
-    if our code would tell us if a codon is incomplete. Better to throw
-    an error than to fail silently! Modify your code to throw an error
-    if the last codon is too short, and commit your code.
+-   To revert to a previous version, observe the hash of the version you
+    want to revert to in Git history, and type:
+
+        git checkout f32a121
+
+-   Commit your changes.
 
 ### What we learnt about in this section
 
 -   Use **diff** to compare files
 -   Commits are identified by unique **hashes**
 -   How to **revert** to a previous version with `git checkout`
+
+2.4 Branching and merging
+-------------------------
+
+-   You think about adding a Christmas section to your book. You want to
+    start working in this direction, but you are not totally sure you
+    will end up using this version.
+
+-   Let's create a new branch for our work:
+
+        git branch christmas
+        git checkout christmas
+
+-   We are now working in the `christmas` branch. Everything we do here
+    will not have any effect on the `master` branch, which will
+    remain clean.
+
+-   Run `git status`. What do you observe?
+
+-   Run `git log`. What do you observe?
+
+-   Modify the recipe in `pancakes`:
+
+        Pancake recipe:
+
+        Ingredients:
+        - 500g of flour
+        - 5 (or 4) eggs
+        - 0.5 liter of milk
+        - 0.5 liter of Glögi
+        - salt, oil
+        - cinnamon
+
+-   Create a new recipe in a file called `snails`:
+
+        Snails recipe:
+
+        Ingredients:
+        - Burgundy snails
+        - lots of garlic butter
+
+-   Commit both the changes to `pancakes` and the new file `snails`
+
+-   Have a look to your repository history
+
+-   Switch back to the master branch with:
+
+        git checkout master
+
+-   Have a look at your folder content and at `pancakes`.
+
+-   You now think that this Christmas project is a good thing and want
+    to merge it with your master branch:
+
+        git merge christmas
+
+-   Have a look at your repository history.
 
 3. Setting up and using remote repositories
 ===========================================
@@ -549,7 +594,7 @@ A lab notebook for analyses ?
 
 -   Remember: your commit messages should be clear and to the point!
 
-![](images/xkcd_git_commit.png)
+*images/xkcd\_git\_commit.png*
 
 ([original link](https://xkcd.com/1296/))
 
@@ -628,12 +673,15 @@ who has a GitHub account to follow the next session with him/her.
 -   Have a look to the remote repository on GitHub (you might need to
     refresh the browser page)
 
-3.3 Branching and merging
--------------------------
+3.3 Collaborative work
+----------------------
+
+TODO merge conflicts
 
 In this last section, we are going to clone the remote repository you
-just made on your own computer and create branches to write exploratory
-code.
+just made to your own computer and create branches. Branches will allow
+you to write exploratory code which you are not sure you want to put in
+the master branch of your project yet.
 
 ### 3.3.1 Clone your own repository to your machine
 
