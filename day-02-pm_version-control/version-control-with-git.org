@@ -82,23 +82,19 @@ A lab notebook for files?
   + [[https://bitbucket.org/][BitBucket]] (free private repositories)
   + [[https://github.com][GitHub]] (free for public repositories but not for private repositories)
 
-* 2. Basic Git usage
+
+* 2 Set up your project folder
 
 - We want to write a book of recipes. We decide to create a folder to hold all
   our recipes, with one file for each recipe.
 
 - We will use Git to track the changes in our recipe folder.
 
-** 2.1 Set up your project folder
+- You will first learn how to use Git with the command line to understand how
+  it works. Later, you can use one of the numerous Git graphical user
+  interfaces to use Git with your projects.
 
-- For now all the work will be done on the remote server we used yesterday for
-  the lesson about the Unix shell.
-- This means you will learn how to use Git with the command line. This will
-  help you to understand better how Git works.
-- Later on, you can use one of the numerous Git graphical user interfaces to
-  use Git with your projects.
-
-*** Connect to the server
+** 2.1 Connect to the server
 
 - Log into the remote server using =ssh= (GNU/Linux or Mac) or =putty=
   (Windows)
@@ -112,13 +108,13 @@ A lab notebook for files?
 
 - Password: on the whiteboard!
 
-*** Create your project folder
+** 2.2 Create your project folder
 
-- Create a new folder for your reports
+- Create a new folder for your recipes
   #+BEGIN_SRC sh
-  mkdir reports
+  mkdir recipes
   # Go into the new folder
-  cd reports
+  cd recipes
   #+END_SRC
 
 - Create an empty file for this week report:
@@ -126,9 +122,7 @@ A lab notebook for files?
   touch pancakes
   #+END_SRC
 
-** 2.2 Tracking files and committing changes
-
-*** 2.2.1 Write some text
+** 2.3 Write some text
 
 - Edit your file with =nano=. Nano is a basic text editor which can be used
   from the command line.
@@ -142,17 +136,19 @@ A lab notebook for files?
 
 - Fill in some text for the three first days of the week:
   #+BEGIN_EXAMPLE
-  Pancake recipe:
+  Pancake recipe
 
   Ingredients:
-  - 500g of flour
-  - 5 eggs
-  - 1 liter of milk
+   500g of flour
+   5 eggs
+   1 liter of milk
   #+END_EXAMPLE
 
 - Save your edited file and go back to the command line prompt.
 
-*** 2.2.2 Initialize a Git repository
+* 3 Git basics (1) - Tracking files and committing changes
+
+** 3.1 Initialize a Git repository
 
 - Now we are ready to track our report file. First we need to initiate a Git
   repository in our project folder:
@@ -169,7 +165,7 @@ A lab notebook for files?
 - Each time you want to use version control for a new project, you have first
   to create an empty repository with =git init=.
 
-**** Where does Git store its files?
+*** Where does Git store its files?
 
 - Git stores all its information in the =.git= folder.
 
@@ -188,7 +184,7 @@ A lab notebook for files?
   + the folder =.= is the current folder
   + the folder =..= is the parent folder
 
-*** 2.2.3 Track and commit your changes
+** 3.2 Check current status, track and commit your changes
 
 - We can always ask Git about the status of our current repository with =git
   status=. Try it:
@@ -217,7 +213,7 @@ A lab notebook for files?
 
 - What happened?
 
-**** Tell Git who you are
+*** Tell Git who you are
 
 - One of the key feature of a version control system is to assign each change
   to someone. This ensures that all modifications can be traced to their
@@ -232,7 +228,7 @@ A lab notebook for files?
   git config --global user.name "Your Name"
   #+END_SRC
 
-**** Back to the commit
+*** Back to the commit
 
 - Try again to commit:
   #+BEGIN_SRC sh
@@ -244,17 +240,17 @@ A lab notebook for files?
 
 - What is the current status of the repository?
 
-*** 2.2.4 Commit more changes
+** 3.3 Commit more changes
 
 - Your list of ingredients is missing something. Update it:
   #+BEGIN_EXAMPLE
-  Pancake recipe:
+  Pancake recipe
 
   Ingredients:
-  - 500g of flour
-  - 5 (or 4) eggs
-  - 1 liter of milk
-  - salt, oil
+   500g of flour
+   5 (or 4) eggs
+   1 liter of milk
+   salt, oil
   #+END_EXAMPLE
 
 - What is the status of the repository now?
@@ -276,7 +272,7 @@ A lab notebook for files?
 
 - What happened?
 
-**** The staging area
+*** The staging area
 
 - Even if Git knows which files to track, by default it *does not* commit
   automatically all changes.
@@ -303,7 +299,7 @@ A lab notebook for files?
 - The =-a= option tells Git to automatically add all changes in tracked files
   for commit.
 
-*** 2.2.5 Explore history
+** 3.4 Explore history
 
 - Your repository history can be explored with:
   #+BEGIN_SRC sh
@@ -327,9 +323,9 @@ A lab notebook for files?
 - *Amend* commit messages
 - Git *log* to explore project history
   
-** 2.3 Diff and revert to previous versions
+* 4 Git basics (2) - Commit hashes and revert to previous versions
 
-*** 2.3.1 Write some recipe instructions
+** 4.1 Write some recipe instructions
 
 - Add some instructions about to make the pancake dough
 
@@ -344,7 +340,7 @@ A lab notebook for files?
 
 - Have a look at your history. Are your commit messages clear enough?
 
-*** 2.3.2 Diff
+** 4.2 Diff
 
 - You want to see what is the overall difference between your latest commit and
   the first commit you did.
@@ -353,7 +349,7 @@ A lab notebook for files?
   current files with =git diff=. You can also use =git diff= to compare
   commits.
 
-**** A word about commit hash
+*** A word about commit hash
 
 - Each commit is identified by a unique commit hash
   #+BEGIN_EXAMPLE
@@ -382,25 +378,25 @@ A lab notebook for files?
   git diff 9119038 d26f19a
   #+END_SRC
 
-**** Do the =diff=
+*** Do the =diff=
 
 - Use =git diff= and commit hashes to compare your first and your last commits.
 
 - What about comparing your first and your second commit?
 
-*** 2.3.3 Revert
+** 4.3 Revert
 
 - Add some ingredients so that your pancake becomes a Hawaiian pancake:
   #+BEGIN_SRC 
-  Pancake recipe:
+  Pancake recipe
 
   Ingredients:
-  - 500g of flour
-  - 5 (or 4) eggs
-  - 1 liter of milk
-  - salt, oil
-  - pineapple juice
-  - coconut syrup
+   500g of flour
+   5 (or 4) eggs
+   1 liter of milk
+   salt, oil
+   pineapple juice
+   coconut syrup
   #+END_SRC
 
 - Commit your changes.
@@ -417,13 +413,13 @@ A lab notebook for files?
 
 - Commit your changes.
 
-*** What we learnt about in this section
+** What we learnt about in this section
 
 - Use *diff* to compare files
 - Commits are identified by unique *hashes*
 - How to *revert* to a previous version with =git checkout=
   
-** 2.4 Branching and merging
+* 5 Intermediate (1) - Branching and merging
 
 - You think about adding a Christmas section to your book. You want to start
   working in this direction, but you are not totally sure you will end up using
@@ -444,24 +440,24 @@ A lab notebook for files?
 
 - Modify the recipe in =pancakes=:
   #+BEGIN_SRC 
-  Pancake recipe:
+  Pancake recipe
 
   Ingredients:
-  - 500g of flour
-  - 5 (or 4) eggs
-  - 0.5 liter of milk
-  - 0.5 liter of Glögi
-  - salt, oil
-  - cinnamon
+   500g of flour
+   5 (or 4) eggs
+   0.5 liter of milk
+   0.5 liter of Glögi
+   salt, oil
+   cinnamon
   #+END_SRC
 
 - Create a new recipe in a file called =snails=:
   #+BEGIN_SRC 
-  Snails recipe:
+  Snails recipe
 
   Ingredients:
-  - Burgundy snails
-  - lots of garlic butter
+   Burgundy snails
+   lots of garlic butter
   #+END_SRC
 
 - Commit both the changes to =pancakes= and the new file =snails=
@@ -483,16 +479,14 @@ A lab notebook for files?
 
 - Have a look at your repository history.
 
-* 3. Setting up and using remote repositories
-
-** 3.1 Cloning a remote repository
+* 6 Intermediate (2) - Cloning a remote repository
 
 - Repositories can easily be shared between collaborators, published online and
   copied locally from a remote location.
 
 - Copying a remote repository to your computer is called *cloning*.
 
-*** 3.1.1 Find an interesting repository to clone on GitHub
+** 6.1 Find an interesting repository to clone on GitHub
 
 - Go to [[https://github.com/][GitHub]], a platform to host repositories.
 
@@ -508,7 +502,7 @@ A lab notebook for files?
   # Replace the repository address appropriately
   #+END_SRC
 
-*** 3.1.2 Explore the repository locally
+** 6.2 Explore the repository locally
 
 - Now cd into the cloned repository
 
@@ -531,14 +525,14 @@ A lab notebook for files?
 
 ([[https://xkcd.com/1296/][original link]])
 
-** 3.2 Setting up a remote repository
+* 7. Advanced - Setting up a remote repository
 
 - You are pretty proud of your python code to analyse coding sequences and want
   to do good to the world: let's share it publicly!
 
 - Let's use GitHub to host a public repository of your code.
 
-*** 3.2.1 Create a GitHub account
+** 7.1 Create a GitHub account
 
 - We are going to create a GitHub repository for you (you can use a pseudonyme
   and delete the account afterwards if you don't want to give GitHub your real
@@ -559,7 +553,7 @@ the next session with him/her.
 
 - Create a new repository for your small Python project.
 
-*** 3.2.2 Adding a remote to your local repository
+** 7.2 Adding a remote to your local repository
 
 - Go back to your project directory where you wrote the Python code.
 
@@ -585,7 +579,7 @@ the next session with him/her.
 
 - Have a look to your repository on GitHub now. How does it look like?
 
-*** 3.2.3 Pushing local changes to a remote server
+** 7.3 Pushing local changes to a remote server
 
 - Create a README file in your project folder, fill it with interesting
   information and commit it to your repository.
@@ -598,7 +592,7 @@ the next session with him/her.
 - Have a look to the remote repository on GitHub (you might need to refresh the
   browser page)
 
-** 3.3 Collaborative work
+* 8. Advanced - Collaborative work
 
 TODO merge conflicts
 

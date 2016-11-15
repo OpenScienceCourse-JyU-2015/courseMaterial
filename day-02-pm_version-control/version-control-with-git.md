@@ -97,25 +97,20 @@ A lab notebook for files?
     -   [GitHub](https://github.com) (free for public repositories but
         not for private repositories)
 
-2. Basic Git usage
-==================
+2 Set up your project folder
+============================
 
 -   We want to write a book of recipes. We decide to create a folder to
     hold all our recipes, with one file for each recipe.
 
 -   We will use Git to track the changes in our recipe folder.
 
-2.1 Set up your project folder
-------------------------------
+-   You will first learn how to use Git with the command line to
+    understand how it works. Later, you can use one of the numerous Git
+    graphical user interfaces to use Git with your projects.
 
--   For now all the work will be done on the remote server we used
-    yesterday for the lesson about the Unix shell.
--   This means you will learn how to use Git with the command line. This
-    will help you to understand better how Git works.
--   Later on, you can use one of the numerous Git graphical user
-    interfaces to use Git with your projects.
-
-### Connect to the server
+2.1 Connect to the server
+-------------------------
 
 -   Log into the remote server using `ssh` (GNU/Linux or Mac) or
     `putty` (Windows)
@@ -130,24 +125,23 @@ A lab notebook for files?
 
 -   Password: on the whiteboard!
 
-### Create your project folder
+2.2 Create your project folder
+------------------------------
 
--   Create a new folder for your reports
+-   Create a new folder for your recipes
 
     ``` {.bash}
-    mkdir reports
+    mkdir recipes
     # Go into the new folder
-    cd reports
+    cd recipes
     ```
 
 -   Create an empty file for this week report:
 
         touch pancakes
 
-2.2 Tracking files and committing changes
------------------------------------------
-
-### 2.2.1 Write some text
+2.3 Write some text
+-------------------
 
 -   Edit your file with `nano`. Nano is a basic text editor which can be
     used from the command line.
@@ -161,17 +155,21 @@ A lab notebook for files?
 -   Fill in some text for the three first days of the week:
 
     ``` {.example}
-    Pancake recipe:
+    Pancake recipe
 
     Ingredients:
-    - 500g of flour
-    - 5 eggs
-    - 1 liter of milk
+     500g of flour
+     5 eggs
+     1 liter of milk
     ```
 
 -   Save your edited file and go back to the command line prompt.
 
-### 2.2.2 Initialize a Git repository
+3 Git basics (1) - Tracking files and committing changes
+========================================================
+
+3.1 Initialize a Git repository
+-------------------------------
 
 -   Now we are ready to track our report file. First we need to initiate
     a Git repository in our project folder:
@@ -189,29 +187,29 @@ A lab notebook for files?
 -   Each time you want to use version control for a new project, you
     have first to create an empty repository with `git init`.
 
-1.  Where does Git store its files?
+### Where does Git store its files?
 
-    -   Git stores all its information in the `.git` folder.
+-   Git stores all its information in the `.git` folder.
 
-    -   Folders and files whose name starts with a dot are hidden from
-        the `ls` output by default, but you can force their display
-        with:
+-   Folders and files whose name starts with a dot are hidden from the
+    `ls` output by default, but you can force their display with:
 
-        ``` {.bash}
-        ls -a
-        ```
+    ``` {.bash}
+    ls -a
+    ```
 
-    -   You can combine `ls` options:
+-   You can combine `ls` options:
 
-        ``` {.bash}
-        ls -al
-        ```
+    ``` {.bash}
+    ls -al
+    ```
 
-    -   In `ls -al` output:
-        -   the folder `.` is the current folder
-        -   the folder `..` is the parent folder
+-   In `ls -al` output:
+    -   the folder `.` is the current folder
+    -   the folder `..` is the parent folder
 
-### 2.2.3 Track and commit your changes
+3.2 Check current status, track and commit your changes
+-------------------------------------------------------
 
 -   We can always ask Git about the status of our current repository
     with `git
@@ -246,48 +244,49 @@ A lab notebook for files?
 
 -   What happened?
 
-1.  Tell Git who you are
+### Tell Git who you are
 
-    -   One of the key feature of a version control system is to assign
-        each change to someone. This ensures that all modifications can
-        be traced to their original author.
+-   One of the key feature of a version control system is to assign each
+    change to someone. This ensures that all modifications can be traced
+    to their original author.
 
-    -   The first time you use Git, you have to configure it with your
-        name and your email address. You have to do this only once.
+-   The first time you use Git, you have to configure it with your name
+    and your email address. You have to do this only once.
 
-    -   Configure Git with:
+-   Configure Git with:
 
-        ``` {.bash}
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
-        ```
+    ``` {.bash}
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+    ```
 
-2.  Back to the commit
+### Back to the commit
 
-    -   Try again to commit:
+-   Try again to commit:
 
-        ``` {.bash}
-        # Specify a commit message after the -m option
-        git commit -m "Create a recipe for pancakes"
-        ```
+    ``` {.bash}
+    # Specify a commit message after the -m option
+    git commit -m "Create a recipe for pancakes"
+    ```
 
-    -   It is **very important** to use **concise and meaningful commit
-        messages**!
+-   It is **very important** to use **concise and meaningful commit
+    messages**!
 
-    -   What is the current status of the repository?
+-   What is the current status of the repository?
 
-### 2.2.4 Commit more changes
+3.3 Commit more changes
+-----------------------
 
 -   Your list of ingredients is missing something. Update it:
 
     ``` {.example}
-    Pancake recipe:
+    Pancake recipe
 
     Ingredients:
-    - 500g of flour
-    - 5 (or 4) eggs
-    - 1 liter of milk
-    - salt, oil
+     500g of flour
+     5 (or 4) eggs
+     1 liter of milk
+     salt, oil
     ```
 
 -   What is the status of the repository now?
@@ -313,36 +312,37 @@ A lab notebook for files?
 
 -   What happened?
 
-1.  The staging area
+### The staging area
 
-    -   Even if Git knows which files to track, by default it **does
-        not** commit automatically all changes.
+-   Even if Git knows which files to track, by default it **does not**
+    commit automatically all changes.
 
-    -   You have first to **stage** the changes by using `git add`
-        again, and **then** to commit them with `git commit`:
+-   You have first to **stage** the changes by using `git add` again,
+    and **then** to commit them with `git commit`:
 
-        ``` {.bash}
-        git add pancakes
-        git commit -m "Add missing ingredients for pancakes"
-        ```
+    ``` {.bash}
+    git add pancakes
+    git commit -m "Add missing ingredients for pancakes"
+    ```
 
-    -   This might look pretty inefficient, but it gives you more
-        control and flexibility over what you want to commit exactly
-        when you have several files which have been changed.
+-   This might look pretty inefficient, but it gives you more control
+    and flexibility over what you want to commit exactly when you have
+    several files which have been changed.
 
-    -   Often, however, you want to commit all the changes in the
-        tracked files in one go. In this case, you can use the shortcut:
+-   Often, however, you want to commit all the changes in the tracked
+    files in one go. In this case, you can use the shortcut:
 
-        ``` {.bash}
-        git commit -a -m "Add missing ingredients for pancakes"
-        # which is equivalent to
-        git commit -am "Add missing ingredients for pancakes"
-        ```
+    ``` {.bash}
+    git commit -a -m "Add missing ingredients for pancakes"
+    # which is equivalent to
+    git commit -am "Add missing ingredients for pancakes"
+    ```
 
-    -   The `-a` option tells Git to automatically add all changes in
-        tracked files for commit.
+-   The `-a` option tells Git to automatically add all changes in
+    tracked files for commit.
 
-### 2.2.5 Explore history
+3.4 Explore history
+-------------------
 
 -   Your repository history can be explored with:
 
@@ -369,10 +369,11 @@ A lab notebook for files?
 -   **Amend** commit messages
 -   Git **log** to explore project history
 
-2.3 Diff and revert to previous versions
-----------------------------------------
+4 Git basics (2) - Commit hashes and revert to previous versions
+================================================================
 
-### 2.3.1 Write some recipe instructions
+4.1 Write some recipe instructions
+----------------------------------
 
 -   Add some instructions about to make the pancake dough
 
@@ -388,7 +389,8 @@ A lab notebook for files?
 
 -   Have a look at your history. Are your commit messages clear enough?
 
-### 2.3.2 Diff
+4.2 Diff
+--------
 
 -   You want to see what is the overall difference between your latest
     commit and the first commit you did.
@@ -397,60 +399,61 @@ A lab notebook for files?
     and your current files with `git diff`. You can also use `git diff`
     to compare commits.
 
-1.  A word about commit hash
+### A word about commit hash
 
-    -   Each commit is identified by a unique commit hash
+-   Each commit is identified by a unique commit hash
 
-        ``` {.example}
-        commit d26f19ab15bf2baa9b2eaa42946689a4289546b0
-        Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
-        Date:   Thu Nov 10 14:11:21 2016 +0200
+    ``` {.example}
+    commit d26f19ab15bf2baa9b2eaa42946689a4289546b0
+    Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
+    Date:   Thu Nov 10 14:11:21 2016 +0200
 
-            Basics for committing
+        Basics for committing
 
-        commit 9119038c82837229fccb44e9e309d0c307b4a6c3
-        Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
-        Date:   Thu Nov 10 14:11:01 2016 +0200
+    commit 9119038c82837229fccb44e9e309d0c307b4a6c3
+    Author: Matthieu Bruneaux <matthieu.bruneaux@gmail.com>
+    Date:   Thu Nov 10 14:11:01 2016 +0200
 
-            Add note about no copy-paste
+        Add note about no copy-paste
 
-        ```
+    ```
 
-    -   These commit hashes can be used to specify which commits to
-        compare with `git diff`:
+-   These commit hashes can be used to specify which commits to compare
+    with `git diff`:
 
-        ``` {.bash}
-        git diff 9119038c82837229fccb44e9e309d0c307b4a6c3 d26f19ab15bf2baa9b2eaa42946689a4289546b0
-        ```
+    ``` {.bash}
+    git diff 9119038c82837229fccb44e9e309d0c307b4a6c3 d26f19ab15bf2baa9b2eaa42946689a4289546b0
+    ```
 
-    -   However, you don't need to always type the full hash. Often, the
-        first characters are enough:
+-   However, you don't need to always type the full hash. Often, the
+    first characters are enough:
 
-        ``` {.bash}
-        git diff 9119038 d26f19a
-        ```
+    ``` {.bash}
+    git diff 9119038 d26f19a
+    ```
 
-2.  Do the `diff`
+### Do the `diff`
 
-    -   Use `git diff` and commit hashes to compare your first and your
-        last commits.
+-   Use `git diff` and commit hashes to compare your first and your
+    last commits.
 
-    -   What about comparing your first and your second commit?
+-   What about comparing your first and your second commit?
 
-### 2.3.3 Revert
+4.3 Revert
+----------
 
 -   Add some ingredients so that your pancake becomes a Hawaiian
     pancake:
 
-        Pancake recipe:
+        Pancake recipe
 
         Ingredients:
-        - 500g of flour
-        - 5 (or 4) eggs
-        - 1 liter of milk
-        - salt, oil
-        - pineapple juice
-        - coconut syrup
+         500g of flour
+         5 (or 4) eggs
+         1 liter of milk
+         salt, oil
+         pineapple juice
+         coconut syrup
 
 -   Commit your changes.
 
@@ -465,14 +468,15 @@ A lab notebook for files?
 
 -   Commit your changes.
 
-### What we learnt about in this section
+What we learnt about in this section
+------------------------------------
 
 -   Use **diff** to compare files
 -   Commits are identified by unique **hashes**
 -   How to **revert** to a previous version with `git checkout`
 
-2.4 Branching and merging
--------------------------
+5 Intermediate (1) - Branching and merging
+==========================================
 
 -   You think about adding a Christmas section to your book. You want to
     start working in this direction, but you are not totally sure you
@@ -493,23 +497,23 @@ A lab notebook for files?
 
 -   Modify the recipe in `pancakes`:
 
-        Pancake recipe:
+        Pancake recipe
 
         Ingredients:
-        - 500g of flour
-        - 5 (or 4) eggs
-        - 0.5 liter of milk
-        - 0.5 liter of Glögi
-        - salt, oil
-        - cinnamon
+         500g of flour
+         5 (or 4) eggs
+         0.5 liter of milk
+         0.5 liter of Glögi
+         salt, oil
+         cinnamon
 
 -   Create a new recipe in a file called `snails`:
 
-        Snails recipe:
+        Snails recipe
 
         Ingredients:
-        - Burgundy snails
-        - lots of garlic butter
+         Burgundy snails
+         lots of garlic butter
 
 -   Commit both the changes to `pancakes` and the new file `snails`
 
@@ -528,18 +532,16 @@ A lab notebook for files?
 
 -   Have a look at your repository history.
 
-3. Setting up and using remote repositories
-===========================================
-
-3.1 Cloning a remote repository
--------------------------------
+6 Intermediate (2) - Cloning a remote repository
+================================================
 
 -   Repositories can easily be shared between collaborators, published
     online and copied locally from a remote location.
 
 -   Copying a remote repository to your computer is called **cloning**.
 
-### 3.1.1 Find an interesting repository to clone on GitHub
+6.1 Find an interesting repository to clone on GitHub
+-----------------------------------------------------
 
 -   Go to [GitHub](https://github.com/), a platform to
     host repositories.
@@ -558,7 +560,8 @@ A lab notebook for files?
     # Replace the repository address appropriately
     ```
 
-### 3.1.2 Explore the repository locally
+6.2 Explore the repository locally
+----------------------------------
 
 -   Now cd into the cloned repository
 
@@ -582,15 +585,16 @@ A lab notebook for files?
 
 ([original link](https://xkcd.com/1296/))
 
-3.2 Setting up a remote repository
-----------------------------------
+7. Advanced - Setting up a remote repository
+============================================
 
 -   You are pretty proud of your python code to analyse coding sequences
     and want to do good to the world: let's share it publicly!
 
 -   Let's use GitHub to host a public repository of your code.
 
-### 3.2.1 Create a GitHub account
+7.1 Create a GitHub account
+---------------------------
 
 -   We are going to create a GitHub repository for you (you can use a
     pseudonyme and delete the account afterwards if you don't want to
@@ -611,7 +615,8 @@ who has a GitHub account to follow the next session with him/her.
 
 -   Create a new repository for your small Python project.
 
-### 3.2.2 Adding a remote to your local repository
+7.2 Adding a remote to your local repository
+--------------------------------------------
 
 -   Go back to your project directory where you wrote the Python code.
 
@@ -643,7 +648,8 @@ who has a GitHub account to follow the next session with him/her.
         working with a single, master branch called `master` by default
 -   Have a look to your repository on GitHub now. How does it look like?
 
-### 3.2.3 Pushing local changes to a remote server
+7.3 Pushing local changes to a remote server
+--------------------------------------------
 
 -   Create a README file in your project folder, fill it with
     interesting information and commit it to your repository.
@@ -657,8 +663,8 @@ who has a GitHub account to follow the next session with him/her.
 -   Have a look to the remote repository on GitHub (you might need to
     refresh the browser page)
 
-3.3 Collaborative work
-----------------------
+8. Advanced - Collaborative work
+================================
 
 TODO merge conflicts
 
