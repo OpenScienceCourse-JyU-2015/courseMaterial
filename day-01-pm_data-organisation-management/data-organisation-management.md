@@ -420,14 +420,16 @@ Other available functions are `AVG`, `MIN` and `MAX`
 > Write a query that returns: total weight, average weight, and the min and max weights for all animals caught over the duration of the survey. Can you modify it so that it outputs these values only for weights between 5 and 10?
 
 We can also use aggregating functions in conjunction with `GROUP BY` to get group- level data:
+```sql
 SELECT species_id, COUNT(*)
 FROM surveys
 GROUP BY species_id;
+```
 
-> Write queries that return:
+> Write queries that return:  
 > 1. How many individuals were counted in each year.  
 > a) in total  
-> b) per each species
+> b) per each species  
 > 2. Average weight of each species in each year.  
 > Can you modify the above queries combining them into one?
 
