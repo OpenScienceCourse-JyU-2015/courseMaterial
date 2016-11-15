@@ -1,10 +1,10 @@
-Title: Data organisation and management
+Title: Data organisation and management  
 Date: 2016-11-10  
 Summary: Introduction to data management with spreadsheets and databases
 
 ---
 
-# Data organisation with spreadsheets
+# 1. Data organisation with spreadsheets
 
 Lesson adapted from Data Carpentry's "Spreadsheets for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/spreadsheet-ecology-lesson/
 
@@ -27,7 +27,7 @@ You will know about:
 
 ---
 
-## Background
+## 1.1. Background
 In this lesson, we're going to talk about:
 * Good data entry practices - formatting data tables in spreadsheets
 * How to avoid common formatting mistakes
@@ -45,7 +45,7 @@ Questions:
 * What kind of operations do you do in spreadsheets?
 * Which ones do you think spreadsheets are good for?
 
-## Problems with spreadsheets
+## 1.2. Problems with spreadsheets
 Spreadsheets good for data entry, but used for much else
 * Tables for publications
 * Generating statistics
@@ -60,7 +60,7 @@ Example:
 * Septin 2 (SEPT2) -> 2<sup>nd</sup> September
 * RIKEN identifiers converted to floating numbers, e.g. 2310009E13
 
-## Data entry and cleaning
+## 1.3. Data entry and cleaning
 
 Keep track of your steps!
 
@@ -90,7 +90,7 @@ Exercise:
 	* Create a new file or tab
 	* **Don't modify the original data!**
 
-## Formatting problems
+## 1.4. Formatting problems
 Multiple tables
 ![](images/2_datasheet_example.jpg)  
 * Remember: row = observation!
@@ -136,7 +136,7 @@ Inclusion of metadata in tables
 * See above
 * Save metadata as separate file in same directory
 
-## Dates as data
+## 1.5. Dates as data
 Dates usually stored in one column
 * Not a good idea due to storing and handling problems (show example in messy data spreadsheet)
 * Instead, store as separate columns: day, month, year or year, day-of-year
@@ -159,12 +159,12 @@ Best practices:
 	* How?  
 ![](images/7_excel_dates_3.jpg)
 
-## Quality assurance
+## 1.6. Quality assurance
 *Before* entering data
 * Use “Data validation” or “Validity”
 * Can also limit options that with drop-down list
 
-## Quality control
+## 1.7. Quality control
 *After* entering data
 * Save original data with formulas
 * Save new file WITHOUT formulas (moving cells can cause problems)
@@ -173,7 +173,7 @@ Best practices:
 Sorting can be used to get bad values to top of bottom of column  
 Conditional formatting
 
-## Exporting data
+## 1.8. Exporting data
 Don't export as xls/xlsx
 * Propriety format
 
@@ -188,7 +188,7 @@ A note on cross-platform interoperability
 * Can be fixed with Git (http://nicercode.github.io/blog/2013-04-30-excel-and-line-endings)
 * or a small helper application(http://dos2unix.sourceforge.net/)
 
-## Caveats of popular data and file formats
+## 1.9. Caveats of popular data and file formats
 Be careful if your data contains commas as values!
 * E.g. http://www.datacarpentry.org/spreadsheet-ecology-lesson/06-data-formats-caveats.html
 
@@ -201,7 +201,7 @@ What can you do?
 
 ---
 
-# Data management with SQL
+# 2. Data management with SQL
 
 Lesson adapted from Data Carpentry's "SQL for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/sql-ecology-lesson/
 
@@ -220,7 +220,7 @@ You will know about:
 * How to agregate data from databases
 * How to join data from databases
 
-## Introduction to SQL
+## 2.1 Background
 What we will learn:
 * Subsetting
 * Grouping subsets
@@ -229,9 +229,6 @@ What we will learn:
 
 This will be done in a **reproducible** fashion, **without** modifying the original data
 
----
-
-## Basic queries
 The data:
 * https://figshare.com/articles/Portal_Project_Teaching_Database/1314459
 * Time series for small mammal community in southern Arizona
@@ -267,9 +264,9 @@ Database management systems
 
 [Let's start](http://www.datacarpentry.org/sql-ecology-lesson/00-sql-introduction.html#relational-databases)
 
-## Basic queries
+## 2.2. Basic queries
 
-### Selecting data
+### 2.2.1. Selecting data
 
 Selecting is performed with the `SELECT` command. Selecting a single column from a table:
 ```sql
@@ -289,7 +286,7 @@ SELECT *
 FROM surveys;
 ```
 
-### Getting unique values
+### 2.2.2. Getting unique values
 
 Identifying individual unique values is performed with the `DISTINCT` command:
 ```sql
@@ -304,7 +301,7 @@ FROM surveys;
 ```
 -> We get unique pairs of values
 
-### Calculating values
+### 2.2.3. Calculating values
 
 Simple arithmetic operators and built-in functions (e.g. rounding) are easy to use:
 What happens if we specify multiple columns like this?
@@ -327,7 +324,7 @@ FROM surveys;
 
 > Write a query that returns The year, month, day, species_id and weight in mg
 
-### Filtering
+### 2.2.4. Filtering
 
 By using the `WHERE` clause we can filter our data:
 ```sql
@@ -358,7 +355,7 @@ WHERE (year >= 2000) AND (species_id IN ('DM', 'DO', 'DS'));
 
 > Write a query that returns the day, month, year, species_id, and weight (in kg) for individuals caught on Plot 1 that weigh more than 75 g
 
-### Commenting
+### 2.2.5. Commenting
 
 If you are writing more complex queries it is a good idea to add comments with two dashed lines `--`:
 ```sql
@@ -371,7 +368,7 @@ WHERE (year >= 2000)
 AND (species_id IN ('DM', 'DO', 'DS'));
 ```
 
-### Sorting
+### 2.2.6. Sorting
 
 For sorting we use the `ORDER BY` command:
 ```sql
@@ -398,7 +395,7 @@ ORDER BY genus ASC, species ASC;
 
 > Combining it all together. Using the surveys table write a query to display the three date fields, species_id, and weight in kilograms (rounded to two decimal places), for individuals captured in 1999, ordered alphabetically by the species_id.
 
-### Creating views
+### 2.2.7. Creating views
 
 Instead of writing long queries to get certain subsets of data, we can create views to quickly access our data:
 ```sql
@@ -408,9 +405,9 @@ FROM surveys
 WHERE year = 2000 AND (month > 4 AND month < 10)
 ```
 
-## Aggregation
+## 2.3. Aggregation
 
-### Group by
+### 2.3.1. Group by
 
 First, let's aggregate all of the data with the  `COUNT` and `SUM` functions:
 ```sql
@@ -434,7 +431,7 @@ GROUP BY species_id;
 > 2. Average weight of each species in each year.  
 > Can you modify the above queries combining them into one?
 
-### Filtering and aggregating
+### 2.3.2. Filtering and aggregating
 
 We previously filtered results with the `WHERE` command, in aggreations we use the `HAVING` command. Instead of using database columns the `HAVING` command uses aggregate functions:
 ```sql
@@ -462,7 +459,7 @@ HAVING occurrences > 10;
 
 > Write a query that returns, from the species table, the number of genus in each taxa, only for the taxa with more than 10 genus
 
-### Oredering aggregated results
+### 2.3.3. Ordering aggregated results
 
 It is possible to sort your data with the results of aggregate functions:
 ```sql
@@ -472,7 +469,7 @@ GROUP BY species_id
 ORDER BY COUNT(species_id);
 ```
 
-### Null values
+### 2.3.4. Null values
 
 SQL defines missing values with the special `NULL` value. Filtering these values is easy:
 ```sql
@@ -527,9 +524,9 @@ FROM summer_2000
 WHERE sex != 'M' OR sex IS NULL
 ```
 
-## Joins and aliases
+## 2.4. Joins and aliases
 
-### Joins
+### 2.4.1. Joins
 
 Now we are getting to the heart of SQL, joining tables! So far we have been pulling columns from individual tables, but how do we get more information? Use the `JOIN` command:
 ```sql
@@ -572,7 +569,7 @@ GROUP BY plots.plot_type;
 
 > Write a query that finds the average weight of each rodent species (i.e., only include species with Rodent in the taxa field)
 
-### Functions
+### 2.4.2. Functions
 
 We have previously used functions such as `SUM`, `COUNT` and `AVG` on entire columns. In addition, there are functions that operate on indivual cells. For example `IFNULL` and `NULLIF` can be used to specify values in place of  `NULL`, or to set `NULL` values for certain values. For example, to specify `U` instead of `NULL` sex values:
 ```sql
@@ -604,7 +601,7 @@ There are plenty more functions available here: https://sqlite.org/lang_corefunc
 
 > Using the documentation from the link above, write a query that returns genus names, sorted from longest genus name down to shortest
 
-### Aliases
+### 2.4.3. Aliases
 
 In order to keep things concise and clear we can use aliases to rename tables:
 ```sql
