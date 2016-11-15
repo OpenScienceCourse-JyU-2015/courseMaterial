@@ -8,6 +8,8 @@ Summary: Introduction to data management with spreadsheets and databases
 
 Lesson adapted from Data Carpentry's "Spreadsheets for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/spreadsheet-ecology-lesson/
 
+Etherpad notes available at: https://etherpad.wikimedia.org/p/jyybio_day-01-pm_data-organisation
+
 ---
 
 ## Before the lesson
@@ -22,6 +24,8 @@ You will know about:
 * Good data entry practices
 * Dates in spreadsheets
 * Exporting data from spreadsheets
+
+---
 
 ## Background
 In this lesson, we're going to talk about:
@@ -201,6 +205,8 @@ What can you do?
 
 Lesson adapted from Data Carpentry's "SQL for ecology"- lesson ([CC-BY](https://creativecommons.org/licenses/by/2.0/) license): http://www.datacarpentry.org/sql-ecology-lesson/
 
+---
+
 ## Before the lesson
 
 Prerequisites:
@@ -222,6 +228,8 @@ What we will learn:
 * Combining data
 
 This will be done in a **reproducible** fashion, **without** modifying the original data
+
+---
 
 ## Basic queries
 The data:
@@ -259,14 +267,272 @@ Database management systems
 
 [Let's start](http://www.datacarpentry.org/sql-ecology-lesson/00-sql-introduction.html#relational-databases)
 
-[Basic queries](http://www.datacarpentry.org/sql-ecology-lesson/01-sql-basic-queries.html)
+## Basic queries
+
+### Selecting data
+
+Selecting is performed with the `SELECT` command. Selecting a single column from a table:
+```sql
+SELECT year
+FROM surveys;
+```
+
+Selecting multiple columns:
+```sql
+SELECT year, month, day
+FROM surveys;
+```
+
+How about all columns in a table?
+```sql
+SELECT *
+FROM surveys;
+```
+
+### Getting unique values
+
+Identifying individual unique values is performed with the `DISTINCT` command:
+```sql
+SELECT DISTINCT species_id
+FROM surveys;
+```
+
+What happens if we specify multiple columns like this?
+```sql
+SELECT DISTINCT year, species_id
+FROM surveys;
+```
+-> We get unique pairs of values
+
+### Calculating values
+
+Simple arithmetic operators and built-in functions (e.g. rounding) are easy to use:
+What happens if we specify multiple columns like this?
+```sql
+SELECT year, month, day, weight/1000.0
+FROM surveys;
+```
+
+Why did we use a floating value for the division? What happens if we just divide by 1000?
+```sql
+SELECT year, month, day, weight/1000
+FROM surveys;
+```
+
+Rounding:
+```sql
+SELECT plot_id, species_id, sex, weight, ROUND(weight / 1000.0, 2)
+FROM surveys;
+```
+
+> Write a query that returns The year, month, day, species_id and weight in mg
+
+### Filtering
+
+By using the `WHERE` clause we can filter our data:
+```sql
+SELECT *
+FROM surveys
+WHERE species_id='DM';
+```
+
+Multiple clauses can be used with logical operators like `AND`:
+```sql
+SELECT *
+FROM surveys
+WHERE (year >= 2000) AND (species_id = 'DM');
+```
+
+`OR`
+```sql
+SELECT *
+FROM surveys
+WHERE (species_id = 'DM') OR (species_id = 'DO') OR (species_id = 'DS');
+```
+If you have many `OR` clauses yuo can use `IN`:
+```sql
+SELECT *
+FROM surveys
+WHERE (year >= 2000) AND (species_id IN ('DM', 'DO', 'DS'));
+```
+
+> Write a query that returns the day, month, year, species_id, and weight (in kg) for individuals caught on Plot 1 that weigh more than 75 g
+
+### Commenting
+
+If you are writing more complex queries it is a good idea to add comments with two dashed lines `--`:
+```sql
+-- Select all columns from the srveys table
+SELECT *
+FROM surveys
+-- Get only records from the year 2000
+WHERE (year >= 2000) 
+-- And those which belong have the species_id DM, DO or DS_
+AND (species_id IN ('DM', 'DO', 'DS'));
+```
+
+### Sorting
+
+For sorting we use the `ORDER BY` command:
+```sql
+SELECT *
+FROM species
+ORDER BY taxa ASC;
+```
+
+The default order is ascending (`ASC`), use `DESC` to get a descending order:
+```sql
+SELECT *
+FROM species
+ORDER BY taxa DESC;
+```
+
+By using several fields for ordering we can order e.g. first by genus, then by species (order read from left to right):
+```sql
+SELECT *
+FROM species
+ORDER BY genus ASC, species ASC;
+```
+
+> Write a query that returns year, species_id, and weight in kg from the surveys table, sorted with the largest weights at the top
+
+> Combining it all together. Using the surveys table write a query to display the three date fields, species_id, and weight in kilograms (rounded to two decimal places), for individuals captured in 1999, ordered alphabetically by the species_id.
+
+### Creating views
+
+Instead of writing long queries to get certain subsets of data, we can create views to quickly access our data:
+```sql
+CREATE VIEW summer_2000 AS
+SELECT *
+FROM surveys
+WHERE year = 2000 AND (month > 4 AND month < 10)
+```
 
 ## Aggregation
 
-[Aggregating data](http://www.datacarpentry.org/sql-ecology-lesson/02-sql-aggregation.html)
+### Group by
+
+First, let's aggregate all of the data with the  `COUNT` and `SUM` functions:
+```sql
+SELECT COUNT(*), SUM(weight)
+FROM surveys;
+```
+
+Other available functions are `AVG`, `MIN` and `MAX`
+
+> Write a query that returns: total weight, average weight, and the min and max weights for all animals caught over the duration of the survey. Can you modify it so that it outputs these values only for weights between 5 and 10?
+
+We can also use aggregating functions in conjunction with `GROUP BY` to get group- level data:
+SELECT species_id, COUNT(*)
+FROM surveys
+GROUP BY species_id;
+
+> Write queries that return:
+> 1. How many individuals were counted in each year.  
+> a) in total  
+> b) per each species
+> 2. Average weight of each species in each year.  
+> Can you modify the above queries combining them into one?
+
+### Filtering and aggregating
+
+We previously filtered results with the `WHERE` command, in aggreations we use the `HAVING` command. Instead of using database columns the `HAVING` command uses aggregate functions:
+```sql
+SELECT species_id, COUNT(species_id)
+FROM surveys
+GROUP BY species_id
+HAVING COUNT(species_id) > 10;
+```
+
+To make our queries easier to read we can use the `AS` command to rename the results of aggregate functions. Compare:
+```sql
+SELECT species_id, COUNT(species_id)
+FROM surveys
+GROUP BY species_id
+HAVING occurrences > 10;
+```
+
+with:
+```sql
+SELECT species_id, COUNT(species_id) AS occurrences
+FROM surveys
+GROUP BY species_id
+HAVING occurrences > 10;
+```
+
+> Write a query that returns, from the species table, the number of genus in each taxa, only for the taxa with more than 10 genus
+
+### Oredering aggregated results
+
+It is possible to sort your data with the results of aggregate functions:
+```sql
+SELECT species_id, COUNT(*)
+FROM surveys
+GROUP BY species_id
+ORDER BY COUNT(species_id);
+```
+
+### Null values
+
+SQL defines missing values with the special `NULL` value. Filtering these values is easy:
+```sql
+SELECT *
+FROM summer_2000
+WHERE species_id IS NULL
+```
+
+or:
+```sql
+SELECT *
+FROM summer_2000
+WHERE species_id IS NOT NULL
+```
+
+Beware of NULL values. In-built functions do not take NULL values into account but if you might get tripped up if you mare not careful. Compare:
+```sql
+SELECT COUNT(*)
+FROM summer_2000
+WHERE species_id == 'PE'
+```
+
+with:
+```sql
+SELECT COUNT(weight)
+FROM summer_2000
+WHERE species_id == 'PE'
+```
+
+Also, be careful with negative queries. For example the sum of non-females and non-males does not add up correctly
+```sql
+SELECT COUNT(*) 
+FROM summer_2000
+WHERE sex != 'F'
+```
+
+```sql
+SELECT COUNT(*) 
+FROM summer_2000
+WHERE sex != 'M'
+```
+
+```sql
+SELECT COUNT(*) 
+FROM summer_2000
+```
+
+Why? Null values were not counted, so what we have is a count of individuals with known sex, not a count of ALL individuals. To fix this we should:
+```sql
+SELECT COUNT(*) 
+FROM summer_2000
+WHERE sex != 'M' OR sex IS NULL
+```
 
 ## Joins and aliases
 
-[Joins and aliases](http://www.datacarpentry.org/sql-ecology-lesson/03-sql-joins-aliases.html)
+### Joins
+
+### Functions
+
+### Aliases
 
 ---
