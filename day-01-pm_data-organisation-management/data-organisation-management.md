@@ -531,8 +531,94 @@ WHERE sex != 'M' OR sex IS NULL
 
 ### Joins
 
+Now we are getting to the heart of SQL, joining tables! So far we have been pulling columns from individual tables, but how do we get more information? Use the `JOIN` command:
+```sql
+SELECT *
+FROM surveys
+JOIN species
+ON surveys.species_id = species.species_id;
+```
+
+What we did above was join the `surveys` and `species` tables using the `species_id` column
+
+Since we have a common column we could have used the `USING` command:
+```sql
+SELECT *
+FROM surveys
+JOIN species
+USING(species_id);
+```
+
+Note! Now we have only one `species_id` column_
+
+Unless we want all of the columns from both tables we can select individual columns, but since we now have several tables we have to more specific about the location of the columns:
+```sql
+SELECT surveys.year, surveys.month, surveys.day, species.genus, species.species
+FROM surveys
+JOIN species
+ON surveys.species_id = species.species_id;
+```
+> Write a query that returns the genus, the species, and the weight of every individual captured at the site
+
+Naturally, we can incorporate sorting, filtering and aggregating into joins:
+```sql
+SELECT plots.plot_type, AVG(surveys.weight)
+FROM surveys
+JOIN plots
+ON surveys.plot_id = plots.plot_id
+GROUP BY plots.plot_type;
+```
+> Write a query that returns the number of genus of the animals caught in each plot in descending order
+
+> Write a query that finds the average weight of each rodent species (i.e., only include species with Rodent in the taxa field)
+
 ### Functions
+
+We have previously used functions such as `SUM`, `COUNT` and `AVG` on entire columns. In addition, there are functions that operate on indivual cells. For example `IFNULL` and `NULLIF` can be used to specify values in place of  `NULL`, or to set `NULL` values for certain values. For example, to specify `U` instead of `NULL` sex values:
+```sql
+SELECT species_id, sex, IFNULL(sex, 'U') AS non_null_sex
+FROM surveys;
+```
+
+> Write a query that returns 30 instead of NULL for values in the hindfoot_length column
+
+> Write a query that calculates the average hind-foot length of each species, assuming that unknown lengths are 30 (as above)
+
+`IFNULL` is especially useful in joins since `NULL` values are ignored by default! By specifying a valid value we can include these rows:
+```sql
+SELECT surveys.year, surveys.month, surveys.day, species.genus, species.species
+FROM surveys
+JOIN species
+ON surveys.species_id = IFNULL(species.species_id, 'AB');
+```
+
+> Write a query that returns the number of genus of the animals caught in each plot, using IFNULL to assume that unknown species are all of the genus “Rodent”
+
+`NULLIF` performs the opposite of `IFNULL`. It works by setting the value of a cell to `NULL` if a condition is met, e.g.:
+```sql
+SELECT species_id, plot_id, NULLIF(plot_id, 7) AS partial_plot_id
+FROM surveys;
+```
+
+There are plenty more functions available here: https://sqlite.org/lang_corefunc.html
+
+> Using the documentation from the link above, write a query that returns genus names, sorted from longest genus name down to shortest
 
 ### Aliases
 
+In order to keep things concise and clear we can use aliases to rename tables:
+```sql
+SELECT surv.year, surv.month, surv.day, sp.genus, sp.species
+FROM surveys AS surv
+JOIN species AS sp
+ON surv.species_id = sp.species_id;
+```
+
+...and columns
+```sql
+SELECT surv.year AS yr, surv.month AS mo, surv.day AS day, sp.genus AS gen, sp.species AS sp
+FROM surveys AS surv
+JOIN species AS sp
+ON surv.species_id = sp.species_id;
+```
 ---
