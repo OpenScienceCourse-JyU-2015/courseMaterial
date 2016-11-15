@@ -77,6 +77,8 @@ Meet the Taito cluster (`taito.csc.fi`)
 Meet bio109-113 (130.234.109.113)
 ---------------------------------
 
+![](images/workstation.png)
+
 -   Today, we are going to connect to a remote workstation on the other
     side of the lake: `bio109-113`.
 -   Runs a GNU/Linux system
