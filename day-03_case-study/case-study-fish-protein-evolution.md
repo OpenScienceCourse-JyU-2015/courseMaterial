@@ -2,7 +2,6 @@ Before the course
 -----------------
 
 Prerequisites:
-
 -   understanding what is **tidy data** (and what is not)
 -   basic **SQL** skills
 -   **version control** skills with Git
@@ -16,7 +15,6 @@ during the previous two days of the bootcamp through a case study
 example.
 
 During this session you will practice:
-
 -   **cloning** a remote repository
 -   being **critical** of dataset formats
 -   writing **Python functions**
@@ -27,7 +25,6 @@ However, some more advanced topics will also be introduced during the
 processing of the course data.
 
 After completing this course you will know:
-
 -   how to load data from a database using **Pandas**
 -   how to make plots using the **matplotlib** package
 
@@ -46,7 +43,7 @@ Once upon a time...
     since different environments might exert different selection
     pressures on the cell energy machinery.
 
-    *images/yellowgin-tuna\_molly-edmonds\_worldwildlife\_org.jpg*
+    ![](images/yellowgin-tuna_molly-edmonds_worldwildlife_org.jpg)
 
     (image by Molly Edmonds, taken from
     [worldwildlife.org](http://www.worldwildlife.org/stories/tracking-tuna-in-the-coral-triangle))
@@ -71,11 +68,11 @@ What you must do
 ----------------
 
 -   Your task is to **clone locally** this repository and to use it as a
-    **starting point for your own work\***
+    **starting point for your own work**
 
 -   The files you will be using to start with are:
-    -   **fishbase~data~.sqlite**
-    -   **aa~properties~.sqlite**
+    -   `fishbase_data.sqlite`
+    -   `aa_properties.sqlite`
 -   Your mission:
     -   **Load** and **explore** the data from the two provided SQLite
         databases
@@ -93,14 +90,16 @@ What you must do
 
 -   The repository which will be used for this session is:
     -   <https://github.com/OpenScienceCourse-JyU-2015/day-03-case-study>
--   You must clone locally this repository to your own computer. At this
-    stage, you should be able to do it by yourself (but call the
-    teachers if you have any trouble).
+-   You must clone locally this repository to your own computer. There
+    are two possible ways to do it:
+    -   Using the command line (`Git bash` on Windows)
+    -   Or using the graphical user interface (`Git GUI` on Windows)
 
--   All students who have a GitHub account will now be added as
-    **owner** of the repository. This gives each student the
-    administrative rights needed to push their modifications to
-    the repository.
+    (live demonstration of Git GUI for Windows by the teacher)
+
+-   All students who have a GitHub account will be added as **owners**
+    of the repository. This gives each student the administrative rights
+    needed to push their modifications to the repository.
 
 3. Load and explore the data from the SQLite databases
 ======================================================
@@ -125,14 +124,72 @@ What you must do
 5. By groups: calculate protein biochemical properties
 ======================================================
 
--   Each group (pair) chooses one biochemical property they are
-    interested in.
+Amino acid properties
+---------------------
 
--   Write some Python code to calculate, for a protein sequence given as
-    a string, the average value of this biochemical property.
+-   Use the Firefox plugin **SQLite manager** to open the database
+    `aa_properties.sqlite`.
 
--   Apply this function to the tidy dataset to calculate this property
-    for all proteins, for all species. Is it working properly?
+-   The database contains 8 tables with some indices about amino
+    acid properties. The tables are:
+    -   BHAR880101: Average flexibility indices
+        (Bhaskaran-Ponnuswamy, 1988)
+    -   DESM900102: Average membrane preference: AMP07 (Degli Esposti et
+        al., 1990)
+    -   GRAR740102: Polarity (Grantham, 1974)
+    -   JURD980101: Modified Kyte-Doolittle hydrophobicity scale
+        (Juretic et al., 1998)
+    -   KLEP840101: Net charge (Klein et al., 1984)
+    -   KRIW790103: Side chain volume (Krigbaum-Komoriya, 1979)
+    -   PUNT030102: Knowledge-based membrane-propensity scale from
+        3D~Helix~ in MPtopo databases (Punta-Maritan, 2003)
+    -   RADA880107: Energy transfer from out to in(95%buried)
+        (Radzicka-Wolfenden, 1988)
+-   We can use each index to calculate some very rough average
+    biochemical properties for each protein.
+
+Your task
+---------
+
+-   You will work by groups of two or three students. Each group will
+    choose a biochemical property of interest among the 8 available.
+
+-   The teacher will demonstrate in a live coding session how to write a
+    function that:
+    -   takes a protein sequence as an input
+    -   calculates the average value of a given biochemical property for
+        this protein
+    -   returns this numerical value
+-   Now is your turn: write some Python code to calculate, for a given
+    protein sequence, the average value of the biochemical property
+    you choose.
+
+Test your code
+--------------
+
+-   It is possible to apply a function to each element of a column:
+
+    ``` {.bash}
+    # Function to count the number of "M"
+    def countM(sequence):
+        n = sequence.count("M")
+        return n
+
+    # Apply this function to COI sequences
+    con = sql.connect("data/fishbase_data.sqlite")
+    df = pd.read_sql_queries("SELECT * FROM seq_COI", con)
+    df.head()
+    df["sequence"].apply(countM)
+    ```
+
+-   Apply your own function to all COI sequences. Does the function
+    work? How would you test it?
+
+-   Check that the function works by calculating by hand the expected
+    value for one protein.
+
+-   the tidy dataset to calculate this property for all proteins, for
+    all species. Is it working properly?
 
 6. Share your code with your collaborators
 ==========================================
@@ -156,7 +213,6 @@ Teacher's notes
 ===============
 
 Course:
-
 1.  students clone the data repo (git refresh)
 2.  importing the data with python and pandas (from python intro but new
     thing: SQL)
