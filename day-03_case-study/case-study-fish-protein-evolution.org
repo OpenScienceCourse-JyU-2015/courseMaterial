@@ -86,7 +86,8 @@ After completing this course you will know:
 - You must clone locally this repository to your own computer. There are two
   possible ways to do it:
   + Using the command line (=Git bash= on Windows)
-  + Or using the graphical user interface (=Git GUI= on Windows)
+  + Or using the graphical user interface (=Git GUI= on Windows). That's what
+    we are going to do today;
 
   (live demonstration of Git GUI for Windows by the teacher)
 
@@ -104,13 +105,46 @@ After completing this course you will know:
 
 * 4. Produce a single, tidy dataset for the rest of the analyses
 
-- Use Python and Pandas to prepare a single, tidy dataset
+** 4.1 Write a script to produce a tiny dataset
+
+- Use Python and Pandas to write a script called =make_tidy_data.py= which
+  prepares a single, tidy dataset from the SQLite databases.
+
+- This script should save the tidy dataset in a tap-separated table called
+  =tidy_data.csv=.
 
 - Remember to keep track of your code: commit your changes!
 
-- Share your work with your collaborators; here we will keep only one version
-  of the tidy dataset in the repository, and everyone will clone it back
-  locally.
+** 4.2 Pull the script version from the repository
+
+- The teacher will push to the GitHub repository his version of the script and
+  of the tidy dataset.
+
+- Since we all did the same work, we can decide to use the teacher's version as
+  a reference for our common project repository.
+
+- Pull the teacher changes with:
+  #+BEGIN_SRC sh
+  git pull origin master
+  #+END_SRC
+  What happened?
+
+- We will solve the conflict by telling Git to keep the version from the
+  repository. We do this with:
+  #+BEGIN_SRC sh
+  git checkout --theirs make_tidy_data.py
+  git checkout --theirs tidy_data.csv
+  #+END_SRC
+  (=--theirs= tells Git to keep the version from the remote repository; we
+  would use =--ours= instead of =--their= to keep the local version of the
+  file)
+
+- Now that the conflict has been resolved, commit:
+  #+BEGIN_SRC 
+  git commit -m "Merge with teacher's script for tidy dataset
+  #+END_SRC
+
+- Have a look at the repository history.
 
 * 5. By groups: calculate protein biochemical properties
 
@@ -138,8 +172,15 @@ After completing this course you will know:
 
 ** Your task
 
-- You will work by groups of two or three students. Each group will choose a
+- You will work by *groups* of two or three students. Each group will choose a
   biochemical property of interest among the 8 available.
+
+- Choose one protein sequence, and calculate by hand what should be the average
+  biochemical property for this protein. We will use this value to test your
+  code later on.
+
+(live session:
+  + count the number of each letter in a sequence)
 
 - The teacher will demonstrate in a live coding session how to write a function
   that:
@@ -148,10 +189,22 @@ After completing this course you will know:
     protein
   + returns this numerical value
 
+(live session:
+  + for loop over a string
+  + using a dictionary to map values)
+
+- The teacher's function will be put on Etherpad as a candidate template.
+
 - Now is your turn: write some Python code to calculate, for a given protein
-  sequence, the average value of the biochemical property you choose.
+  sequence, the average value of the biochemical property you choose in your
+  group.
+
+- There are more than one way to do it: feel free to use a different method
+  from the teacher's template.
 
 ** Test your code
+
+- Check that the output of your function is correct for your test protein.
 
 - It is possible to apply a function to each element of a column:
   #+BEGIN_SRC sh
@@ -167,27 +220,35 @@ After completing this course you will know:
   df["sequence"].apply(countM)
   #+END_SRC
 
-- Apply your own function to all COI sequences. Does the function work? How
-  would you test it?
+- Apply your own function to all COI sequences. Is your function working
+  properly?
 
-- Check that the function works by calculating by hand the expected value for
-  one protein.
+* 6. Share your work with your collaborators
 
-- the tidy dataset to calculate this property for all
-  proteins, for all species. Is it working properly?
+** Commit your function code
 
-* 6. Share your code with your collaborators
+- Each group will save their function in a separate Python script in the
+  project folder. Name the script according to the amino acid index you choose
+  (e.g. =average.BHAR880101.py=).
 
-- Each group will run their code, commit their changes and push to the remote
-  repository one after the other.
+- Commit your file.
 
-- By the end of this part, the remote repository will contain a complete tidy
-  dataset and all the code needed to reproduce it.
+** Share your code
+
+- Each group, one at a time, will push their changes to the GitHub
+  repository. You might have to pull first if somebody else has made changes to
+  the repository on GitHub.
+
+- By the end of this part, the remote repository will contain all the code
+  needed to calculate the average properties of the proteins.
+
+- Everybody should pull the latest version of the repository, with all the
+  code.
 
 * 7. Explore the relation between fish ecology and protein evolution
 
-- Pull the changes to the repository in order to get a full, updated copy of
-  the dataset and of the code from your collaborators
+- Pull the GitHub repository in order to get a full, updated copy of the
+  dataset and of the code from your collaborators.
 
 - Use Pandas and matplotlib to explore graphically the relationship between
   fish ecology and their protein biochemical properties.
