@@ -10,6 +10,10 @@ Lesson adapted from Data Carpentry's "Python for ecologists"- lesson ([CC-BY](ht
 
 Etherpad notes available at: https://etherpad.wikimedia.org/p/jyybio_day-02-am_intro-to-python
 
+Usefull links related to Pandas and Jupyter notebooks:
+* [10 minutes to pandas](http://pandas.pydata.org/pandas-docs/stable/10min.html)
+* [27 Jupyter Notebook tips, tricks and shortcuts](https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/?utm_campaign=Data%2BElixir&utm_medium=email&utm_source=Data_Elixir_101)
+
 ---
 
 # Before the lesson
@@ -406,42 +410,3 @@ surveys_df[pd.isnull(surveys_df).any(axis=1)]
 > Create a new DataFrame that only contains observations with sex values that are not female or male. Determine the number of null values in the subset.
 
 ---
-
-# 4. Data types and formats
-
-## 4.1. Numeric
-
-## 4.2. Character
-
-## 4.3. Checking data format
-
-## 4.4. Integers and floats
-
-## 4.5. Missing data values
-
----
-
-# 5. Merging data
-
-## 5.1. Concatenating
-
-## 5.2. Joining
-
-### 5.2.1. Join keys
-
-### 5.2.2. Inner joins
-
-### Left joins
-
-### Other joins
-
----
-
-# Loops and functions
-
-## For loops
-
-## Data processing with loops
-
-## Functions
-
