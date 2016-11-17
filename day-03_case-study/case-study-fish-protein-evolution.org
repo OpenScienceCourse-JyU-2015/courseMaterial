@@ -24,7 +24,7 @@ However, some more advanced topics will also be introduced during the
 processing of the course data.
 
 After completing this course you will know:
-- how to load data from a database using *Pandas*
+- how to load data from a database and merge tables using *Pandas*
 - how to make plots using the *matplotlib* package
 
 * 1. Case study introduction: the evolution of fish mitochondrial proteins
@@ -32,7 +32,7 @@ After completing this course you will know:
 ** Once upon a time...
 
 - Mitochondrial genomes encode some proteins which are essential to the
-  production of ATP by the cell mitochondrias through oxidative
+  production of ATP by the cell mitochondrias via oxidative
   phosphorylation.
 
 - You are an *evolutionary biologist* interested in *how those key proteins
@@ -51,9 +51,9 @@ After completing this course you will know:
 
 ** What was done before
 
-- Some of your colleagues have been gathering data from the *public
-  repositories* already (GenBank and FishBase), and have started to store it in
-  a more or less *tidy format in sqlite databases*.
+- Some of your colleagues have already been gathering data from the *public
+  repositories* (GenBank and FishBase), and have started to store it in a more
+  or less *tidy format in sqlite databases*.
 
 - Because your colleagues know how important it is to provide a full record of
   how data is acquired and processed, they put everything into a
@@ -74,9 +74,10 @@ After completing this course you will know:
   + *Each student pair* will write some Python code to calculate the average
     value of a specific *biochemical property* (e.g. hydrophobicity,
     flexibility) for each protein
-  + *Share* your code and results and *merge* it into the master repository
-  + Use this *collaborative work* to explore the relation between *fish ecology*
-    and *protein evolution*
+  + *Share* your code with your colleagues by *pushing* it to the master
+    repository
+  + Use this *collaborative work* to explore the relation between *fish
+    ecology* and *protein evolution*
 
 * 2. Clone the remote repository
 
@@ -107,15 +108,16 @@ After completing this course you will know:
 
 ** 4.1 Write a script to produce a tiny dataset
 
-- Use Python and Pandas to write a script called =make_tidy_data.py= which
-  prepares a single, tidy dataset from the SQLite databases.
+- Use Python and Pandas to write a script called =make_tidy_data.py= (in the
+  =scripts= subfolder) which prepares a single, tidy dataset from the SQLite
+  databases.
 
-- This script should save the tidy dataset in a tap-separated table called
-  =tidy_data.csv=.
+- This script should save the tidy dataset in a tab-separated table called
+  =tidy_data.csv= in the =data= subfolder.
 
 - Remember to keep track of your code: commit your changes!
 
-** 4.2 Pull the script version from the repository
+** 4.2 Pull the version from the shared GitHub repository
 
 - The teacher will push to the GitHub repository his version of the script and
   of the tidy dataset.
@@ -129,7 +131,7 @@ After completing this course you will know:
   #+END_SRC
   What happened?
 
-- We will solve the conflict by telling Git to keep the version from the
+- We will solve the conflicts by telling Git to keep the version from the
   repository. We do this with:
   #+BEGIN_SRC sh
   git checkout --theirs make_tidy_data.py
@@ -141,14 +143,14 @@ After completing this course you will know:
 
 - Now that the conflict has been resolved, commit:
   #+BEGIN_SRC 
-  git commit -m "Merge with teacher's script for tidy dataset
+  git commit -m "Merge with teacher's script for tidy dataset"
   #+END_SRC
 
-- Have a look at the repository history.
+- Have a look at your repository history using the Git GUI.
 
-* 5. By groups: calculate protein biochemical properties
+* 5. Work in groups: calculate protein biochemical properties
 
-** Amino acid properties
+** 5.1 Amino acid properties
 
 - Use the Firefox plugin *SQLite manager* to open the database
   =aa_properties.sqlite=.
@@ -162,25 +164,21 @@ After completing this course you will know:
     al., 1998)
   + KLEP840101: Net charge (Klein et al., 1984)
   + KRIW790103: Side chain volume (Krigbaum-Komoriya, 1979)
-  + PUNT030102: Knowledge-based membrane-propensity scale from 3D_Helix in
+  + PUNT030102: Knowledge-based membrane-propensity scale from =3D_Helix= in
     MPtopo databases (Punta-Maritan, 2003)
   + RADA880107: Energy transfer from out to in(95%buried)
     (Radzicka-Wolfenden, 1988)
 
-- We can use each index to calculate some very rough average biochemical
-  properties for each protein.
+- We can use each index to calculate some rough average biochemical properties
+  for each protein.
 
-** Your task
+*** Your task
 
 - You will work by *groups* of two or three students. Each group will choose a
-  biochemical property of interest among the 8 available.
+  biochemical property of interest among the 8 available and write a function
+  to calculate it for any protein.
 
-- Choose one protein sequence, and calculate by hand what should be the average
-  biochemical property for this protein. We will use this value to test your
-  code later on.
-
-(live session:
-  + count the number of each letter in a sequence)
+** 5.2 Live demonstration
 
 - The teacher will demonstrate in a live coding session how to write a function
   that:
@@ -193,7 +191,13 @@ After completing this course you will know:
   + for loop over a string
   + using a dictionary to map values)
 
-- The teacher's function will be put on Etherpad as a candidate template.
+- This function is saved to a separate file, =average.BHAR880101.py=.
+
+- Teacher commits and pushes.
+
+- You pull the updated repository to your local repository.
+
+** 5.3 Your code
 
 - Now is your turn: write some Python code to calculate, for a given protein
   sequence, the average value of the biochemical property you choose in your
@@ -202,9 +206,22 @@ After completing this course you will know:
 - There are more than one way to do it: feel free to use a different method
   from the teacher's template.
 
-** Test your code
+- Save your function in a separate Python script in the project folder. Name
+  the script according to the amino acid index you choose
+  (e.g. =average.BHAR880101.py= for the BHAR880101 index).
 
-- Check that the output of your function is correct for your test protein.
+- Commit.
+
+* 6. Share with your collaborators and use their code
+
+** 6.1 Share the code
+
+- Each group pushes their changes to the GitHub repository.
+
+- Once everyone has pushed their changes, everyone pulls the GitHub repository
+  containing all the necessary code.
+
+** 6.2 Apply those functions to the tidy dataset
 
 - It is possible to apply a function to each element of a column:
   #+BEGIN_SRC sh
@@ -214,56 +231,19 @@ After completing this course you will know:
       return n
 
   # Apply this function to COI sequences
-  con = sql.connect("data/fishbase_data.sqlite")
-  df = pd.read_sql_queries("SELECT * FROM seq_COI", con)
+  connection = sql.connect("data/fishbase_data.sqlite")
+  df = pd.read_sql_queries("SELECT * FROM seq_COI", connection)
   df.head()
   df["sequence"].apply(countM)
   #+END_SRC
 
-- Apply your own function to all COI sequences. Is your function working
-  properly?
+- Using the code from yourself and your collaborators, update
+  =make_tidy_data.py= to add new columns to =tidy_data.csv= containing average
+  biochemical properties for COI proteins.
 
-* 6. Share your work with your collaborators
-
-** Commit your function code
-
-- Each group will save their function in a separate Python script in the
-  project folder. Name the script according to the amino acid index you choose
-  (e.g. =average.BHAR880101.py=).
-
-- Commit your file.
-
-** Share your code
-
-- Each group, one at a time, will push their changes to the GitHub
-  repository. You might have to pull first if somebody else has made changes to
-  the repository on GitHub.
-
-- By the end of this part, the remote repository will contain all the code
-  needed to calculate the average properties of the proteins.
-
-- Everybody should pull the latest version of the repository, with all the
-  code.
+(The teacher commits and pushes to have a common reference on GitHub if needed)
 
 * 7. Explore the relation between fish ecology and protein evolution
 
-- Pull the GitHub repository in order to get a full, updated copy of the
-  dataset and of the code from your collaborators.
-
 - Use Pandas and matplotlib to explore graphically the relationship between
   fish ecology and their protein biochemical properties.
-
-* Teacher's notes
-
-Course:
-1. students clone the data repo (git refresh)
-2. importing the data with python and pandas (from python intro but new thing:
-   SQL)
-3. data exploration and clean-up (dna seqs in proteins) (more pandas, maybe
-   already some plotting with matplotlib)
-4. data processing! writing some functions (one function per group), creating
-   new columns (python)
-5. commit all together, pull updated code
-6. final data visualization (pandas and matplotlib)
-
-
