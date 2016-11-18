@@ -125,7 +125,7 @@ After completing this course you will know:
 - Since we all did the same work, we can decide to use the teacher's version as
   a reference for our common project repository.
 
-- Pull the teacher changes with:
+- Pull the teacher's changes with:
   #+BEGIN_SRC sh
   git pull origin master
   #+END_SRC
@@ -138,7 +138,7 @@ After completing this course you will know:
   git checkout --theirs tidy_data.csv
   #+END_SRC
   (=--theirs= tells Git to keep the version from the remote repository; we
-  would use =--ours= instead of =--their= to keep the local version of the
+  would use =--ours= instead of =--theirs= to keep the local version of the
   file)
 
 - Now that the conflict has been resolved, commit:
@@ -187,9 +187,9 @@ After completing this course you will know:
     protein
   + returns this numerical value
 
-(live session:
-  + for loop over a string
-  + using a dictionary to map values)
+  (live session:
+    + for loop over a string
+    + using a dictionary to map values)
 
 - This function is saved to a separate file, =average.BHAR880101.py=.
 
@@ -200,14 +200,14 @@ After completing this course you will know:
 ** 5.3 Your code
 
 - Now is your turn: write some Python code to calculate, for a given protein
-  sequence, the average value of the biochemical property you choose in your
+  sequence, the average value of the biochemical property you chose in your
   group.
 
 - There are more than one way to do it: feel free to use a different method
   from the teacher's template.
 
 - Save your function in a separate Python script in the project folder. Name
-  the script according to the amino acid index you choose
+  the script according to the amino acid index you chose
   (e.g. =average.BHAR880101.py= for the BHAR880101 index).
 
 - Commit.
